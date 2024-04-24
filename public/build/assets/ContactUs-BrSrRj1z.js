@@ -1,0 +1,1 @@
+import{j as t}from"./app-CygBzfFs.js";import{D as s}from"./DefaultLayout-B7oxxH-B.js";function o(){return t.jsx(s,{children:t.jsx("div",{className:"bg-secondary text-white",children:"ContactUs"})})}export{o as default};

@@ -1,0 +1,1 @@
+import{j as t}from"./app-CygBzfFs.js";import{C as o}from"./ContentTitle-CyLjt4wo.js";import{D as r}from"./DefaultLayout-B7oxxH-B.js";function a(){return t.jsx(r,{children:t.jsx(o,{subTitle:"BLOG"})})}export{a as default};
