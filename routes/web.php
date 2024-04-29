@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,9 +16,7 @@ Route::get('/contact-us', function () {
 });
 
 Route::prefix('/blog')->group(function () {
-    Route::get('', function () {
-        return Inertia::render('blog/Blog');
-    });
+    Route::get('', [BlogController::class, 'show']);
 
     Route::get(':{id}', function ($id) {
         return Inertia::render('blog/BlogDetail', ['id' => $id]);
@@ -73,6 +72,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/jurusan-{titleJurusan}', [JurusanController::class, 'show']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
