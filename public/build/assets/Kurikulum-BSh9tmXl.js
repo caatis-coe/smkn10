@@ -1,0 +1,1 @@
+import{j as t}from"./app-CygBzfFs.js";import{C as r}from"./ContentTitle-CyLjt4wo.js";import{D as o}from"./DefaultLayout-B7oxxH-B.js";function s(){return t.jsx(o,{children:t.jsx(r,{title:"PEMBELAJARAN",subTitle:"KURIKULUM"})})}export{s as default};

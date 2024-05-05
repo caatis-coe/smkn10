@@ -1,0 +1,1 @@
+import{j as t}from"./app-CygBzfFs.js";import{C as a}from"./ContentTitle-CyLjt4wo.js";import{D as e}from"./DefaultLayout-B7oxxH-B.js";function s(){return t.jsx(e,{children:t.jsx(a,{title:"PEMBELAJARAN",subTitle:"KEGIATAN MAHASISWA"})})}export{s as default};
