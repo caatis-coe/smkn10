@@ -1,0 +1,1 @@
+import{j as t}from"./app-B79gcBjK.js";import{C as i}from"./ContentTitle-BBsVCTr6.js";import{D as r}from"./DefaultLayout-Cm3Cs0hO.js";function l({datas:e}){return t.jsx(r,{headerChildren:t.jsx(t.Fragment,{}),children:t.jsxs("div",{children:[t.jsx(i,{title:"JURUSAN",subTitle:e.title}),t.jsx("p",{children:e.description})]})})}export{l as default};

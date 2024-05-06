@@ -1,0 +1,1 @@
+import{j as t}from"./app-B79gcBjK.js";import{C as o}from"./ContentTitle-BBsVCTr6.js";import{D as r}from"./DefaultLayout-Cm3Cs0hO.js";function n(){return t.jsx(r,{children:t.jsx(o,{subTitle:"INFO PPDB"})})}export{n as default};
