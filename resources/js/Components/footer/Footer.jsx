@@ -3,7 +3,7 @@ import SocialMediaButton from './Partials/SocialMediaButton'
 
 function Footer() {
   return (
-    <div className='px-14 py-12 flex flex-col items-center md:flex-row w-full h-auto bg-gradient-to-r from-tertiary to-primary md:justify-between text-white'>
+    <div className='mt-7 px-14 py-12 flex flex-col items-center md:flex-row w-full h-auto bg-gradient-to-r from-tertiary to-primary md:justify-between text-white'>
       <div className='flex flex-col justify-between'>
         <div>
           <div className='text-[36px] sm:text-[48px] font-semibold'>
