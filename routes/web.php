@@ -1,31 +1,29 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JurusanController;
-use App\Http\Controllers\BlogController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\DaftarGuruController;
+use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoPpdbController;
+use App\Http\Controllers\KegiatanMahasiswaController;
+use App\Http\Controllers\KonsentrasiKeahlianController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
+Route::get('/', [HomeController::class, 'show']);
 
 Route::get('/contact-us', function () {
     return Inertia::render('ContactUs');
 });
 
-Route::prefix('/blog')->group(function () {
-    Route::get('', [BlogController::class, 'show']);
+Route::prefix('/berita')->group(function () {
+    Route::get('', [BeritaController::class, 'show']);
 
-    Route::get(':{id}', function ($id) {
-        return Inertia::render('blog/BlogDetail', ['id' => $id]);
-    });
+    Route::get('{id}', [BeritaController::class, 'showDetail']);
 });
 
-Route::get('/daftar-guru', function () {
-    return Inertia::render('profil/DaftarGuru');
-});
+Route::get('/daftar-guru', [DaftarGuruController::class, 'show']);
 
 Route::get('/daftar-karyawan', function () {
     return Inertia::render('profil/DaftarKaryawan');
@@ -43,13 +41,9 @@ Route::get('/visi-misi', function () {
     return Inertia::render('profil/VisiMisi');
 });
 
-Route::get('/fasilitas', function () {
-    return Inertia::render('pembelajaran/Fasilitas');
-});
+Route::get('/fasilitas', [FasilitasController::class, 'show']);
 
-Route::get('/kegiatan-mahasiswa', function () {
-    return Inertia::render('pembelajaran/KegiatanMahasiswa');
-});
+Route::get('/kegiatan-mahasiswa', [KegiatanMahasiswaController::class, 'show']);
 
 Route::get('/kurikulum', function () {
     return Inertia::render('pembelajaran/Kurikulum');
@@ -67,13 +61,17 @@ Route::get('/prestasi-sekolah', function () {
     return Inertia::render('prestasi/PrestasiSekolah');
 });
 
+Route::get('/error404', function () {
+    return Inertia::render('Error404');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/jurusan-{titleJurusan}', [JurusanController::class, 'show']);
+Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, 'show']);
 
-
+Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
