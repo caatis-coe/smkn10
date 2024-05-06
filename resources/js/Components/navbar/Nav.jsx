@@ -43,26 +43,40 @@ function Nav() {
       "endpoint": "/kurikulum"
     },
   ])
-  const jurusanData = ([
+  const keahlianData = [
     {
-      "title": "Seni dan Budaya",
-      "endpoint": "/jurusan-seni-budaya",
-      "visi": "jadi ayam",
-      "misi": "cari ayam"
+        "title": "Seni Karawitan",
+        "endpoint": "/keahlian-seni-karawitan",
     },
     {
-      "title": "Multimedia",
-      "endpoint": "/jurusan-multimedia",
-      "visi": "gak tau",
-      "misi": "lebih gak tau"
+        "title": "Seni Tari",
+        "endpoint": "/keahlian-seni-tari",
     },
     {
-      "title": "Digididaw Art",
-      "endpoint": "/jurusan-digidaw-art",
-      "visi": "desain",
-      "misi": "digidaw"
+        "title": "Seni Musik",
+        "endpoint": "/keahlian-seni-musik",
     },
-  ])
+    {
+        "title": "Seni Teater",
+        "endpoint": "/keahlian-seni-teater",
+    },
+    {
+        "title": "Produksi dan Siaran Program Televisi",
+        "endpoint": "/keahlian-produksi-dan-siaran-program-televisi",
+    },
+    {
+        "title": "Produksi Film",
+        "endpoint": "/keahlian-produksi-film",
+    },
+];
+  /*
+  Seni Karawitan
+  Seni Tari
+  Seni Musik
+  Seni Teater
+  Produksi dan Siaran Program Televisi
+  Produksi Film
+  */
   const prestasiData = ([
     {
       "title": "Prestasi Sekolah",
@@ -85,14 +99,15 @@ function Nav() {
   }
 
   const content = (
-    <div className='lg:hidden block absolute w-full left-0 right-0 bg-white transition'>
+    <div className='xl:hidden block absolute w-full left-0 right-0 bg-white transition'>
       <ul className='text-center text-[14px]'>
         <SmallScreenNavLink title="Home" endpoint="/" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Profil" handleClick={handleClickLink} subMenu={profilData} />
         <SmallScreenNavLink title="Pembelajaran" handleClick={handleClickLink} subMenu={pembelajaranData} />
-        <SmallScreenNavLink title="Jurusan" handleClick={handleClickLink} subMenu={jurusanData} />
+        <SmallScreenNavLink title="Konsentrasi Keahlian" handleClick={handleClickLink} subMenu={keahlianData} />
         <SmallScreenNavLink title="Prestasi" handleClick={handleClickLink} subMenu={prestasiData} />
-        <SmallScreenNavLink title="Blog" endpoint="/blog" handleClick={handleClickLink} />
+        <SmallScreenNavLink title="Berita" endpoint="/berita" handleClick={handleClickLink} />
+        <SmallScreenNavLink title="Info PPDB" endpoint="/info-ppdb" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Hubungi Kami" endpoint="/contact-us" handleClick={handleClickLink} />
       </ul>
     </div>
@@ -109,19 +124,20 @@ function Nav() {
             </div>
           </div>
           <div className='flex items-center justify-end'>
-            <div className='hidden lg:block'>
-              <ul className='flex gap-7 text-[14px] font-medium'>
+            <div className='hidden xl:block'>
+              <ul className='flex gap-5 text-[14px] font-medium'>
                 <WideScreenNavLink title="Home" endpoint="/" />
                 <DropdownNavLink title="Profil" subMenu={profilData} />
                 <DropdownNavLink title="Pembelajaran" subMenu={pembelajaranData} />
-                <DropdownNavLink title="Jurusan" subMenu={jurusanData} />
+                <DropdownNavLink title="Konsentrasi Keahlian" subMenu={keahlianData} />
                 <DropdownNavLink title="Prestasi" subMenu={prestasiData} />
-                <WideScreenNavLink title="Blog" endpoint="/blog" />
+                <WideScreenNavLink title="Berita" endpoint="/berita" />
+                <WideScreenNavLink title="Info PPDB" endpoint="/info-ppdb" />
                 <WideScreenNavLink title="Hubungi Kami" endpoint="/contact-us" />
               </ul>
             </div>
           </div>
-          <button className='block lg:hidden transisition scale-150' onClick={() => setClick(!click)}>
+          <button className='block xl:hidden transisition scale-150' onClick={() => setClick(!click)}>
             {click ? <FaTimes /> : <HiMenuAlt3 />}
           </button>
         </div>
