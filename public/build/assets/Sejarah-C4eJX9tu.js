@@ -1,0 +1,1 @@
+import{j as t}from"./app-BtmzsioG.js";import{C as r}from"./ContentTitle-BrS9s2zq.js";import{D as e}from"./DefaultLayout-C-i31dX2.js";function s(){return t.jsx(e,{children:t.jsx(r,{title:"PROFIL",subTitle:"SEJARAH"})})}export{s as default};
