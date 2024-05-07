@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaWhatsapp, FaTimes} from 'react-icons/fa';
 
 export default function WhatsAppButton() {
-    const [isHovered, setIsHovered] = useState(true);
+    const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isCloseClicked, setIsCloseClicked] = useState(false);
     const [message, setMessage] = useState('');
@@ -56,7 +56,7 @@ export default function WhatsAppButton() {
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={handleButtonClick}
                 >
-                    <div className={`absolute text-white bg-${isClicked ? 'red' : 'green'}-500  rounded-full p-3`}>
+                    <div className={`absolute text-white bg-${isClicked ? 'red' : 'green'}-500 rounded-full p-3`}>
                         {isClicked ? <FaTimes className="text-4xl" onClick={handleCloseButtonClick} /> : <FaWhatsapp className="text-4xl" />}
                     </div>
                 </a>
@@ -90,6 +90,16 @@ export default function WhatsAppButton() {
                 </div>
             )}
             <style jsx>{`
+                .bg-green-500 {
+                    --tw-bg-opacity: 1;
+                    background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+                }
+
+                .bg-red-500 {
+                    --tw-bg-opacity: 1;
+                    background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+                }
+
                 #text:focus {
                     box-shadow: none !important;
                 }
