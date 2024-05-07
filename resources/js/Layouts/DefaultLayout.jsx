@@ -3,6 +3,8 @@ import Nav from '@/Components/navbar/Nav'
 import { Head } from '@inertiajs/react'
 import React from 'react'
 import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
+import WhatsAppButton from '@/Components/WhatsappButton'
+import ScrollToTop from '@/Components/ScrollToTop'
 
 function DefaultLayout({children, headerChildren }) {
     return (
@@ -24,6 +26,8 @@ function DefaultLayout({children, headerChildren }) {
                 <div className=''>
                     <Footer />
                 </div>
+                <WhatsAppButton />
+                <ScrollToTop />
             </div>
         </div>
 
