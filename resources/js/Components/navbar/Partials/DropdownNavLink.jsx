@@ -7,7 +7,6 @@ function DropdownNavLink({ title, subMenu}) {
     const id  = window.location.pathname;
     const [clicked, setClicked] = useState(false);
 
-    console.log(subMenu)
 
     useEffect(() => {
         setClicked(subMenu.some(item => id === item.endpoint)); 

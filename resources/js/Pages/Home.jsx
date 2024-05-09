@@ -47,7 +47,7 @@ function Home({ blogDatas = [] }) {
             )
         }>
             <SubTitle title={"Profil Sekolah"} />
-            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6'>
                     <HomeMiniButton text={"Visi Misi"} link='visi-misi'/>
                     <HomeMiniButton text={"Sejarah"}  link='sejarah'/>
@@ -55,9 +55,9 @@ function Home({ blogDatas = [] }) {
                     <HomeMiniButton text={"Info PPDB"} link='info-ppdb'/>
             </div>
             <SubTitle title={"Kepala Sekolah"} />
-            <div className='flex flex-col gap-y-12 md:flex-row md:gap-y-0 justify-between items-center'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4]' style={{ backgroundImage: kepsek }} />
-                <div className='flex-1 ms-12'>
+            <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: kepsek }} />
+                <div className='flex-1 flex flex-col ms-12'>
                     <div className='font-semibold text-[24px] text-center md:text-left mb-2'>Jonathan William Rawrrrr (JWR) </div>
                     <div>“ Salam sejahtera kepada seluruh warga SMKN! Kami dengan bangga menyambut Anda di website resmi
                         Sekolah Menengah Kejuruan Negeri (SMKN) kami. Di sini, kami berkomitmen untuk
@@ -72,7 +72,7 @@ function Home({ blogDatas = [] }) {
                 {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
             </div>
             <div className='grid place-items-center mt-9'>
-                <Link href='blog'>
+                <Link href='berita'>
                     <div className='grid place-items-center text-[16px] font-medium text-white 
                     rounded-full bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
                         Lihat Selebihnya

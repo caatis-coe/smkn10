@@ -9,12 +9,14 @@ function BlogCard({ blogData = {
     "date_updated": "2022-01-22"
 } }) {
 
-    const backgroundImage = `url('images/${blogData.image_path}')`;
+    const backgroundImageStyle = {
+        backgroundImage: `url('images/${blogData.image_path}')`, // Width x Height
+    };
 
     return (
         <div className='flex flex-col min-w-[324px]  min-h-[484px] bg-white shadow-md rounded-2xl '>
             <div className={`flex-1 border-b-2 bg-cover bg-center
-            rounded-t-2xl border-grey`} style={{backgroundImage}}>
+            rounded-t-2xl border-grey`} style={backgroundImageStyle}>
             </div>
             <div className='flex flex-col justify-between h-[256px] px-5 pt-4 pb-7'>
                 <div className=''>
