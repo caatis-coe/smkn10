@@ -28,31 +28,11 @@ export default function FloatingButton() {
   };
 
   return (
-    <div className={`floating-button p-3 text-white rounded ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
+    <div 
+      className={` bg-yellow-400 fixed bottom-5 left-5 p-3 text-white rounded ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ${isVisible ? 'visible' : 'invisible'} cursor-pointer `}
+      onClick={scrollToTop}
+    >
       <IoIosArrowUp className='text-3xl'/>
-      <style jsx>{`
-        .floating-button {
-          position: fixed;
-          bottom: 20px;
-          left: 20px;
-          background-color: #61CE70;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          z-index: 999;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        
-        .floating-button.visible {
-          opacity: 1;
-        }
-        
-        .floating-button i {
-          font-size: 20px;
-        }
-    `}</style>
     </div>
   )
 }

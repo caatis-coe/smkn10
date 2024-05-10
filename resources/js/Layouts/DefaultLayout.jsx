@@ -26,7 +26,10 @@ function DefaultLayout({children, headerChildren }) {
                 <div className=''>
                     <Footer />
                 </div>
-                <WhatsAppButton />
+                <WhatsAppButton 
+                    phone='6281396969696'
+                    text='Chat with SMKN 10'
+                />
                 <ScrollToTop />
             </div>
         </div>
