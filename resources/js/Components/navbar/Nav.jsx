@@ -5,6 +5,7 @@ import SmallScreenNavLink from './Partials/SmallScreenNavLink'
 import DropdownNavLink from './Partials/DropdownNavLink'
 import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
 import WideScreenNavLink from './Partials/WideScreenNavLink';
+import { FaPhone, FaEnvelope } from 'react-icons/fa'
 
 function Nav() {
   const profilData = ([
@@ -116,6 +117,21 @@ function Nav() {
   return (
     <nav className=''>
       <div className='z-50'>
+        <div className='h-8 flex justify-end items-center bg-blue-600 text-white px-10 md:px-20'>
+          <a className='flex items-center mr-5' href='tel:6281369696969'>
+            <div className='mr-4'>
+              <FaPhone className='text-white' />
+            </div>
+            <span className='text-xs'>+62813 6969 6969</span>
+          </a>
+          <a className='flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
+            <div className='mr-4'>
+              <FaEnvelope className='text-white' />
+            </div>
+            <span className='text-xs'>admin@smkn10bandung.sch.id</span>
+          </a>
+        </div>
+
         <div className='h-10vh flex justify-between border-b border-grey bg-white text-black px-10 md:px-20 py-4'>
           <div className='flex items-center justify-center cursor-default'>
             <img className='size-10' src={logoSMA} alt='SMK 10 Bandung Logo' />
@@ -137,7 +153,7 @@ function Nav() {
               </ul>
             </div>
           </div>
-          <button className='block xl:hidden transisition scale-150' onClick={() => setClick(!click)}>
+          <button className='block xl:hidden transition scale-150' onClick={() => setClick(!click)}>
             {click ? <FaTimes /> : <HiMenuAlt3 />}
           </button>
         </div>
