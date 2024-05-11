@@ -47,7 +47,7 @@ export default function WhatsAppButton({phone, text}) {
     };
 
     return (
-        <div className="fixed bottom-5 right-5">
+        <div className="fixed bottom-8 right-8 z-40">
             {!isCloseClicked ? (
                 <a 
                     href="#" 
@@ -84,17 +84,7 @@ export default function WhatsAppButton({phone, text}) {
                                 id="send"
                                 className="bg-slate-400 text-white p-2 rounded-full hover:bg-slate-500 transition duration-300 ease-in-out"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <g clipPath="url(#clip0_9452_6982)">
-                                        <path d="M18.5703 9.99996L2.66037 17.6603L5.60665 9.99996L2.66037 2.33963L18.5703 9.99996Z" fill="white" stroke="white" strokeWidth="1.6625" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        <path d="M8.24069 9.99947L3.07723 9.99992" stroke="#94a3b8" strokeWidth="1.6625" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_9452_6982">
-                                            <rect width="20" height="20" fill="white"></rect>
-                                        </clipPath>
-                                    </defs>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clipPath="url(#clip0_9452_6982)"><path d="M18.5703 9.99996L2.66037 17.6603L5.60665 9.99996L2.66037 2.33963L18.5703 9.99996Z" fill="white" stroke="white" strokeWidth="1.6625" strokeLinecap="round" strokeLinejoin="round"></path><path d="M8.24069 9.99947L3.07723 9.99992" stroke="#C6D7E3" strokeWidth="1.6625" strokeLinecap="round" strokeLinejoin="round"></path></g><defs><clipPath id="clip0_9452_6982"><rect width="20" height="20" fill="white"></rect></clipPath></defs></svg>
                             </button>
                         </div>
                     </div>

@@ -1,22 +1,52 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
 import DefaultLayout from '@/Layouts/DefaultLayout'
-import React, { useEffect } from 'react'
-import logoSma from '@/Assets/Logo-SMK-10-Bandung.png'
-import { FaPlay } from "react-icons/fa";
+import React from 'react'
 import BlogCard from '@/Components/BlogCard';
 import { Link } from '@inertiajs/react';
 import HomeMiniButton from '@/Components/HomeMiniButton';
 import SubTitle from '@/Components/SubTitle';
+import { Autoplay } from 'swiper/modules';
+import logoSma from '@/Assets/Logo-SMK-10-Bandung.png'
+
+import "swiper/css";
+import { FaPlay } from 'react-icons/fa';
+
 
 function Home({ blogDatas = [] }) {
 
-    const homeImage = `url('images/homeImage.jpg')`;
+    const baseURL = window.location.origin;
+
+    const homeImage1 = `url('${baseURL}/images/homeImage.jpg')`;
+    const homeImage2 = `url('${baseURL}/images/image1.jpg')`;
+    const homeImage3 = `url('${baseURL}/images/image2.jpg')`;
+    const homeImage4 = `url('${baseURL}/images/image3.jpg')`;
+
+    const homeImages = [homeImage1, homeImage2, homeImage3, homeImage4]
+
     const kepsek = `url('images/kepsek.jpg')`
+
+    const profilePage = () => {
+        window.open("https://youtu.be/xNRJwmlRBNU", '_blank')
+    }
 
     return (
         <DefaultLayout headerChildren={
             (
-                <div className="flex bg-center min-h-96 w-[100vw] text-white" style={{ backgroundImage: homeImage }}>
-                    <div className='flex flex-col justify-center bg-cover gap-y-1 px-10 md:px-20 bg-black/70 flex-1'>
+                <div className="relative text-white">
+                    <Swiper className='-z-50'
+                        modules={[Autoplay]} // Ensure modules are imported and passed correctly
+                        autoplay={{
+                            delay: 1500,
+                        }}
+                        loop={true}
+                    >
+                        {homeImages.map((data, index) => (
+                            <SwiperSlide key={index}>
+                                <div className='bg-center bg-cover min-h-96 w-[100vw]' style={{ backgroundImage: data }}></div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                    <div className='absolute z-40 w-full h-full top-0 flex flex-col justify-center bg-cover gap-y-1 px-10 md:px-20 bg-black/70 flex-1'>
                         <div className='flex gap-x-6'>
                             <img className='aspect-square w-12' src={logoSma} alt="" />
                             {[...Array(3)].map((_, index) => (
@@ -34,11 +64,13 @@ function Home({ blogDatas = [] }) {
                         <div>
                             #Tagline
                         </div>
-                        <div className='flex rounded-full mt-6 justify-between items-center border-2 border-white p-2 h-12 w-48'>
+                        <div className='flex rounded-full mt-6 justify-between items-center border-2
+                            border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
+                            transition ease-in-out duration-200 group' onClick={profilePage}>
                             <div className='border-2 p-2 rounded-full grid place-items-center h-fit border-white'>
-                                <FaPlay className='w-2 h-2' />
+                                <FaPlay className='w-2 h-2 group-hover:scale-125 transition ease-in-out duration-150' />
                             </div>
-                            <div className='flex-1 text-center'>
+                            <div className='flex-1 text-center '>
                                 Profil Sekolah
                             </div>
                         </div>
@@ -46,18 +78,18 @@ function Home({ blogDatas = [] }) {
                 </div>
             )
         }>
-            <SubTitle title={"Profil Sekolah"} />
-            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
+            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6'>
-                    <HomeMiniButton text={"Visi Misi"} link='visi-misi'/>
-                    <HomeMiniButton text={"Sejarah"}  link='sejarah'/>
-                    <HomeMiniButton text={"Struktur Organisasi"} link='struktur-organisasi'/>
-                    <HomeMiniButton text={"Info PPDB"} link='info-ppdb'/>
+                <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
+                <HomeMiniButton text={"Sejarah"} link='sejarah' />
+                <HomeMiniButton text={"Struktur Organisasi"} link='struktur-organisasi' />
+                <HomeMiniButton text={"Info PPDB"} link='info-ppdb' />
             </div>
             <SubTitle title={"Kepala Sekolah"} />
-            <div className='flex flex-col gap-y-12 md:flex-row md:gap-y-0 justify-between items-center'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4]' style={{ backgroundImage: kepsek }} />
-                <div className='flex-1 ms-12'>
+            <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: kepsek }} />
+                <div className='flex-1 md:ms-12'>
                     <div className='font-semibold text-[24px] text-center md:text-left mb-2'>Jonathan William Rawrrrr (JWR) </div>
                     <div>“ Salam sejahtera kepada seluruh warga SMKN! Kami dengan bangga menyambut Anda di website resmi
                         Sekolah Menengah Kejuruan Negeri (SMKN) kami. Di sini, kami berkomitmen untuk
@@ -72,7 +104,7 @@ function Home({ blogDatas = [] }) {
                 {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
             </div>
             <div className='grid place-items-center mt-9'>
-                <Link href='blog'>
+                <Link href='berita'>
                     <div className='grid place-items-center text-[16px] font-medium text-white 
                     rounded-full bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
                         Lihat Selebihnya
@@ -82,6 +114,5 @@ function Home({ blogDatas = [] }) {
         </DefaultLayout>
     )
 }
-
 
 export default Home

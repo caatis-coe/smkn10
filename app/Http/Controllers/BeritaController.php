@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -181,20 +183,13 @@ class BeritaController extends Controller
 
     public function show(): Response
     {
-        return Inertia::Render('berita/Berita', ['beritaDatas' => $this->beritaDatas] );
+        return Inertia::Render('berita/Berita', ['beritaDatas' => $this->beritaDatas]);
     }
 
-    public function showDetail(String $id): Response
+    public function showDetail(Request $request): Response
     {
-        $data = [];
-
-        foreach($this->beritaDatas as $beritaData){
-            if ($beritaData['id'] ==  $id) {
-                $data = $beritaData;
-                break; 
-            }
-        }
-
-        return Inertia::Render('berita/BeritaDetail', ['data' => $data] );
+        $data = $request->all();
+        $data['image_path'] = asset('images/' . $data['image_path']);
+        return Inertia::Render('berita/BeritaDetail', ['data' => $data]);
     }
 }
