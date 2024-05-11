@@ -30,8 +30,6 @@ function BlogCard({ blogData = {
                 <div className='flex items-center justify-between '>
                     <Link
                         href={'berita/' + blogData.id}
-                        method='post'
-                        data={blogData}
                         className='bg-primary text-[12px] font-medium
                         grid place-items-center rounded-full
                         text-white flex-1 py-3 px-2 w-full

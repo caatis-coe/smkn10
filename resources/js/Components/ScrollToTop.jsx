@@ -29,7 +29,7 @@ export default function FloatingButton() {
 
   return (
     <div 
-      className={` bg-yellow-400 fixed bottom-5 left-5 p-3 text-white rounded ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ${isVisible ? 'visible' : 'invisible'} cursor-pointer `}
+      className={` bg-greenprimary fixed bottom-5 left-5 p-3 text-white rounded ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ${isVisible ? 'visible' : 'invisible'} cursor-pointer `}
       onClick={scrollToTop}
     >
       <IoIosArrowUp className='text-3xl'/>

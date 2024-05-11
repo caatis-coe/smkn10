@@ -47,11 +47,11 @@ export default function WhatsAppButton({phone, text}) {
     };
 
     return (
-        <div className="fixed bottom-8 right-8 z-40">
+        <div className="fixed bottom-5 right-5 z-40">
             {!isCloseClicked ? (
                 <a 
                     href="#" 
-                    className={`whatsapp-button relative flex items-center justify-center text-white ${isClicked ? 'bg-red-500' : 'bg-green-500'} ${isClicked ? 'hover:bg-red-600' : 'hover:bg-green-600'} p-4 rounded-full shadow-lg transition duration-300 ease-in-out transform ${isClicked ? 'swirl-out' : ''}`}
+                    className={`whatsapp-button relative flex items-center justify-center text-white ${isClicked ? 'bg-redprimary' : 'bg-greenprimary'} ${isClicked ? 'hover:bg-lightredprimary' : 'hover:bg-lightgreenprimary'} p-4 rounded-full shadow-lg transition duration-300 ease-in-out transform ${isClicked ? 'swirl-out' : ''}`}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={handleButtonClick}
@@ -62,7 +62,7 @@ export default function WhatsAppButton({phone, text}) {
                 </a>
             ) : null}
             {!isClicked && !isCloseClicked && isHovered && (
-                <div className="whatsapp-popup bg-slate-100 shadow-xl rounded-xl">
+                <div className="whatsapp-popup bg-slate-100  shadow-xl rounded-xl" style={{minWidth : '169px'}}>
                     <p className="text-black">{text}</p>
                 </div>
             )}
@@ -90,7 +90,7 @@ export default function WhatsAppButton({phone, text}) {
                     </div>
                 </div>
             )}
-            <style jsx>{`
+            <style jsx="true">{`
                 #text:focus {
                     box-shadow: none !important;
                 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaTimes} from 'react-icons/fa';
+import { FaAngleRight, FaTimes} from 'react-icons/fa';
 
 const RightDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,34 +10,37 @@ const RightDrawer = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-40">
       <div
-        className="fixed top-1/2 transform -translate-y-1/2 m-4 px-4 py-1 bg-blue-500 text-white rounded-t-lg shadow -rotate-90 cursor-pointer border-blue-700 border-2 hover:border-red-500"
+        className="fixed top-1/2 transform right-0 translate-x-[86px] -translate-y-1/2 m-4 px-4 py-1 bg-primary text-white rounded-t-lg shadow -rotate-90 cursor-pointer border-2 hover:bg-lighttertiary"
         onClick={toggleDrawer}
-        style={{ right: -81 }}
       >
         Rate Our Services
       </div>
       <div
-        className={`fixed  h-full w-96 bg-white transition-all duration-1000 z-10 ${
+        className={`fixed  h-screen w-80 bg-white transition-all duration-1000 z-10 ${
           isOpen ? 'right-0 top-0' : '-right-96 top-0'
         }`}
         // style={{ right: isOpen ? '-400' : '' }}
       >
+        <div className='fixed top-[50%] text-white bg-primary rounded-l-lg h-24 grid place-items-center -z-0
+         -translate-x-4 translate-y-1/2 cursor-pointer' onClick={()=>(setIsOpen(false))}>
+          <FaAngleRight />
+        </div>
         <div className="flex justify-end p-4">
           <FaTimes
-            className="text-2xl cursor-pointer text-red-600 border hover:border-white border-dotted border-gray-600"
+            className="text-2xl cursor-pointer text-red-600 border hover:border-white border-dotted border-grey"
             onClick={toggleDrawer}
           />
         </div>
         
         {/* Drawer Content */}
-        <div className="p-4">
+        {/* <div className="p-4 fixed">
           
-          <h2 className="text-3xl font-semibold mb-4 text-center">SHARE YOUR FEEDBACK WITH US</h2>
-        </div>
+          <h2 className="text-3xl text-grey font-semibold mb-4 text-center mt-16">SHARE YOUR FEEDBACK WITH US</h2>
+        </div> */}
 
-        <iframe loading="lazy" allowFullScreen="true" width="854px" height="800px" src={URL} frameBorder={0} marginWidth={600} marginHeight={424} style={{border: 'medium', maxWidth: '100%', maxHeight: '700px'}} webkitallowfullscreen mozallowfullscreen msallowfullscreen data-rocket-lazyload="fitvidscompatible" data-lazy-src={URL} data-gtm-yt-inspected-7="true" data-ll-status="loaded" className="entered lazyloaded"> </iframe>
+        <iframe className="entered lazyloaded absolute h-screen" loading="lazy" allowFullScreen={true} width="854px" src={URL}  style={{border: 'medium', maxWidth: '100%', maxHeight: '700px'}} webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" data-rocket-lazyload="fitvidscompatible" data-lazy-src={URL} data-gtm-yt-inspected-7="true" data-ll-status="loaded" > </iframe>
       </div>
 
       {/* Overlay */}
