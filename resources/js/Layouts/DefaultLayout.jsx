@@ -5,6 +5,7 @@ import React from 'react'
 import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
 import WhatsAppButton from '@/Components/WhatsappButton'
 import ScrollToTop from '@/Components/ScrollToTop'
+import RightDrawer from '@/Components/RightDrawer'
 
 function DefaultLayout({children, headerChildren }) {
     return (
@@ -31,6 +32,7 @@ function DefaultLayout({children, headerChildren }) {
                     text='Chat with SMKN 10'
                 />
                 <ScrollToTop />
+                <RightDrawer />
             </div>
         </div>
 
