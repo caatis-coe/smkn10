@@ -6,21 +6,21 @@ import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
 import WhatsAppButton from '@/Components/WhatsappButton'
 import ScrollToTop from '@/Components/ScrollToTop'
 
-function DefaultLayout({children, headerChildren }) {
+function DefaultLayout({ children, headerChildren }) {
     return (
-        <div className='overflow-x-hidden'>
+        <div className=' bg-white'>
             <Head>
                 <title>SMKN 10 Bandung</title>
                 <link rel="icon" href={logoSMA} />
             </Head>
-            <div className='flex flex-col min-h-[100vh] min-w-[100wh]'>
-                <div className='sticky top-0'>
-                    <Nav />
-                </div>
+            <div className='sticky top-0 z-50'>
+                <Nav />
+            </div>
+            <div className='overflow-x-hidden w-full flex flex-col min-h-screen min-w-screen'>
                 <div>
                     {headerChildren}
                 </div>
-                <div className='flex flex-col flex-1 h-auto px-10 md:px-20 py-7' >
+                <div className='flex flex-col flex-1 w-full h-auto px-10 md:px-20 py-7' >
                     {children}
                 </div>
                 <div className=''>

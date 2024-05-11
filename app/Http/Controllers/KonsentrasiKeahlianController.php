@@ -59,7 +59,7 @@ class KonsentrasiKeahlianController extends Controller
         }
     
         return Inertia::render('konsentrasi_keahlian/KonsentrasiKeahlian', [
-            'datas' => $keahlian
+            'data' => $keahlian
         ]);
     }    
 }

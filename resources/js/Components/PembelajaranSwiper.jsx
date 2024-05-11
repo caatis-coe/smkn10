@@ -10,19 +10,10 @@ import { Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
 import SubTitle from '@/Components/SubTitle';
 
 function PembelajaranSwiper({ title, datas }) {
-    const pairs = [];
-    for (let i = 0; i < datas.length - 2; i += 2) {
-        pairs.push([datas[i], datas[i + 1]]);
-    }
-    if (datas.length % 2 !== 0) {
-        pairs.push([datas[datas.length - 1]]);
-    } else {
-        pairs.push([datas[datas.length - 1], datas[datas.length - 2]]);
-    }
 
     return (
         <>
-            <SubTitle title={title} />
+            <SubTitle containerClassName={"my-0 mb-6"} title={title} />
             <Swiper modules={[Pagination, Scrollbar, A11y, EffectFade]}
                 spaceBetween={100}
                 slidesPerView={1}
@@ -34,7 +25,7 @@ function PembelajaranSwiper({ title, datas }) {
                 }}
                 pagination={{ clickable: true }}>
                 {datas.map((data, index) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={index} className='pb-12'>
                         <PembelajaranCard key={index} data={data} />
                     </SwiperSlide>
                 ))}

@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react'
 import React, { useEffect, useState } from 'react'
 
-function WideScreenNavLink({ title, endpoint, setDropdownClicked = (temp) => {} }) {
+function WideScreenNavLink({ title, endpoint}) {
     const id  = window.location.pathname; // Assuming 'id' is the parameter you want to compare
     const [clicked, setClicked] = useState(false);
 

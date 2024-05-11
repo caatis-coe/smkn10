@@ -9,7 +9,7 @@ function SmallScreenNavLink({ title, endpoint = "", handleClick, subMenu = null 
 
     useEffect(() => {
         subMenu && setClicked(subMenu.some(item => id === item.endpoint)); 
-    }, [id, subMenu]);
+    }, [id]);
 
     return (
         <div className='group'>
@@ -32,7 +32,7 @@ function SmallScreenNavLink({ title, endpoint = "", handleClick, subMenu = null 
                     {
                     subMenu.map((navLink, index) => (
                         <Link key = {index} href={navLink.endpoint} onClick={handleClick}>
-                            <li className={`${navLink.endpoint === id ? " bg-lighttertiary text-white event cursor-default" : "hover:bg-tertiary hover:text-white cursor-pointer"} py-4 text-[12px] bg-lightgrey text-black border-b border-grey `}>
+                            <li className={`${navLink.endpoint === id ? " bg-lighttertiary text-white font-semibold event cursor-default" : "hover:bg-tertiary hover:text-white cursor-pointer"} py-4 text-[12px] bg-lightgrey text-black border-b border-grey `}>
                                 {navLink.title}
                             </li>
                         </Link>

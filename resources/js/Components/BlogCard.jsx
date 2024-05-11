@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 import React from 'react'
 
 function BlogCard({ blogData = {
-    "id" : "1",
+    "id": "1",
     "title": "Trekking to Everest Base Camp",
     "description": "Embarking on a challenging trek to the base camp of the world's highest mountain.",
     "image_path": "image1.jpg",
@@ -10,11 +10,11 @@ function BlogCard({ blogData = {
 } }) {
 
     const backgroundImageStyle = {
-        backgroundImage: `url('images/${blogData.image_path}')`, // Width x Height
+        backgroundImage: `url('images/${blogData.image_path}')`
     };
 
     return (
-        <div className='flex flex-col min-w-[324px]  min-h-[484px] bg-white shadow-md rounded-2xl '>
+        <div className='flex flex-col min-w-[256px]  min-h-[484px] bg-white shadow-md rounded-2xl '>
             <div className={`flex-1 border-b-2 bg-cover bg-center
             rounded-t-2xl border-grey`} style={backgroundImageStyle}>
             </div>
@@ -28,7 +28,11 @@ function BlogCard({ blogData = {
                     </div>
                 </div>
                 <div className='flex items-center justify-between '>
-                    <Link href={'berita/'+blogData.id} className='bg-primary text-[12px] font-medium
+                    <Link
+                        href={'berita/' + blogData.id}
+                        method='post'
+                        data={blogData}
+                        className='bg-primary text-[12px] font-medium
                         grid place-items-center rounded-full
                         text-white flex-1 py-3 px-2 w-full
                         cursor-pointer hover:bg-lighttertiary transition duration-75'>
