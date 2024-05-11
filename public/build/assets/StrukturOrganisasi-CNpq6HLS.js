@@ -1,1 +1,0 @@
-import{j as t}from"./app-CygBzfFs.js";import{C as r}from"./ContentTitle-CyLjt4wo.js";import{D as i}from"./DefaultLayout-B7oxxH-B.js";function a(){return t.jsx(i,{children:t.jsx(r,{title:"PROFIL",subTitle:"STRUKTUR ORGANISASI"})})}export{a as default};

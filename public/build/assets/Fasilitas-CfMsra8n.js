@@ -1,1 +1,0 @@
-import{j as t}from"./app-CygBzfFs.js";import{C as i}from"./ContentTitle-CyLjt4wo.js";import{D as o}from"./DefaultLayout-B7oxxH-B.js";function a(){return t.jsx(o,{children:t.jsx(i,{title:"PEMBELAJARAN",subTitle:"FASILITAS"})})}export{a as default};

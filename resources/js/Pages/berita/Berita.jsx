@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 function Berita({ beritaDatas = [] }) {
   return (
     <DefaultLayout>
-      <ContentTitle subTitle='BLOG' />
+      <ContentTitle subTitle='BERITA' />
       {<PaginatedItems itemsPerPage={6} items={beritaDatas} />}
     </DefaultLayout>
   );

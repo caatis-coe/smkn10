@@ -20,7 +20,7 @@ Route::get('/contact-us', function () {
 Route::prefix('/berita')->group(function () {
     Route::get('', [BeritaController::class, 'show']);
 
-    Route::get('{id}', [BeritaController::class, 'showDetail']);
+    Route::post('{id}', [BeritaController::class, 'showDetail']);
 });
 
 Route::get('/daftar-guru', [DaftarGuruController::class, 'show']);
@@ -62,7 +62,7 @@ Route::get('/prestasi-sekolah', function () {
 });
 
 Route::get('/error404', function () {
-    return Inertia::render('Error404');
+    return Inertia::render('berita/Test');
 });
 
 Route::get('/dashboard', function () {

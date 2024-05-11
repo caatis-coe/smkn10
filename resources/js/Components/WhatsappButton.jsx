@@ -47,7 +47,7 @@ export default function WhatsAppButton({phone, text}) {
     };
 
     return (
-        <div className="fixed bottom-5 right-5">
+        <div className="fixed bottom-8 right-8 z-40">
             {!isCloseClicked ? (
                 <a 
                     href="#" 
