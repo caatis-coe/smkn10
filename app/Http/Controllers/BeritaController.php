@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Inertia\Inertia;
 use Inertia\Response;
+use PhpParser\Node\Stmt\Foreach_;
 
 class BeritaController extends Controller
 {
-    public $beritaDatas = [
+    private $beritaDatas = [
         [
             "id" => "1",
             "title" => "The Magic of Deep Sea Diving",
@@ -186,9 +187,16 @@ class BeritaController extends Controller
         return Inertia::Render('berita/Berita', ['beritaDatas' => $this->beritaDatas]);
     }
 
-    public function showDetail(Request $request): Response
+    public function showDetail(string $id): Response
     {
-        $data = $request->all();
+        $data = [];
+
+        foreach($this->beritaDatas as $beritaData){
+            if ($beritaData['id'] ==  $id) {
+                $data = $beritaData;
+                break; 
+            }
+        }
         $data['image_path'] = asset('images/' . $data['image_path']);
         return Inertia::Render('berita/BeritaDetail', ['data' => $data]);
     }

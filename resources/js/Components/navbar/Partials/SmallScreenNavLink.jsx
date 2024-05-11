@@ -1,33 +1,48 @@
 import { Link } from '@inertiajs/react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 function SmallScreenNavLink({ title, endpoint = "", handleClick, subMenu = null }) {
     const id  = window.location.pathname;
     const [clicked, setClicked] = useState(false);
     const [expand, setExpand] = useState(false)
+    const ref = useRef(null);
 
     useEffect(() => {
         subMenu && setClicked(subMenu.some(item => id === item.endpoint)); 
-    }, [id]);
+    }, [id, subMenu]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setExpand(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+
 
     return (
-        <div className='group'>
-            {!subMenu? (
+        <div ref={ref} className='group'>
+            {!subMenu? ( // NO SUBMENU
                 <Link href={endpoint} onClick={handleClick}>
                     <li className={`${id === endpoint && "bg-tertiary text-white"} py-4 border-b border-grey hover:bg-tertiary hover:text-white cursor-pointer`}>
                         {title}
                     </li>
                 </Link>
-            ) : (
-                <li className={`${clicked && "bg-tertiary text-white"} flex gap-2 justify-center items-center py-4 border-b border-grey hover:bg-tertiary hover:text-white cursor-pointer`}
+            ) : ( // WITH SUBMENU
+                <li className={`${clicked && "bg-tertiary text-white"} flex gap-2 justify-center items-center py-4 border-b border-grey  cursor-pointer`}
                     onClick={() => setExpand(!expand)}
                 >
                     {title}
                     {expand ? (<IoIosArrowUp />) : (<IoIosArrowDown />)}
                 </li>
             )}
-            {subMenu && (
+            {subMenu && ( //SUBMENU CONTENT
                 <div className={`${expand ? "block" : "hidden"}`}>
                     {
                     subMenu.map((navLink, index) => (

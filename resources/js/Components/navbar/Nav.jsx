@@ -101,7 +101,7 @@ function Nav() {
 
   const content = (
     <div className='xl:hidden block absolute w-full left-0 right-0 bg-white transition'>
-      <ul className='text-center text-[14px]'>
+      <ul className='text-center text-[14px] overflow-y-auto max-h-[80vh] border-b-[1px]'>
         <SmallScreenNavLink title="Home" endpoint="/" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Profil" handleClick={handleClickLink} subMenu={profilData} />
         <SmallScreenNavLink title="Pembelajaran" handleClick={handleClickLink} subMenu={pembelajaranData} />
@@ -117,18 +117,18 @@ function Nav() {
   return (
     <nav className=''>
       <div className='z-50'>
-        <div className='h-8 flex justify-end items-center bg-blue-600 text-white px-10 md:px-20'>
-          <a className='flex items-center mr-5' href='tel:6281369696969'>
-            <div className='mr-4'>
-              <FaPhone className='text-white' />
+        <div className=' h-8 flex justify-end items-center gap-x-6 bg-primary text-white px-10 md:px-20'>
+          <a className='flex items-center' href='tel:6281369696969'>
+            <div className='mr-2'>
+              <FaPhone className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-xs'>+62813 6969 6969</span>
+            <span className='text-[9px] sm:text-xs'>+62813 6969 6969</span>
           </a>
-          <a className='flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
-            <div className='mr-4'>
-              <FaEnvelope className='text-white' />
+          <a className=' flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
+            <div className='mr-2'>
+              <FaEnvelope className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-xs'>admin@smkn10bandung.sch.id</span>
+            <span className='text-[9px] sm:text-xs'>admin@smkn10bandung.sch.id</span>
           </a>
         </div>
 

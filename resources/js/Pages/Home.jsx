@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import DefaultLayout from '@/Layouts/DefaultLayout'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BlogCard from '@/Components/BlogCard';
 import { Link } from '@inertiajs/react';
 import HomeMiniButton from '@/Components/HomeMiniButton';
@@ -11,6 +11,31 @@ import logoSma from '@/Assets/Logo-SMK-10-Bandung.png'
 import "swiper/css";
 import { FaPlay } from 'react-icons/fa';
 
+
+function HomeAnalytics({data}){
+    const [displayedTotal, setDisplayedTotal] = useState(0);
+
+    useEffect(() => {
+        let currentValue = 0;
+        const incrementValue = () => {
+            if (currentValue < data.total) {
+                setDisplayedTotal(currentValue);
+                currentValue += Math.ceil(data.total * 0.01);
+                setTimeout(incrementValue, 10);
+            } else {
+                setDisplayedTotal(data.total)
+            }
+        };
+        incrementValue();
+    }, [data.total]); 
+
+    return (
+        <div className='flex flex-col w-24 items-center'>
+            <div className='text-xl sm:text-2xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
+            <div className='text-[9px] sm:text-base md:text-lg text-grey'>{data.context}</div>
+        </div>
+    );
+}
 
 function Home({ blogDatas = [] }) {
 
@@ -24,6 +49,26 @@ function Home({ blogDatas = [] }) {
     const homeImages = [homeImage1, homeImage2, homeImage3, homeImage4]
 
     const kepsek = `url('images/kepsek.jpg')`
+
+
+    const numberData = [
+        {
+            'total' : 1226,
+            'context' : 'Siswa'
+        },
+        {
+            'total' : 81,
+            'context' : 'Guru'
+        },
+        {
+            'total' : 12,
+            'context' : 'Laboratorium'
+        },
+        {
+            'total' : 8765,
+            'context' : 'Lulusan'
+        },
+    ]
 
     const profilePage = () => {
         window.open("https://youtu.be/xNRJwmlRBNU", '_blank')
@@ -78,13 +123,15 @@ function Home({ blogDatas = [] }) {
                 </div>
             )
         }>
+            <div className='md:my-8 flex items-center justify-around'>
+                {numberData.map((data, index) => <HomeAnalytics key={index} data={data} />)}
+            </div>
             <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
             <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-            <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6'>
+            <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
                 <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
                 <HomeMiniButton text={"Sejarah"} link='sejarah' />
                 <HomeMiniButton text={"Struktur Organisasi"} link='struktur-organisasi' />
-                <HomeMiniButton text={"Info PPDB"} link='info-ppdb' />
             </div>
             <SubTitle title={"Kepala Sekolah"} />
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
@@ -106,11 +153,21 @@ function Home({ blogDatas = [] }) {
             <div className='grid place-items-center mt-9'>
                 <Link href='berita'>
                     <div className='grid place-items-center text-[16px] font-medium text-white 
-                    rounded-full bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
+                    rounded-md bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
                         Lihat Selebihnya
                     </div>
                 </Link>
             </div>
+            <div className='text-center grid place-items-center gap-8 border-t-2 mt-12 pt-12'>
+                <div className='text-lg md:text-xl lg:text-4xl font-bold text-secondary'>Penerimaan Peserta Didik Baru</div>
+                <div className='text-base md:text-md lg:text-lg font-light'>Butuh Informasi Lebih Lengkap mengenai penerimaan peserta didik baru?</div>
+                <Link href='info-ppdb' className='rounded-full w-44 border-2 
+                    py-2 text-sm md:text-base lg:text-md
+                    cursor-pointer  hover:bg-secondary border-secondary
+                    group transition duration-1000'>
+                    <div className='text-secondary font-medium group-hover:scale-105 group-hover:text-white transition duration-500'>Info PPDB</div> 
+                </Link>
+            </div>  
         </DefaultLayout>
     )
 }
