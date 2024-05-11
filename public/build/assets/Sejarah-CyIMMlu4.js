@@ -1,0 +1,5 @@
+import{j as e}from"./app-DRXhWfHD.js";import{C as a}from"./ContentTitle-B1lITJE6.js";import{D as n}from"./DefaultLayout-Bi-AJM1N.js";function s({content:i}){const r=`url('${window.location.origin}/images/${i.image_path}')`;return e.jsxs("div",{className:"flex flex-col lg:flex-row gap-x-4 mb-9",children:[e.jsx("div",{className:`bg-cover bg-center min-h-72
+      aspect-video rounded-md grid place-items-center group
+      hover:scale-105 transition duration-300`,style:{backgroundImage:r},children:e.jsx("div",{className:`hidden lg:grid bg-black/20 rounded-md w-full h-full place-items-center
+        group-hover:opacity-0 transition duration-200`,children:e.jsx("div",{className:`text-4xl font-bold text-white  group-hover:scale-75 
+          transition duration-200`,children:i.year})})}),e.jsx("div",{className:"p-4 flex items-center flex-1",children:i.description})]})}function c({data:i}){return e.jsxs(n,{children:[e.jsx(a,{title:"PROFIL",subTitle:"SEJARAH"}),e.jsx("div",{className:"w-full",children:i.map((r,t)=>e.jsx(s,{content:r},t))})]})}export{c as default};
