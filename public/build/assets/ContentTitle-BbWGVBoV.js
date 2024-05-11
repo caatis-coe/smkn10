@@ -1,0 +1,1 @@
+import{j as s}from"./app-C4j18PsR.js";function n({title:e,subTitle:t="None"}){return s.jsxs("div",{className:"w-full text-center mb-7 font-semibold",children:[e&&s.jsx("div",{className:"text-[18px] text-grey",children:e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()}),s.jsx("div",{className:"text-[48px]",children:t})]})}export{n as C};
