@@ -1,1 +1,0 @@
-import{j as t}from"./app-BGEF4S_R.js";import{C as r}from"./ContentTitle-BX-jUSPX.js";import{D as o}from"./DefaultLayout-C2ECSa6Q.js";function s(){return t.jsx(o,{children:t.jsx(r,{title:"PEMBELAJARAN",subTitle:"KURIKULUM"})})}export{s as default};
