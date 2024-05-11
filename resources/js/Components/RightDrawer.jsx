@@ -12,17 +12,17 @@ const RightDrawer = () => {
   return (
     <div className="relative">
       <div
-        className="fixed top-1/2 transform -translate-y-1/2 m-4 px-4 py-1 bg-blue-500 text-white rounded-t-lg shadow -rotate-90 cursor-pointer border-blue-700 border-2 hover:border-red-500"
+        className="fixed top-1/2 transform -translate-y-1/2 m-4 px-4 py-1 bg-blue-500 text-white rounded-t-lg shadow -rotate-90 cursor-pointer border-blue-700 border-2 hover:border-red-500 z-40"
         onClick={toggleDrawer}
         style={{ right: -81 }}
       >
         Rate Our Services
       </div>
       <div
-        className={`fixed  h-full w-96 bg-white transition-all duration-1000 z-10 ${
+        className={`fixed  h-full w-96 bg-white transition-all duration-1000 ${
           isOpen ? 'right-0 top-0' : '-right-96 top-0'
         }`}
-        // style={{ right: isOpen ? '-400' : '' }}
+        style={{ zIndex: 51 }}
       >
         <div className="flex justify-end p-4">
           <FaTimes
@@ -43,7 +43,7 @@ const RightDrawer = () => {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full z-9"
+          className="fixed top-0 left-0 w-full h-full z-50"
           onClick={toggleDrawer}
         ></div>
       )}

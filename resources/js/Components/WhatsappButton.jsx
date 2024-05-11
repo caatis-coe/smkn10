@@ -47,11 +47,11 @@ export default function WhatsAppButton({phone, text}) {
     };
 
     return (
-        <div className="fixed bottom-8 right-8 z-40">
+        <div className="fixed bottom-3 right-3 z-40">
             {!isCloseClicked ? (
                 <a 
                     href="#" 
-                    className={`whatsapp-button relative flex items-center justify-center text-white ${isClicked ? 'bg-red-500' : 'bg-green-500'} ${isClicked ? 'hover:bg-red-600' : 'hover:bg-green-600'} p-4 rounded-full shadow-lg transition duration-300 ease-in-out transform ${isClicked ? 'swirl-out' : ''}`}
+                    className={`whatsapp-button relative flex items-center justify-center text-white ${isClicked ? 'bg-red-500' : 'bg-green-500'} ${isClicked ? 'hover:bg-red-600' : 'hover:bg-green-600'} p-2 rounded-full shadow-lg transition duration-300 ease-in-out transform ${isClicked ? 'swirl-out' : ''}`}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={handleButtonClick}
@@ -62,7 +62,7 @@ export default function WhatsAppButton({phone, text}) {
                 </a>
             ) : null}
             {!isClicked && !isCloseClicked && isHovered && (
-                <div className="whatsapp-popup bg-slate-100 shadow-xl rounded-xl">
+                <div className="whatsapp-popup bg-slate-100 shadow-xl rounded-xl text-center">
                     <p className="text-black">{text}</p>
                 </div>
             )}
@@ -98,16 +98,16 @@ export default function WhatsAppButton({phone, text}) {
                 .whatsapp-popup {
                     display: block;
                     position: absolute;
-                    bottom: 13px;
-                    right: 80px;
+                    bottom: 10px;
+                    right: 60px;
                     width: 160px;
-                    padding: 8px;
+                    padding: 4px;
                 }
 
                 .whatsapp-form {
                     position: fixed;
-                    bottom: 100px;
-                    right: 20px;
+                    bottom: 75px;
+                    right: 12px;
                     z-index: 999;
                     background-color: #f0ede7;
                 }
