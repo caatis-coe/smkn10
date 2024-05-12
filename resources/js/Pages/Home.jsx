@@ -31,7 +31,7 @@ function HomeAnalytics({data}){
 
     return (
         <div className='flex flex-col w-24 items-center'>
-            <div className='text-xl sm:text-2xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
+            <div className='text-2xl sm:text-4xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
             <div className='text-[9px] sm:text-base md:text-lg text-grey'>{data.context}</div>
         </div>
     );
@@ -123,12 +123,12 @@ function Home({ blogDatas = [] }) {
                 </div>
             )
         }>
-            <div className='md:my-8 flex items-center justify-around'>
+            <div className='my-4 md:my-8 flex items-center justify-around'>
                 {numberData.map((data, index) => <HomeAnalytics key={index} data={data} />)}
             </div>
             <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
             <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-            <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
+            <div className='mt-6 lg:mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
                 <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
                 <HomeMiniButton text={"Sejarah"} link='sejarah' />
                 <HomeMiniButton text={"Struktur Organisasi"} link='struktur-organisasi' />

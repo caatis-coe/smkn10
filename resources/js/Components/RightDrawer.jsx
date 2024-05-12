@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaAngleRight, FaTimes} from 'react-icons/fa';
+import { FaTimes} from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 
 const RightDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +24,11 @@ const RightDrawer = () => {
         }`}
         style={{ zIndex: 51 }}
       >
-        <div className='fixed top-[50%] text-white bg-primary rounded-l-lg h-24 grid place-items-center -z-0
-         -translate-x-4 translate-y-1/2 cursor-pointer' onClick={()=>(setIsOpen(false))}>
-          <FaAngleRight />
+        <div className='fixed top-[92%] -z-0
+         translate-x-64 cursor-pointer text-white bg-redprimary aspect-square 
+         rounded-full w-9 grid place-items-center 
+         hover:scale-105 transition ease-in duration-150' onClick={()=>(setIsOpen(false))}>
+          <IoMdClose className='size-2/3' />
         </div>
         <div className="flex justify-end p-4">
           <FaTimes
@@ -40,7 +43,7 @@ const RightDrawer = () => {
           <h2 className="text-3xl text-grey font-semibold mb-4 text-center mt-16">SHARE YOUR FEEDBACK WITH US</h2>
         </div> */}
 
-        <iframe className="entered lazyloaded absolute h-screen" loading="lazy" allowFullScreen={true} width="854px" src={URL}  style={{border: 'medium', maxWidth: '100%', maxHeight: '700px'}} webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" data-rocket-lazyload="fitvidscompatible" data-lazy-src={URL} data-gtm-yt-inspected-7="true" data-ll-status="loaded" > </iframe>
+        <iframe className="entered lazyloaded h-screen" loading="lazy" allowFullScreen={true} width="854px" src={URL}  style={{border: 'medium', maxWidth: '100%', maxHeight: '700px'}} webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" data-rocket-lazyload="fitvidscompatible" data-lazy-src={URL} data-gtm-yt-inspected-7="true" data-ll-status="loaded" > </iframe>
       </div>
 
       {/* Overlay */}

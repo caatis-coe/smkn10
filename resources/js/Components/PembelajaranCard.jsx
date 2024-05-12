@@ -7,9 +7,10 @@ function PembelajaranCard({data}) {
     return (
         <div className='flex flex-col min-w-[256px] h-[441px] bg-white'>
             <div className={`flex-1  bg-cover bg-center
-            border-grey`} style={{backgroundImage}}>
+            border-grey rounded-t-md`} style={{backgroundImage}}>
             </div>
-            <div className='border-2 flex flex-col justify-between h-[128px] px-5 pt-4 pb-7'>
+            <div className='border-2 border-lightgrey border-t-0 flex flex-col justify-between h-[128px] 
+            px-5 pt-4 pb-7 rounded-b-md'>
                 <div className=''>
                     <div className='font-medium mb-2 text-[18px]'>
                         {data.title}
