@@ -62,7 +62,7 @@ export default function WhatsAppButton({phone, text}) {
                 </a>
             ) : null}
             {!isClicked && !isCloseClicked && isHovered && (
-                <div className="whatsapp-popup bg-slate-100  shadow-xl rounded-xl" style={{minWidth : '169px'}}>
+                <div className="whatsapp-popup bg-slate-100  shadow-xl rounded-xl">
                     <p className="text-black">{text}</p>
                 </div>
             )}

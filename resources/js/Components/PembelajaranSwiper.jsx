@@ -13,9 +13,9 @@ function PembelajaranSwiper({ title, datas }) {
 
     return (
         <>
-            <SubTitle containerClassName={"my-0 mb-6"} title={title} />
+            <SubTitle containerClassName={"mb-6"} title={title} />
             <Swiper modules={[Pagination, Scrollbar, A11y, EffectFade]}
-                spaceBetween={100}
+                spaceBetween={50}
                 slidesPerView={1}
                 breakpoints={{
                     1024: {

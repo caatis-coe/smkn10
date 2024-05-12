@@ -11,7 +11,7 @@ function ContainerPost({ content }) {
     <div className='flex flex-col lg:flex-row gap-x-4 mb-9'>
       <div className='bg-cover bg-center min-h-72
       aspect-video rounded-md grid place-items-center group
-      hover:scale-105 transition duration-300'
+      lg:hover:scale-105 transition duration-300 '
         style={{ backgroundImage: contentImage }}>
         <div className='hidden lg:grid bg-black/20 rounded-md w-full h-full place-items-center
         group-hover:opacity-0 transition duration-200'>
@@ -21,7 +21,7 @@ function ContainerPost({ content }) {
           </div>
         </div>
       </div>
-      <div className='p-4 flex items-center flex-1'>
+      <div className='text-sm lg:text-base p-4 flex items-center flex-1'>
         {content.description}
       </div>
     </div>
