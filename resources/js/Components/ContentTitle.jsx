@@ -6,7 +6,7 @@ function ContentTitle({title, subTitle = "None"}) {
         {title && (<div className='text-[18px] text-grey'>
             {title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}
         </div>)}
-        <div className='text-[48px]'>
+        <div className='text-[48px] font-bold'>
             {subTitle}
         </div>
     </div>
