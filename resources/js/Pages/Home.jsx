@@ -158,9 +158,9 @@ function Home({ blogDatas = [] }) {
                     </div>
                 </Link>
             </div>
-            <div className='text-center grid place-items-center gap-8 border-t-2 mt-12 pt-12'>
-                <div className='text-lg md:text-xl lg:text-4xl font-bold text-secondary'>Penerimaan Peserta Didik Baru</div>
-                <div className='text-base md:text-md lg:text-lg font-light'>Butuh Informasi Lebih Lengkap mengenai penerimaan peserta didik baru?</div>
+            <div className='text-center grid place-items-center gap-4 lg:gap-8 border-t-2 mt-12 pt-12'>
+                <div className='text-3xl lg:text-4xl font-bold text-secondary'>Penerimaan Peserta Didik Baru</div>
+                <div className='text-sm md:text-md lg:text-lg font-light'>Butuh Informasi Lebih Lengkap mengenai penerimaan peserta didik baru?</div>
                 <Link href='info-ppdb' className='rounded-full w-44 border-2 
                     py-2 text-sm md:text-base lg:text-md
                     cursor-pointer  hover:bg-secondary border-secondary
