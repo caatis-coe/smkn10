@@ -1,5 +1,0 @@
-import{j as e}from"./app-CFl21Jx8.js";import{C as a}from"./ContentTitle-CTOtqT2Y.js";import{D as s}from"./DefaultLayout-DqlxVHB0.js";function l({content:t}){const i=`url('${window.location.origin}/images/${t.image_path}')`;return e.jsxs("div",{className:"flex flex-col lg:flex-row gap-x-4 mb-9",children:[e.jsx("div",{className:`bg-cover bg-center min-h-72
-      aspect-video rounded-md grid place-items-center group
-      lg:hover:scale-105 transition duration-300 `,style:{backgroundImage:i},children:e.jsx("div",{className:`hidden lg:grid bg-black/20 rounded-md w-full h-full place-items-center
-        group-hover:opacity-0 transition duration-200`,children:e.jsx("div",{className:`text-4xl font-bold text-white  group-hover:scale-75 
-          transition duration-200`,children:t.year})})}),e.jsx("div",{className:"text-sm lg:text-base p-4 flex items-center flex-1",children:t.description})]})}function c({data:t}){return e.jsxs(s,{children:[e.jsx(a,{title:"PROFIL",subTitle:"SEJARAH"}),e.jsx("div",{className:"w-full",children:t.map((i,r)=>e.jsx(l,{content:i},r))})]})}export{c as default};
