@@ -62,7 +62,7 @@ export default function WhatsAppButton({phone, text}) {
                 </a>
             ) : null}
             {!isClicked && !isCloseClicked && isHovered && (
-                <div className="whatsapp-popup bg-slate-100  shadow-xl rounded-xl">
+                <div className="whatsapp-popup bg-slate-100 shadow-xl rounded-xl">
                     <p className="text-black">{text}</p>
                 </div>
             )}
@@ -96,10 +96,10 @@ export default function WhatsAppButton({phone, text}) {
                 }
 
                 .whatsapp-popup {
-                    display: block;
+                    display: inline-block;
                     position: absolute;
-                    bottom: 10px;
-                    right: 60px;
+                    bottom: 30px;
+                    right: 75px;
                     width: 160px;
                     padding: 4px;
                 }
