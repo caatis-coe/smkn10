@@ -1,1 +1,0 @@
-import{j as t}from"./app-PNl276aA.js";import{C as s}from"./ContentTitle-DRThBxix.js";import{A as r}from"./AppTable-B51Kv-ps.js";import{D as a}from"./DefaultLayout-CCnX6zxe.js";function m(){return t.jsx(a,{children:t.jsxs("div",{className:"w-full",children:[t.jsx(s,{title:"PRESTASI",subTitle:"GURU"}),t.jsx(r,{contents:[["Nama","Prestasi","Tahun"]]})]})})}export{m as default};
