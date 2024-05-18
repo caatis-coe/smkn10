@@ -50,6 +50,8 @@ function Home({ blogDatas = [] }) {
 
     const kepsek = `url('images/kepsek.jpg')`
 
+    const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
+
 
     const numberData = [
         {
@@ -71,7 +73,7 @@ function Home({ blogDatas = [] }) {
     ]
 
     const profilePage = () => {
-        window.open("https://youtu.be/xNRJwmlRBNU", '_blank')
+        window.open(youtubeLink, '_blank')
     }
 
     return (
@@ -127,7 +129,7 @@ function Home({ blogDatas = [] }) {
                 {numberData.map((data, index) => <HomeAnalytics key={index} data={data} />)}
             </div>
             <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
-            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/xNRJwmlRBNU?si=ZrNt4ic-ur8J9_5l" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/51HWQSC-B-o?si=EBbtuj02VqSDFhgN" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"  allowFullScreen></iframe>
             <div className='mt-6 lg:mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
                 <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
                 <HomeMiniButton text={"Sejarah"} link='sejarah' />
