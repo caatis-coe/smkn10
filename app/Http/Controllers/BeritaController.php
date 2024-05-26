@@ -21,7 +21,7 @@ class BeritaController extends Controller
         [
             "id" => "2",
             "title" => "The Art of Japanese Cuisine",
-            "description" => "Discovering the exquisite flavors and traditions of Japanese food.",
+            "description" => "Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food of Japanese food Discovering the exquisite flavors and traditions of Japanese food",
             "image_path" => "image2.jpg",
             "date_updated" => "2022-01-02"
         ],

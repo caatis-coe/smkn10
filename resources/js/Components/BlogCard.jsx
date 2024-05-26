@@ -15,15 +15,15 @@ function BlogCard({ blogData = {
 
     return (
         <div className='flex flex-col min-w-[256px]  min-h-[484px] bg-white shadow-md rounded-2xl '>
-            <div className={`flex-1 border-b-2 bg-cover bg-center
-            rounded-t-2xl border-grey`} style={backgroundImageStyle}>
+            <div className={`flex-1  bg-cover bg-center
+            rounded-t-2xl`} style={backgroundImageStyle}>
             </div>
             <div className='flex flex-col justify-between h-[256px] px-5 pt-4 pb-7'>
                 <div className=''>
                     <div className='font-medium mb-2 text-[18px]'>
                         {blogData.title}
                     </div>
-                    <div className='text-[12px]'>
+                    <div className='text-[12px] line-clamp-6'>
                         {blogData.description}
                     </div>
                 </div>

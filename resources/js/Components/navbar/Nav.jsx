@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 import { HiMenuAlt3 } from "react-icons/hi";
 import SmallScreenNavLink from './Partials/SmallScreenNavLink'
 import DropdownNavLink from './Partials/DropdownNavLink'
-import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
+import logoSMA from '@/Assets/slogan.png'
 import WideScreenNavLink from './Partials/WideScreenNavLink';
 import { FaPhone, FaEnvelope } from 'react-icons/fa'
 
@@ -93,6 +93,17 @@ function Nav() {
     },
   ])
 
+  const lulusanData = ([
+    {
+      "title": "Keterserapan Lulusan",
+      "endpoint": "/keterserapan-lulusan"
+    },
+    {
+      "title": "Industri Mitra",
+      "endpoint": "/industri-mitra"
+    },
+  ])
+
   const [click, setClick] = useState(false)
 
   const handleClickLink = () => {
@@ -134,9 +145,9 @@ function Nav() {
 
         <div className='h-10vh flex justify-between border-b border-grey bg-white text-black px-10 md:px-20 py-4'>
           <div className='flex items-center justify-center cursor-default'>
-            <img className='size-10' src={logoSMA} alt='SMK 10 Bandung Logo' />
+            <img className='size-10 scale-[2]' src={logoSMA} alt='SMK 10 Bandung Logo' />
             <div className='hidden md:block  ms-2 text-[14px] font-semibold'>
-              SMKN 10 Bandung
+              
             </div>
           </div>
           <div className='flex items-center justify-end'>
@@ -148,7 +159,9 @@ function Nav() {
                 <DropdownNavLink title="Konsentrasi Keahlian" subMenu={keahlianData} />
                 <DropdownNavLink title="Prestasi" subMenu={prestasiData} />
                 <WideScreenNavLink title="Berita" endpoint="/berita" />
+                <DropdownNavLink title="Lulusan" endpoint="/" subMenu={lulusanData}/>
                 <WideScreenNavLink title="Info PPDB" endpoint="/info-ppdb" />
+                <WideScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
                 <WideScreenNavLink title="Hubungi Kami" endpoint="/contact-us" />
               </ul>
             </div>

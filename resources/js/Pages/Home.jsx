@@ -7,12 +7,14 @@ import HomeMiniButton from '@/Components/HomeMiniButton';
 import SubTitle from '@/Components/SubTitle';
 import { Autoplay } from 'swiper/modules';
 import logoSma from '@/Assets/Logo-SMK-10-Bandung.png'
+import smkHebat from '@/Assets/SMK-HEBAT.png'
+import disdik from '@/Assets/disdik.png'
 
 import "swiper/css";
 import { FaPlay } from 'react-icons/fa';
 
 
-function HomeAnalytics({data}){
+function HomeAnalytics({ data }) {
     const [displayedTotal, setDisplayedTotal] = useState(0);
 
     useEffect(() => {
@@ -27,7 +29,7 @@ function HomeAnalytics({data}){
             }
         };
         incrementValue();
-    }, [data.total]); 
+    }, [data.total]);
 
     return (
         <div className='flex flex-col w-24 items-center'>
@@ -55,20 +57,20 @@ function Home({ blogDatas = [] }) {
 
     const numberData = [
         {
-            'total' : 1226,
-            'context' : 'Siswa'
+            'total': 1226,
+            'context': 'Siswa'
         },
         {
-            'total' : 81,
-            'context' : 'Guru'
+            'total': 81,
+            'context': 'Guru'
         },
         {
-            'total' : 12,
-            'context' : 'Laboratorium'
+            'total': 12,
+            'context': 'Laboratorium'
         },
         {
-            'total' : 8765,
-            'context' : 'Lulusan'
+            'total': 8765,
+            'context': 'Lulusan'
         },
     ]
 
@@ -89,18 +91,15 @@ function Home({ blogDatas = [] }) {
                     >
                         {homeImages.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-96 w-[100vw]' style={{ backgroundImage: data }}></div>
+                                <div className='bg-center bg-cover min-h-[512px] w-[100vw]' style={{ backgroundImage: data }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
                     <div className='absolute z-40 w-full h-full top-0 flex flex-col justify-center bg-cover gap-y-1 px-10 md:px-20 bg-black/70 flex-1'>
-                        <div className='flex gap-x-6'>
-                            <img className='aspect-square w-12' src={logoSma} alt="" />
-                            {[...Array(3)].map((_, index) => (
-                                <div className='rounded-full grid place-items-center text-black bg-lightgrey aspect-square w-12' key={index}>
-                                    {index}
-                                </div>
-                            ))}
+                        <div className='flex gap-x-6 items-center'>
+                            <img className='aspect-square h-12' src={logoSma} alt="" />
+                            <img className='aspect-auto h-16' src={smkHebat} alt="" />
+                            <img className='aspect-auto h-12' src={disdik} alt="" />
                         </div>
                         <div className='text-[48px] font-semibold'>
                             SMKN 10 Bandung
@@ -109,18 +108,35 @@ function Home({ blogDatas = [] }) {
                             {"<Slogan>"}
                         </div>
                         <div>
-                            #Tagline
+                            #SMKN10BANDUNG
                         </div>
-                        <div className='flex rounded-full mt-6 justify-between items-center border-2
+                        <div className='flex flex-col gap-2 w-full md:flex-row md:gap-4 mt-6'>
+                            <div className='flex rounded-full  justify-between items-center border-[1px] hover:border-2 
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group' onClick={profilePage}>
-                            <div className='border-2 p-2 rounded-full grid place-items-center h-fit border-white'>
-                                <FaPlay className='w-2 h-2 group-hover:scale-125 transition ease-in-out duration-150' />
+                                <div className='border-[1px] group-hover:border-2 p-2 rounded-full grid place-items-center h-fit border-white'>
+                                    <FaPlay className='w-2 h-2 group-hover:scale-125 transition ease-in-out duration-150' />
+                                </div>
+                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                    Profil Sekolah
+                                </div>
                             </div>
-                            <div className='flex-1 text-center '>
-                                Profil Sekolah
-                            </div>
+                            <Link href='/info-ppdb' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
+                            transition ease-in-out duration-200 group'>
+                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                    Info PPDB
+                                </div>
+                            </Link>
+                            <Link href='teaching-factory' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
+                            transition ease-in-out duration-200 group'>
+                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                    Teaching Factory
+                                </div>
+                            </Link>
                         </div>
+
                     </div>
                 </div>
             )
@@ -129,7 +145,7 @@ function Home({ blogDatas = [] }) {
                 {numberData.map((data, index) => <HomeAnalytics key={index} data={data} />)}
             </div>
             <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
-            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/51HWQSC-B-o?si=EBbtuj02VqSDFhgN" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"  allowFullScreen></iframe>
+            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/51HWQSC-B-o?si=EBbtuj02VqSDFhgN" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <div className='mt-6 lg:mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
                 <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
                 <HomeMiniButton text={"Sejarah"} link='sejarah' />
@@ -139,7 +155,7 @@ function Home({ blogDatas = [] }) {
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
                 <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: kepsek }} />
                 <div className='flex-1 md:ms-12'>
-                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>Jonathan William Rawrrrr (JWR) </div>
+                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>Drs. H. Slamet Heryadi, M.Pd. </div>
                     <div>“ Salam sejahtera kepada seluruh warga SMKN! Kami dengan bangga menyambut Anda di website resmi
                         Sekolah Menengah Kejuruan Negeri (SMKN) kami. Di sini, kami berkomitmen untuk
                         memberikan pendidikan berkualitas, membuka peluang, dan menginspirasi para siswa
@@ -167,9 +183,9 @@ function Home({ blogDatas = [] }) {
                     py-2 text-sm md:text-base lg:text-md
                     cursor-pointer  hover:bg-secondary border-secondary
                     group transition duration-1000'>
-                    <div className='text-secondary font-medium group-hover:scale-105 group-hover:text-white transition duration-500'>Info PPDB</div> 
+                    <div className='text-secondary font-medium group-hover:scale-105 group-hover:text-white transition duration-500'>Info PPDB</div>
                 </Link>
-            </div>  
+            </div>
         </DefaultLayout>
     )
 }

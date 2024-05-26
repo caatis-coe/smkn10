@@ -16,7 +16,7 @@ class FasilitasController extends Controller
         ],
         [
             "title" => "The Art of Japanese Cuisine",
-            "description" => "Discovering the exquisite flavors and traditions of Japanese food.",
+            "description" => "Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food",
             "image_path" => "image2.jpg",
         ],
         [

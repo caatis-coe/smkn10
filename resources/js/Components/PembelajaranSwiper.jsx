@@ -23,7 +23,8 @@ function PembelajaranSwiper({ title, datas }) {
                         spaceBetween: 100,
                     },
                 }}
-                pagination={{ clickable: true }}>
+                pagination={{ clickable: true }}
+                style={{ overflow: 'visible' }}>
                 {datas.map((data, index) => (
                     <SwiperSlide key={index} className='pb-12'>
                         <PembelajaranCard key={index} data={data} />

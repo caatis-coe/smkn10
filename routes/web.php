@@ -72,6 +72,10 @@ Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, '
 
 Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
+Route::get('/teaching-factory', function () {
+    return Inertia::render('TeachingFactory');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
