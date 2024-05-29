@@ -1,44 +1,52 @@
 import React from 'react'
 import SocialMediaButton from './Partials/SocialMediaButton'
+import smknNegeri10 from '@/Assets/slogan.png'
 
 function Footer() {
   return (
-    <div className='mt-7 px-14 py-12 flex flex-col items-center md:flex-row w-full h-auto bg-gradient-to-r from-tertiary to-primary md:justify-between text-white'>
-      <div className='flex flex-col justify-between'>
-        <div>
-          <div className='text-[36px] sm:text-[48px] font-semibold'>
-            SMKN 10 Bandung
-          </div>
-          <div className='text-[12px] sm:text-[16px] mb-3 font-extralight'>
-            Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat
-          </div>
+    <div className='flex flex-col items-center md:flex-row flex-nowrap bg-black text-white mt-6'>
+      <div className='flex-shrink-0'>
+        <img className='size-72' src={smknNegeri10} alt="" />
+      </div>
+      <div className='hidden md:grid gap-y-7 grid-rows-[auto,auto] grid-cols-[auto,auto] w-full h-full ps-0 lg:ps-12 p-12'>
+        <div className='font-bold text-xl xl:text-2xl'>
+          TENTANG KAMI
         </div>
-        <div className='text-[12px] sm:text-[16px]'>
-          <table>
-            <thead>
-              <tr>
-                <td className='font-semibold'>Phone </td>
-                <td className='font-semibold'>:</td>
-                <td className='font-light  ps-2'>0821-3218-32 (0812)</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className='font-semibold'>Email</td>
-                <td className='font-semibold'>:</td>
-                <td className='font-light ps-2'>SMKNBandung@gmail.com</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className='font-bold text-xl xl:text-2xl'>
+          IKUTI KAMI
+        </div>
+        <div className='font-light text-sm xl:text-base flex flex-col gap-3'>
+          <div>Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat</div>
+          <div><span className='font-medium'>Hubungi Kami :</span> SMKNBandung@gmail.com</div>
+        </div>
+        <div className='flex flex-nowrap gap-x-5'>
+          <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/raychan.jpg/"} />
+          <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/"} />
+          <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/"} />
+          <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/"} />
         </div>
       </div>
-      <div className='flex mt-6 flex-nowrap md:grid md:grid-cols-3 gap-x-5 gap-y-5 items-center'>
-        <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/"} />
-        <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/"} />
-        <SocialMediaButton logo={"FaFacebookF"} link={"https://www.facebook.com/"} />
-        <div className='hidden md:block'></div>
-        <SocialMediaButton logo={"FaTwitter"} link={"https://www.twitter.com/"} />
-        <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/"} />
+      <div className='flex-col flex md:hidden gap-y-7 w-full h-full px-12 pb-16'>
+        <div>
+          <div className='font-bold text-xl xl:text-2xl mb-4'>
+            TENTANG KAMI
+          </div>
+          <div className='font-light text-sm xl:text-base flex flex-col gap-3'>
+            <div>Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat</div>
+            <div><span className='font-medium'>Hubungi Kami :</span> SMKNBandung@gmail.com</div>
+          </div>
+        </div>
+        <div>
+          <div className='font-bold text-xl xl:text-2xl mb-4'>
+            IKUTI KAMI
+          </div>
+          <div className='flex  flex-nowrap gap-x-5'>
+            <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/raychan.jpg/"} />
+            <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/"} />
+            <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/"} />
+            <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/"} />
+          </div>
+        </div>
       </div>
     </div>
   )

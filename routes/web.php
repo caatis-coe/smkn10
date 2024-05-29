@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoPpdbController;
 use App\Http\Controllers\KegiatanMahasiswaController;
 use App\Http\Controllers\KonsentrasiKeahlianController;
+use App\Http\Controllers\SejarahController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,7 +21,7 @@ Route::get('/contact-us', function () {
 Route::prefix('/berita')->group(function () {
     Route::get('', [BeritaController::class, 'show']);
 
-    Route::post('{id}', [BeritaController::class, 'showDetail']);
+    Route::get('{id}', [BeritaController::class, 'showDetail']);
 });
 
 Route::get('/daftar-guru', [DaftarGuruController::class, 'show']);
@@ -29,9 +30,7 @@ Route::get('/daftar-karyawan', function () {
     return Inertia::render('profil/DaftarKaryawan');
 });
 
-Route::get('/sejarah', function () {
-    return Inertia::render('profil/Sejarah');
-});
+Route::get('/sejarah', [SejarahController::class, 'show']);
 
 Route::get('/struktur-organisasi', function () {
     return Inertia::render('profil/StrukturOrganisasi');
@@ -72,6 +71,10 @@ Route::get('/dashboard', function () {
 Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, 'show']);
 
 Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
+
+Route::get('/teaching-factory', function () {
+    return Inertia::render('TeachingFactory');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -7,11 +7,12 @@ function SocialMediaButton({ logo, link }) {
     const SocialMediaLogo = reactIconsFa[logo]
 
     return (
-        <a className='flex w-12 aspect-square md:w-[60px] md:max-w-none items-center justify-center transition
-            bg-secondary rounded-full hover:scale-105'
-            href={link}>
-            {<SocialMediaLogo className="size-7" />}
-        </a>
+        <a className='flex size-11 xl:size-14 items-center justify-center transition ease-out duration-150
+        bg-darkgrey rounded-md hover:scale-105'
+        href={link}>
+        {<SocialMediaLogo className="size-3/5" />}
+    </a>
+        
     )
 }
 

@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 import { HiMenuAlt3 } from "react-icons/hi";
 import SmallScreenNavLink from './Partials/SmallScreenNavLink'
 import DropdownNavLink from './Partials/DropdownNavLink'
-import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
+import logoSMA from '@/Assets/slogan.png'
 import WideScreenNavLink from './Partials/WideScreenNavLink';
 import { FaPhone, FaEnvelope } from 'react-icons/fa'
 
@@ -93,6 +93,17 @@ function Nav() {
     },
   ])
 
+  const lulusanData = ([
+    {
+      "title": "Keterserapan Lulusan",
+      "endpoint": "/keterserapan-lulusan"
+    },
+    {
+      "title": "Industri Mitra",
+      "endpoint": "/industri-mitra"
+    },
+  ])
+
   const [click, setClick] = useState(false)
 
   const handleClickLink = () => {
@@ -101,7 +112,7 @@ function Nav() {
 
   const content = (
     <div className='xl:hidden block absolute w-full left-0 right-0 bg-white transition'>
-      <ul className='text-center text-[14px]'>
+      <ul className='text-center text-[14px] overflow-y-auto max-h-[80vh] border-b-[1px]'>
         <SmallScreenNavLink title="Home" endpoint="/" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Profil" handleClick={handleClickLink} subMenu={profilData} />
         <SmallScreenNavLink title="Pembelajaran" handleClick={handleClickLink} subMenu={pembelajaranData} />
@@ -117,26 +128,26 @@ function Nav() {
   return (
     <nav className=''>
       <div className='z-50'>
-        <div className='h-8 flex justify-end items-center bg-blue-600 text-white px-10 md:px-20'>
-          <a className='flex items-center mr-5' href='tel:6281369696969'>
-            <div className='mr-4'>
-              <FaPhone className='text-white' />
+        <div className=' h-8 flex justify-end items-center gap-x-6 bg-primary text-white px-10 md:px-20'>
+          <a className='flex items-center' href='tel:6281369696969'>
+            <div className='mr-2'>
+              <FaPhone className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-xs'>+62813 6969 6969</span>
+            <span className='text-[9px] sm:text-xs'>+62813 6969 6969</span>
           </a>
-          <a className='flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
-            <div className='mr-4'>
-              <FaEnvelope className='text-white' />
+          <a className=' flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
+            <div className='mr-2'>
+              <FaEnvelope className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-xs'>admin@smkn10bandung.sch.id</span>
+            <span className='text-[9px] sm:text-xs'>admin@smkn10bandung.sch.id</span>
           </a>
         </div>
 
         <div className='h-10vh flex justify-between border-b border-grey bg-white text-black px-10 md:px-20 py-4'>
           <div className='flex items-center justify-center cursor-default'>
-            <img className='size-10' src={logoSMA} alt='SMK 10 Bandung Logo' />
+            <img className='size-10 scale-[2]' src={logoSMA} alt='SMK 10 Bandung Logo' />
             <div className='hidden md:block  ms-2 text-[14px] font-semibold'>
-              SMKN 10 Bandung
+              
             </div>
           </div>
           <div className='flex items-center justify-end'>
@@ -148,7 +159,9 @@ function Nav() {
                 <DropdownNavLink title="Konsentrasi Keahlian" subMenu={keahlianData} />
                 <DropdownNavLink title="Prestasi" subMenu={prestasiData} />
                 <WideScreenNavLink title="Berita" endpoint="/berita" />
+                <DropdownNavLink title="Lulusan" endpoint="/" subMenu={lulusanData}/>
                 <WideScreenNavLink title="Info PPDB" endpoint="/info-ppdb" />
+                <WideScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
                 <WideScreenNavLink title="Hubungi Kami" endpoint="/contact-us" />
               </ul>
             </div>

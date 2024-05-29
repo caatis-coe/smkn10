@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Inertia\Inertia;
 use Inertia\Response;
+use PhpParser\Node\Stmt\Foreach_;
 
 class BeritaController extends Controller
 {
-    public $beritaDatas = [
+    private $beritaDatas = [
         [
             "id" => "1",
             "title" => "The Magic of Deep Sea Diving",
@@ -20,7 +21,7 @@ class BeritaController extends Controller
         [
             "id" => "2",
             "title" => "The Art of Japanese Cuisine",
-            "description" => "Discovering the exquisite flavors and traditions of Japanese food.",
+            "description" => "Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food of Japanese food Discovering the exquisite flavors and traditions of Japanese food",
             "image_path" => "image2.jpg",
             "date_updated" => "2022-01-02"
         ],
@@ -186,9 +187,16 @@ class BeritaController extends Controller
         return Inertia::Render('berita/Berita', ['beritaDatas' => $this->beritaDatas]);
     }
 
-    public function showDetail(Request $request): Response
+    public function showDetail(string $id): Response
     {
-        $data = $request->all();
+        $data = [];
+
+        foreach($this->beritaDatas as $beritaData){
+            if ($beritaData['id'] ==  $id) {
+                $data = $beritaData;
+                break; 
+            }
+        }
         $data['image_path'] = asset('images/' . $data['image_path']);
         return Inertia::Render('berita/BeritaDetail', ['data' => $data]);
     }
