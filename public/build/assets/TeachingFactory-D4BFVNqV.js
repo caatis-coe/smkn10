@@ -1,0 +1,1 @@
+import{j as t}from"./app-Xm4n1sQK.js";import{C as e}from"./ContentTitle-C_jurvKP.js";import{D as a}from"./DefaultLayout-BU4touFO.js";function m({konsentrasiKeahilan:o=[],saleItems:r=[]}){return t.jsx(a,{children:t.jsx(e,{subTitle:"TEACHING FACTORY"})})}export{m as default};
