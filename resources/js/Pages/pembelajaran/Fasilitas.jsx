@@ -9,8 +9,8 @@ function Fasilitas({ fasilitasDatas = [] }) {
         <DefaultLayout>
             <ContentTitle title='PEMBELAJARAN' subTitle='FASILITAS' />
             <div className='w-full'>
-                <PembelajaranSwiper title={"Laboratorium"} datas={fasilitasDatas} />
-                <PembelajaranSwiper title={"Fasilitas Penunjang"} datas={fasilitasDatas}/>
+                <PembelajaranSwiper title={"Sarana Prasarana"} datas={fasilitasDatas} />
+                {/* <PembelajaranSwiper title={"Fasilitas Penunjang"} datas={fasilitasDatas}/> */}
             </div>
         </DefaultLayout>
     );

@@ -34,7 +34,7 @@ function HomeAnalytics({ data }) {
     return (
         <div className='flex flex-col w-24 items-center'>
             <div className='text-2xl sm:text-4xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
-            <div className='text-[9px] sm:text-base md:text-lg text-grey'>{data.context}</div>
+            <div className='text-[9px] sm:text-base md:text-lg text-black'>{data.context}</div>
         </div>
     );
 }
@@ -43,29 +43,28 @@ function Home({ blogDatas = [] }) {
 
     const baseURL = window.location.origin;
 
-    const homeImage1 = `url('${baseURL}/images/homeImage.jpg')`;
-    const homeImage2 = `url('${baseURL}/images/image1.jpg')`;
-    const homeImage3 = `url('${baseURL}/images/image2.jpg')`;
-    const homeImage4 = `url('${baseURL}/images/image3.jpg')`;
+    const homeImage1 = `url('${baseURL}/images/slide1.jpg')`;
+    const homeImage2 = `url('${baseURL}/images/slide2.jpg')`;
+    const homeImage3 = `url('${baseURL}/images/slide3.jpg')`;
 
-    const homeImages = [homeImage1, homeImage2, homeImage3, homeImage4]
+    const homeImages = [homeImage1, homeImage2, homeImage3]
 
-    const kepsek = `url('images/kepsek.jpg')`
+    const kepsek = `url('images/slamet-heryadi.jpg')`
 
     const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
 
 
     const numberData = [
         {
-            'total': 1226,
+            'total': 1152,
             'context': 'Siswa'
         },
         {
-            'total': 81,
+            'total': 72,
             'context': 'Guru'
         },
         {
-            'total': 12,
+            'total': 4,
             'context': 'Laboratorium'
         },
         {
@@ -91,7 +90,7 @@ function Home({ blogDatas = [] }) {
                     >
                         {homeImages.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[512px] w-[100vw]' style={{ backgroundImage: data }}></div>
+                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: data }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -104,8 +103,8 @@ function Home({ blogDatas = [] }) {
                         <div className='text-[48px] font-semibold'>
                             SMKN 10 Bandung
                         </div>
-                        <div>
-                            {"<Slogan>"}
+                        <div className='font-bold text-2xl'>
+                        Kompetitif Efektif Reformatif Elegan Norma
                         </div>
                         <div>
                             #SMKN10BANDUNG
