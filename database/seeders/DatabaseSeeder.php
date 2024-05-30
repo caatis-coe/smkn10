@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             //UserSeeder::class,
             //PostSeeder::class,
             DaftarGuruSeeder::class,
+            KonsentrasiKeahlianSeeder::class,
         ]);
     }
 }

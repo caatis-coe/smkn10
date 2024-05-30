@@ -70,14 +70,6 @@ function Nav() {
         "endpoint": "/keahlian-produksi-film",
     },
 ];
-  /*
-  Seni Karawitan
-  Seni Tari
-  Seni Musik
-  Seni Teater
-  Produksi dan Siaran Program Televisi
-  Produksi Film
-  */
   const prestasiData = ([
     {
       "title": "Prestasi Sekolah",
