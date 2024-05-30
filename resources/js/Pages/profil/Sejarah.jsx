@@ -21,9 +21,8 @@ function ContainerPost({ content }) {
           </div>
         </div>
       </div>
-      <div className='text-sm lg:text-base p-4 flex items-center flex-1'>
-        {content.description}
-      </div>
+     
+
     </div>
   )
 }
@@ -33,7 +32,8 @@ function Sejarah({ data }) {
     <DefaultLayout>
       <ContentTitle title='PROFIL' subTitle='SEJARAH' />
       <div className='w-full'>
-        {data.map((content, index) => <ContainerPost key={index} content={content} />)}
+        {/* {data.map((content, index) => <ContainerPost key={index} content={content} />)} */}
+        <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data[0].description }}></div>
       </div>
 
     </DefaultLayout>
