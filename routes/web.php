@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoPpdbController;
 use App\Http\Controllers\KegiatanMahasiswaController;
 use App\Http\Controllers\KonsentrasiKeahlianController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\SejarahController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -56,9 +57,7 @@ Route::get('/prestasi-siswa', function () {
     return Inertia::render('prestasi/PrestasiSiswa');
 });
 
-Route::get('/prestasi-sekolah', function () {
-    return Inertia::render('prestasi/PrestasiSekolah');
-});
+Route::get('/prestasi-sekolah', [PrestasiController::class, 'show']);
 
 Route::get('/error404', function () {
     return Inertia::render('berita/Test');

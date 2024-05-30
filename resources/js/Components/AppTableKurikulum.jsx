@@ -14,8 +14,6 @@ function AppTableKurikulum({ content =
             "sem4": "3",
             "sem5": "1",
             "sem6": "2",
-            "sem7": "3",
-            "sem8": "5",
             "jumlah": "24",
             "total_jam": "134"
         },
@@ -27,8 +25,6 @@ function AppTableKurikulum({ content =
             "sem4": "3",
             "sem5": "1",
             "sem6": "2",
-            "sem7": "3",
-            "sem8": "5",
             "jumlah": "24",
             "total_jam": "134"
         },
@@ -40,8 +36,6 @@ function AppTableKurikulum({ content =
             "sem4": "3",
             "sem5": "1",
             "sem6": "2",
-            "sem7": "3",
-            "sem8": "5",
             "jumlah": "24",
             "total_jam": "134"
         },
@@ -53,8 +47,6 @@ function AppTableKurikulum({ content =
             "sem4": "3",
             "sem5": "1",
             "sem6": "2",
-            "sem7": "3",
-            "sem8": "5",
             "jumlah": "24",
             "total_jam": "134"
         }
@@ -75,7 +67,7 @@ function AppTableKurikulum({ content =
                 <thead className='bg-lighttertiary text-white text-center font-semibold'>
                     <tr>
                         <Td colSpanlength={1} rowSpanLength={3}>Mata Pelajaran</Td>
-                        <Td colSpanlength={8}>Jumlah Jam Per Minggu</Td>
+                        <Td colSpanlength={6}>Jumlah Jam Per Minggu</Td>
                         <Td rowSpanLength={3}>Jumlah</Td>
                         <Td rowSpanLength={3}>Total Jam</Td>
                     </tr>
@@ -83,7 +75,6 @@ function AppTableKurikulum({ content =
                         <Td colSpanlength={2}>Kelas X</Td>
                         <Td colSpanlength={2}>Kelas XI</Td>
                         <Td colSpanlength={2}>Kelas XII</Td>
-                        <Td colSpanlength={2}>Kelas XIII</Td>
                     </tr>
                     <tr>
                         <Td>I</Td>
@@ -92,8 +83,6 @@ function AppTableKurikulum({ content =
                         <Td>IV</Td>
                         <Td>V</Td>
                         <Td>VI</Td>
-                        <Td>VII</Td>
-                        <Td>VIII</Td>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,8 +95,6 @@ function AppTableKurikulum({ content =
                             <Td>{value.sem4}</Td>
                             <Td>{value.sem5}</Td>
                             <Td>{value.sem6}</Td>
-                            <Td>{value.sem7}</Td>
-                            <Td>{value.sem8}</Td>
                             <Td>{value.jumlah}</Td>
                             <Td>{value.total_jam}</Td>
                         </tr>

@@ -1,6 +1,7 @@
 import React from 'react'
 import SocialMediaButton from './Partials/SocialMediaButton'
 import smknNegeri10 from '@/Assets/slogan.png'
+import contactData from '@/Data/ContactData'
 
 function Footer() {
   return (
@@ -16,14 +17,14 @@ function Footer() {
           IKUTI KAMI
         </div>
         <div className='font-light text-sm xl:text-base flex flex-col gap-3'>
-          <div>Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat</div>
-          <div><span className='font-medium'>Hubungi Kami :</span> SMKNBandung@gmail.com</div>
+          <div>{contactData.address}</div>
+          <div><span className='font-medium'>Hubungi Kami :</span> {contactData.email}</div>
         </div>
         <div className='flex flex-nowrap gap-x-5'>
-          <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/raychan.jpg/"} />
-          <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/"} />
-          <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/"} />
-          <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/"} />
+          <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/official_smkn10bdg/"} />
+          <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/@smkn10bandung_official"} />
+          <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/AdminSmkn10Bandung"} />
+          <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/@smkn10bandungofficial83"} />
         </div>
       </div>
       <div className='flex-col flex md:hidden gap-y-7 w-full h-full px-12 pb-16'>
@@ -32,8 +33,8 @@ function Footer() {
             TENTANG KAMI
           </div>
           <div className='font-light text-sm xl:text-base flex flex-col gap-3'>
-            <div>Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat</div>
-            <div><span className='font-medium'>Hubungi Kami :</span> SMKNBandung@gmail.com</div>
+            <div>{contactData.address}</div>
+            <div><span className='font-medium'>Hubungi Kami :</span> {contactData.email}</div>
           </div>
         </div>
         <div>
@@ -41,10 +42,10 @@ function Footer() {
             IKUTI KAMI
           </div>
           <div className='flex  flex-nowrap gap-x-5'>
-            <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/raychan.jpg/"} />
-            <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/"} />
-            <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/"} />
-            <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/"} />
+            <SocialMediaButton logo={"FaInstagram"} link={"https://www.instagram.com/official_smkn10bdg/"} />
+            <SocialMediaButton logo={"FaTiktok"} link={"https://www.tiktok.com/@smkn10bandung_official"} />
+            <SocialMediaButton logo={"FaFacebook"} link={"https://www.facebook.com/AdminSmkn10Bandung"} />
+            <SocialMediaButton logo={"FaYoutube"} link={"https://www.youtube.com/@smkn10bandungofficial83"} />
           </div>
         </div>
       </div>

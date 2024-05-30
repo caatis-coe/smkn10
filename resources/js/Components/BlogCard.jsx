@@ -10,7 +10,7 @@ function BlogCard({ blogData = {
 } }) {
 
     const backgroundImageStyle = {
-        backgroundImage: `url('images/${blogData.image_path}')`
+        backgroundImage: `url('${blogData.image_path}')`
     };
 
     return (

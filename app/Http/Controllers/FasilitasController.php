@@ -10,34 +10,39 @@ class FasilitasController extends Controller
 {
     private $data = [
         [
-            "title" => "The Magic of Deep Sea Diving",
-            "description" => "Exploring the hidden wonders beneath the ocean's surface.",
-            "image_path" => 'image1.jpg',
+            "title" => "Kantor Pusat Manajemen",
+            "description" => "",
+            "image_path" => 'kantor.jpg',
         ],
         [
-            "title" => "The Art of Japanese Cuisine",
-            "description" => "Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food Discovering the exquisite flavors and traditions of Japanese food",
-            "image_path" => "image2.jpg",
+            "title" => "Perpustakaan",
+            "description" => "",
+            "image_path" => 'perpustakaan.jpg',
         ],
         [
-            "title" => "Hiking Adventures in the Swiss Alps",
-            "description" => "Embarking on thrilling hikes amidst breathtaking mountain landscapes.",
-            "image_path" => "image3.jpg",
+            "title" => "RPS Broadcasting dan Perfilman",
+            "description" => "",
+            "image_path" => 'broadcasting.jpg',
         ],
         [
-            "title" => "Exploring Ancient Egyptian Temples",
-            "description" => "Uncovering the secrets of ancient pharaohs and their magnificent temples.",
-            "image_path" => "image1.jpg",
+            "title" => "Ruang Kelas",
+            "description" => "",
+            "image_path" => 'kelas.jpg',
         ],
         [
-            "title" => "The Enchanting Beauty of Cherry Blossoms",
-            "description" => "Witnessing the ephemeral beauty of cherry blossoms in full bloom.",
-            "image_path" => "image2.jpg",
+            "title" => "Lapangan Basket",
+            "description" => "",
+            "image_path" => 'lap-basket.jpg',
         ],
         [
-            "title" => "Culinary Delights of Italy",
-            "description" => "Savoring the delectable cuisine and fine wines of Italy.",
-            "image_path" => "image3.jpg",
+            "title" => "Studio Televisi",
+            "description" => "",
+            "image_path" => 'televisi.jpg',
+        ],
+        [
+            "title" => "Taman Sekolah",
+            "description" => "",
+            "image_path" => 'taman.jpg',
         ],
     ];
 
