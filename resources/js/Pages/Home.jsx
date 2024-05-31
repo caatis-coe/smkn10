@@ -43,9 +43,9 @@ function Home({ blogDatas = [] }) {
 
     const baseURL = window.location.origin;
 
-    const homeImage1 = `url('${baseURL}/images/slide1.jpg')`;
-    const homeImage2 = `url('${baseURL}/images/slide2.jpg')`;
-    const homeImage3 = `url('${baseURL}/images/slide3.jpg')`;
+    const homeImage1 = `url('${baseURL}/images/slide4.jpg')`;
+    const homeImage2 = `url('${baseURL}/images/slide5.jpg')`;
+    const homeImage3 = `url('${baseURL}/images/slide6.jpg')`;
 
     const homeImages = [homeImage1, homeImage2, homeImage3]
 
@@ -110,27 +110,27 @@ function Home({ blogDatas = [] }) {
                             #SMKN10BANDUNG
                         </div>
                         <div className='flex flex-col gap-2 w-full md:flex-row md:gap-4 mt-6'>
-                            <div className='flex rounded-full  justify-between items-center border-[1px] hover:border-2 
+                            <div className='flex rounded-full  justify-between items-center border-[2px] hover:border-2 
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group' onClick={profilePage}>
                                 <div className='border-[1px] group-hover:border-2 p-2 rounded-full grid place-items-center h-fit border-white'>
                                     <FaPlay className='w-2 h-2 group-hover:scale-125 transition ease-in-out duration-150' />
                                 </div>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Profil Sekolah
                                 </div>
                             </div>
-                            <Link href='/info-ppdb' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            <Link href='/info-ppdb' className='flex rounded-full justify-between items-center border-[2px] hover:border-2
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group'>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Info PPDB
                                 </div>
                             </Link>
-                            <Link href='teaching-factory' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            <Link href='teaching-factory' className='flex rounded-full justify-between items-center border-[2px] hover:border-2
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group'>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Teaching Factory
                                 </div>
                             </Link>
