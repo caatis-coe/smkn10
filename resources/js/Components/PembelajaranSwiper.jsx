@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
-import { Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
+import { Pagination, Scrollbar,  EffectFade } from 'swiper/modules';
 import SubTitle from '@/Components/SubTitle';
 
 function PembelajaranSwiper({ title, datas }) {
@@ -14,7 +14,7 @@ function PembelajaranSwiper({ title, datas }) {
     return (
         <>
             <SubTitle containerClassName={"mb-6"} title={title} />
-            <Swiper modules={[Pagination, Scrollbar, A11y, EffectFade]}
+            <Swiper modules={[Pagination, Scrollbar, EffectFade]}
                 spaceBetween={50}
                 slidesPerView={1}
                 breakpoints={{
@@ -36,14 +36,3 @@ function PembelajaranSwiper({ title, datas }) {
 }
 
 export default PembelajaranSwiper
-
-// pairs.map((pair, index) => (
-//     <SwiperSlide key={index}>
-//         <div className='grid grid-cols-1 place-items md:grid-cols-2 h-[484px] gap-x-16 gap-y-6'>
-//                 {pair.map((data, innerIndex) => (
-//                     <PembelajaranCard key={innerIndex} data={data} />
-//                 ))}
-            
-//         </div>
-//     </SwiperSlide>
-// ))}
