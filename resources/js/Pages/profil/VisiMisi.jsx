@@ -5,8 +5,8 @@ import DefaultLayout from '@/Layouts/DefaultLayout'
 
 function Container({ containerClass, title, description = "" }) {
   return (
-    <div className={`${containerClass} flex-1 relative border-grey border-2 bg-white rounded-lg h-auto`}>
-      <div className='absolute top-0 left-8 font-medium text-[36px] rounded-full -translate-y-1/2 text-grey bg-white px-2'>
+    <div className={`${containerClass} flex-1 relative border-black border-2 bg-white rounded-lg h-auto`}>
+      <div className='absolute top-0 left-8 font-medium text-[36px] rounded-full -translate-y-1/2 text-black bg-white px-2'>
         {title}
       </div>
       <div className='p-8'>
@@ -24,13 +24,10 @@ function Container({ containerClass, title, description = "" }) {
 function VisiMisi() {
 
   const data = {
-    "visi": "Menjadi pusat pendidikan seni budaya yang unggul, menginspirasi, dan berinovasi dalam mengembangkan potensi kreativitas siswa-siswinya",
-    "misi": `1. Mengembangkan bakat dan minat siswa di bidang seni budaya melalui program pendidikan yang berkualitas.\n
-            2. Menyediakan fasilitas dan lingkungan belajar yang kondusif untuk pengembangan kreativitas siswa.\n
-            3. Mendorong kolaborasi antara siswa, guru, dan komunitas seni budaya untuk menciptakan karya yang berkualitas dan bermakna.\n
-            4. Memperkenalkan beragam seni budaya kepada siswa agar memiliki pemahaman yang mendalam dan apresiasi yang tinggi terhadap keanekaragaman budaya.\n
-            5. Mengintegrasikan teknologi dalam pembelajaran seni budaya untuk memperluas ruang ekspresi dan inovasi siswa.\n
-            6. Menumbuhkan sikap tanggap dan peduli terhadap masalah sosial melalui karya seni budaya yang berdampak positif bagi masyarakat.`
+    "visi": "Menghasilkan lulusan Unggul dan Produktif di Bidang Seni dan ekonomi Kreatif berkarakter Profil Pelajar Pancasila pada abad ke -21.",
+    "misi": `1.  Menyelenggarakan pembelajaran menyenangkan, ramah anak, berpusat pada peserta didik,membudayakan Pola Hidup bersih  dan sehat ( PHBS) dengan berdasarkan budaya kearifan Lokal Jabar Masagi.\n
+            2. Melaksanakan Pembelajaran Bermutu, inovatif , kreatif, membudayakan karajter kewirausahaan melalui Model  pembelajaran Teaching Factory ( TeFa) yang menghasilkan produk dan jasa di bidang  karya seni dan ekonomi Kreatif pada program Keahlian seni pertunjukan, broadcasting dan perfilman.\n
+            3. Mewujudkan pembelajaran kerjasama kemitraan dengan dunia kerja dalam link and match untuk menghasilkan lulusan berstandar industry yang berakhlak Mulia dan berbudi pekerti utama.`
   }
   return (
     <DefaultLayout>

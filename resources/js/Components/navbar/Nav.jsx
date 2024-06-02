@@ -6,6 +6,7 @@ import DropdownNavLink from './Partials/DropdownNavLink'
 import logoSMA from '@/Assets/slogan.png'
 import WideScreenNavLink from './Partials/WideScreenNavLink';
 import { FaPhone, FaEnvelope } from 'react-icons/fa'
+import contactData from '@/Data/ContactData';
 
 function Nav() {
   const profilData = ([
@@ -121,17 +122,17 @@ function Nav() {
     <nav className=''>
       <div className='z-50'>
         <div className=' h-8 flex justify-end items-center gap-x-6 bg-primary text-white px-10 md:px-20'>
-          <a className='flex items-center' href='tel:6281369696969'>
+          <a className='flex items-center' href={`tel:${contactData.phone}`}>
             <div className='mr-2'>
               <FaPhone className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-[9px] sm:text-xs'>+62813 6969 6969</span>
+            <span className='text-[9px] sm:text-xs'>{contactData.phone}</span>
           </a>
-          <a className=' flex items-center' href='mailto:admin@smkn10bandung.sch.id'>
+          <a className=' flex items-center' href={`mailto:${contactData.email}`}>
             <div className='mr-2'>
               <FaEnvelope className='text-white text-[12px] sm:text-sm' />
             </div>
-            <span className='text-[9px] sm:text-xs'>admin@smkn10bandung.sch.id</span>
+            <span className='text-[9px] sm:text-xs'>{contactData.email}</span>
           </a>
         </div>
 

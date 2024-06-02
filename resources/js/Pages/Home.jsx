@@ -34,7 +34,7 @@ function HomeAnalytics({ data }) {
     return (
         <div className='flex flex-col w-24 items-center'>
             <div className='text-2xl sm:text-4xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
-            <div className='text-[9px] sm:text-base md:text-lg text-grey'>{data.context}</div>
+            <div className='text-[9px] sm:text-base md:text-lg text-black'>{data.context}</div>
         </div>
     );
 }
@@ -43,29 +43,28 @@ function Home({ blogDatas = [] }) {
 
     const baseURL = window.location.origin;
 
-    const homeImage1 = `url('${baseURL}/images/homeImage.jpg')`;
-    const homeImage2 = `url('${baseURL}/images/image1.jpg')`;
-    const homeImage3 = `url('${baseURL}/images/image2.jpg')`;
-    const homeImage4 = `url('${baseURL}/images/image3.jpg')`;
+    const homeImage1 = `url('${baseURL}/images/slide4.jpg')`;
+    const homeImage2 = `url('${baseURL}/images/slide5.jpg')`;
+    const homeImage3 = `url('${baseURL}/images/slide6.jpg')`;
 
-    const homeImages = [homeImage1, homeImage2, homeImage3, homeImage4]
+    const homeImages = [homeImage1, homeImage2, homeImage3]
 
-    const kepsek = `url('images/kepsek.jpg')`
+    const kepsek = `url('images/slamet-heryadi.jpg')`
 
     const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
 
 
     const numberData = [
         {
-            'total': 1226,
+            'total': 1152,
             'context': 'Siswa'
         },
         {
-            'total': 81,
+            'total': 72,
             'context': 'Guru'
         },
         {
-            'total': 12,
+            'total': 4,
             'context': 'Laboratorium'
         },
         {
@@ -91,7 +90,7 @@ function Home({ blogDatas = [] }) {
                     >
                         {homeImages.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[512px] w-[100vw]' style={{ backgroundImage: data }}></div>
+                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: data }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -104,34 +103,34 @@ function Home({ blogDatas = [] }) {
                         <div className='text-[48px] font-semibold'>
                             SMKN 10 Bandung
                         </div>
-                        <div>
-                            {"<Slogan>"}
+                        <div className='font-bold text-2xl'>
+                        Kompetitif Efektif Reformatif Elegan Norma
                         </div>
                         <div>
                             #SMKN10BANDUNG
                         </div>
                         <div className='flex flex-col gap-2 w-full md:flex-row md:gap-4 mt-6'>
-                            <div className='flex rounded-full  justify-between items-center border-[1px] hover:border-2 
+                            <div className='flex rounded-full  justify-between items-center border-[2px] hover:border-2 
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group' onClick={profilePage}>
                                 <div className='border-[1px] group-hover:border-2 p-2 rounded-full grid place-items-center h-fit border-white'>
                                     <FaPlay className='w-2 h-2 group-hover:scale-125 transition ease-in-out duration-150' />
                                 </div>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Profil Sekolah
                                 </div>
                             </div>
-                            <Link href='/info-ppdb' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            <Link href='/info-ppdb' className='flex rounded-full justify-between items-center border-[2px] hover:border-2
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group'>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Info PPDB
                                 </div>
                             </Link>
-                            <Link href='teaching-factory' className='flex rounded-full justify-between items-center border-[1px] hover:border-2
+                            <Link href='teaching-factory' className='flex rounded-full justify-between items-center border-[2px] hover:border-2
                             border-white p-2 h-12 w-48 cursor-pointer hover:bg-lighttertiary hover:border-lighttertiary
                             transition ease-in-out duration-200 group'>
-                                <div className='flex-1 font-light group-hover:font-medium text-center '>
+                                <div className='flex-1 font-semibold group-hover:font-semibold text-center '>
                                     Teaching Factory
                                 </div>
                             </Link>

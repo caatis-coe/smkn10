@@ -1,6 +1,7 @@
 import DefaultLayout from '@/Layouts/DefaultLayout'
 import React, { useState } from 'react'
 import { MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
+import contactData from '@/Data/ContactData.jsx';
 
 function ContactUs() {
   const [name, setName] = useState("")
@@ -25,7 +26,7 @@ function ContactUs() {
             </div>
             <div>
               <div className='font-semibold text-grey text-2xl lg:text-3xl'>Alamat</div>
-              <div className='font-light text-md'>Jl. Cijawura Hilir No.339 40286 Bandung Jawa Barat</div>
+              <div className='font-light text-md'>{contactData.address}</div>
             </div>
           </div>
 
@@ -36,8 +37,7 @@ function ContactUs() {
             </div>
             <div>
               <div className='font-semibold text-grey text-2xl lg:text-3xl'>Email</div>
-              <div className='font-light text-md'>SMKNBandung@gmail.com
-              </div>
+              <div className='font-light text-md'>{contactData.email}</div>
             </div>
           </div>
 
@@ -48,7 +48,7 @@ function ContactUs() {
             </div>
             <div>
               <div className='font-semibold text-grey text-2xl lg:text-3xl'>Telepon</div>
-              <div className='font-light text-md'>0821-3218-32 (0812)</div>
+              <div className='font-light text-md'>{contactData.phone}</div>
             </div>
           </div>
         </div>
