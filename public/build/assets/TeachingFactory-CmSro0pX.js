@@ -1,0 +1,1 @@
+import{j as t}from"./app-BWMGvhir.js";import{C as e}from"./ContentTitle-Pytl4p1N.js";import{D as a}from"./DefaultLayout-x3g64oQE.js";function m({konsentrasiKeahilan:o=[],saleItems:r=[]}){return t.jsx(a,{children:t.jsx(e,{subTitle:"TEACHING FACTORY"})})}export{m as default};

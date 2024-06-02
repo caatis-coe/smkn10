@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import typo from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,11 +13,27 @@ export default {
 
     theme: {
         extend: {
+            colors : {
+                white : "#FEFBF6",
+                grey : "#CDCDCD",
+                lightgrey : "#EAEAEA",
+                darkgrey : "#3B3939",
+                black : "#2C2C2C",
+                primary : "#010038",
+                lightprimary : "#020142",
+                secondary : "#293A80",
+                tertiary : "#537EC5",
+                lighttertiary : "#7E9FD4",
+                redprimary : "#C55353",
+                lightredprimary : "#E67C7C",
+                greenprimary : "#71C553",
+                lightgreenprimary : "#99DC82",
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typo],
 };
