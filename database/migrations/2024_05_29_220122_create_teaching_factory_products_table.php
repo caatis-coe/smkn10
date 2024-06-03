@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daftar_gurus', function (Blueprint $table) {
+        Schema::create('teaching_factory_products', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("nip_nuptk");
+            $table->string("title");
+            $table->longText("description");
+            $table->string("image_path");
+            $table->integer("price");
+            $table->foreignId("KonsentrasiKeahlianID")->constrained('konsentrasi_keahlians');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daftar_gurus');
+        Schema::dropIfExists('teaching_factory_products');
     }
 };

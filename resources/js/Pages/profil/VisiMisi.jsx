@@ -5,8 +5,8 @@ import DefaultLayout from '@/Layouts/DefaultLayout'
 
 function Container({ containerClass, title, description = "" }) {
   return (
-    <div className={`${containerClass} flex-1 relative border-black border-2 bg-white rounded-lg h-auto`}>
-      <div className='absolute top-0 left-8 font-medium text-[36px] rounded-full -translate-y-1/2 text-black bg-white px-2'>
+    <div className={`${containerClass} flex-1 relative border-grey border-2 bg-white rounded-lg h-auto`}>
+      <div className='absolute top-0 left-8 font-semibold  text-[36px] rounded-full -translate-y-1/2 text-primary bg-white px-2'>
         {title}
       </div>
       <div className='p-8'>

@@ -40,14 +40,3 @@ function PembelajaranSwiper({ title, datas }) {
 }
 
 export default PembelajaranSwiper
-
-// pairs.map((pair, index) => (
-//     <SwiperSlide key={index}>
-//         <div className='grid grid-cols-1 place-items md:grid-cols-2 h-[484px] gap-x-16 gap-y-6'>
-//                 {pair.map((data, innerIndex) => (
-//                     <PembelajaranCard key={innerIndex} data={data} />
-//                 ))}
-            
-//         </div>
-//     </SwiperSlide>
-// ))}

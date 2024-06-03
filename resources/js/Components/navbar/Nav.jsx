@@ -30,6 +30,10 @@ function Nav() {
       "title": "Struktur Organisasi",
       "endpoint": "/struktur-organisasi"
     },
+    {
+      "title": "Nilai Budaya",
+      "endpoint": "/nilai-budaya"
+    },
   ])
   const pembelajaranData = ([
     {
@@ -112,7 +116,9 @@ function Nav() {
         <SmallScreenNavLink title="Konsentrasi Keahlian" handleClick={handleClickLink} subMenu={keahlianData} />
         <SmallScreenNavLink title="Prestasi" handleClick={handleClickLink} subMenu={prestasiData} />
         <SmallScreenNavLink title="Berita" endpoint="/berita" handleClick={handleClickLink} />
+        <SmallScreenNavLink title="Lulusan" endpoint="/" handleClick={handleClickLink} subMenu={lulusanData}/>
         <SmallScreenNavLink title="Info PPDB" endpoint="/info-ppdb" handleClick={handleClickLink} />
+        <SmallScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
         <SmallScreenNavLink title="Hubungi Kami" endpoint="/contact-us" handleClick={handleClickLink} />
       </ul>
     </div>

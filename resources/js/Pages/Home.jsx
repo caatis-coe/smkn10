@@ -103,8 +103,8 @@ function Home({ blogDatas = [] }) {
                         <div className='text-[48px] font-semibold'>
                             SMKN 10 Bandung
                         </div>
-                        <div className='font-bold text-2xl'>
-                        Kompetitif Efektif Reformatif Elegan Norma
+                        <div className='font-medium  text-2xl'>
+                        Kapabilitas Edutaiment Rasional Enerjik Nilai Budaya
                         </div>
                         <div>
                             #SMKN10BANDUNG

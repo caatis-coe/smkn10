@@ -10,6 +10,7 @@ use App\Http\Controllers\KegiatanMahasiswaController;
 use App\Http\Controllers\KonsentrasiKeahlianController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\SejarahController;
+use App\Http\Controllers\TeachingFactoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -39,6 +40,10 @@ Route::get('/struktur-organisasi', function () {
 
 Route::get('/visi-misi', function () {
     return Inertia::render('profil/VisiMisi');
+});
+
+Route::get('/nilai-budaya', function () {
+    return Inertia::render('profil/NilaiBudaya');
 });
 
 Route::get('/fasilitas', [FasilitasController::class, 'show']);
@@ -71,9 +76,9 @@ Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, '
 
 Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
-Route::get('/teaching-factory', function () {
-    return Inertia::render('TeachingFactory');
-});
+Route::get('/teaching-factory', [TeachingFactoryController::class, 'show']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

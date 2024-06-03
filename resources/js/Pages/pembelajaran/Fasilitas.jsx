@@ -2,6 +2,7 @@ import React from 'react';
 import ContentTitle from '@/Components/ContentTitle';
 import DefaultLayout from '@/Layouts/DefaultLayout';
 
+
 import PembelajaranSwiper from '@/Components/PembelajaranSwiper';
 
 function Fasilitas({ fasilitasDatas = [] }) {
