@@ -28,15 +28,14 @@ function TeachingFactory({ data }) {
                             slidesPerView={1}
                             breakpoints={{
                                 1024: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 100,
+                                    slidesPerView: 4,
                                 },
                             }}
                             pagination={{ clickable: true }}
                             >
                             {
                                 konsentrasiKeahlian.teaching_factory_products.map((product, index) => (
-                                    <SwiperSlide key={index} className='pb-12'>
+                                    <SwiperSlide key={index} className='pb-12 '>
                                         <TeachingFactoryProductCard productData={product} />
                                     </SwiperSlide>
                                     

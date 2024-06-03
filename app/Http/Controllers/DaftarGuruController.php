@@ -14,10 +14,7 @@ class DaftarGuruController extends Controller
         $arrDaftarGuru = DaftarGuru::all()->map(function ($guru) {
             return [
                 $guru->name,
-                $guru->nip,
-                $guru->pangkat,
-                $guru->jabatan,
-                $guru->pendidikan,
+                $guru->nip_nuptk,
             ];
         });
 

@@ -42,6 +42,10 @@ Route::get('/visi-misi', function () {
     return Inertia::render('profil/VisiMisi');
 });
 
+Route::get('/nilai-budaya', function () {
+    return Inertia::render('profil/NilaiBudaya');
+});
+
 Route::get('/fasilitas', [FasilitasController::class, 'show']);
 
 Route::get('/kegiatan-mahasiswa', [KegiatanMahasiswaController::class, 'show']);
@@ -73,6 +77,8 @@ Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, '
 Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
 Route::get('/teaching-factory', [TeachingFactoryController::class, 'show']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

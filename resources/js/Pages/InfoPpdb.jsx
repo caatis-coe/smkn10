@@ -118,7 +118,7 @@ function InfoPpdb() {
                         </div>
                     </div>
                     {/* Second Column */}
-                    <div className="w-full lg:w-1/2 px-4">
+                    {/* <div className="w-full lg:w-1/2 px-4">
                         <div className="text-center">
                         <h2 className="text-2xl font-semibold mb-4">Dokumen Profil Smkn 10 Bandung</h2>
                         <a href="/doc/profile-smkn10bdg.pdf" download>
@@ -127,7 +127,7 @@ function InfoPpdb() {
                             </button>
                         </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             </section>

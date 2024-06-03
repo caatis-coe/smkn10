@@ -22,7 +22,7 @@ function DaftarGuru({daftarGuru = []}) {
     <DefaultLayout>
       <div className='w-full'>
         <ContentTitle title='PROFIL' subTitle='DAFTAR GURU' />
-        <AppTable contents={[["Nama", 'NIP', 'pangkat', 'jabatan', 'pendidikan'], ...daftarGuru]} />
+        <AppTable contents={[["Nama", 'NIP/NUPTK'], ...daftarGuru]} />
       </div>
     </DefaultLayout>
   )
