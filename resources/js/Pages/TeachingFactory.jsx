@@ -14,14 +14,12 @@ import DefaultLayout from '@/Layouts/DefaultLayout'
 
 function TeachingFactory({ data }) {
 
-    console.log(data)
-
     return (
         <DefaultLayout>
             <ContentTitle subTitle='TEACHING FACTORY' />
             {
                 data.map((konsentrasiKeahlian, index) => (
-                    <div  key={index}>
+                    <div  key={index} className='-z-0'>
                         <SubTitle title={konsentrasiKeahlian.title} />
                         <Swiper modules={[Pagination, Scrollbar, EffectFade]}
                             spaceBetween={50}
