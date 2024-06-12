@@ -79,28 +79,6 @@ class BeritaController extends Controller
 
     public function showDetail(string $id): Response
     {
-        // $client = new Client();
-        // $response = $client->get($this->apiUrl);
-        // $beritaDatas = json_decode($response->getBody()->getContents(), true)['data']['posts'];
-
-        // $formattedBeritaDatas = array_map(function ($berita, $index) {
-        //     return [
-        //         'id' => $index + 1, // Auto-increment ID
-        //         'title' => $berita['title'],
-        //         'description' => $berita['description'],
-        //         'image_path' => $berita['thumbnail'],
-        //         'date_updated' => $berita['pubDate'],
-        //     ];
-        // }, $beritaDatas, array_keys($beritaDatas));
-
-        // $data = [];
-
-        // foreach($formattedBeritaDatas as $beritaData){
-        //     if ($beritaData['id'] ==  $id) {
-        //         $data = $beritaData;
-        //         break;
-        //     }
-        // }
 
         $data = [];
         foreach($this->beritaDatas as $beritaData){

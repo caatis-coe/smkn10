@@ -40,6 +40,7 @@ function PaginatedItems({ itemsPerPage, items }) {
       <div className='grid grid-cols-1 place-items md:grid-cols-2 xl:grid-cols-3 gap-x-16 gap-y-12 '>
         {currentItems.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
       </div>
+      duv
       <div className='mt-16 grid place-items-center'>
         <ReactPaginate
           breakLabel="..."

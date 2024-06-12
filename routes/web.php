@@ -64,6 +64,8 @@ Route::get('/prestasi-siswa', function () {
 
 Route::get('/prestasi-sekolah', [PrestasiController::class, 'show']);
 
+
+
 Route::get('/error404', function () {
     return Inertia::render('berita/Test');
 });
@@ -78,7 +80,7 @@ Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
 Route::get('/teaching-factory', [TeachingFactoryController::class, 'show']);
 
-
+Route::post('/sendDataBuyer', [TeachingFactoryController::class, 'sendDataBuyer']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

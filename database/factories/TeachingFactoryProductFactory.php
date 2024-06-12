@@ -21,7 +21,7 @@ class TeachingFactoryProductFactory extends Factory
             'description' => $this->faker->paragraph,
             'image_path' => $this->faker->imageUrl(),
             'price' => $this->faker->numberBetween(1000, 5000),
-            'KonsentrasiKeahlianID' => $this->faker->numberBetween(1, 6),
+            'KonsentrasiKeahlianID' => $this->faker->numberBetween(1, 5),
         ];
     }
 }
