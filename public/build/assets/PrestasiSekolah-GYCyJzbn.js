@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/PrestasiSekolah-GYCyJzbn.js
-import{j as a}from"./app-BmwKG7a7.js";import{C as s}from"./ContentTitle-Ce23v5hT.js";import{A as e}from"./AppTable-B-UJDtBp.js";import{D as i}from"./DefaultLayout-BjbUHBhg.js";function m({daftarKejuaraan:t=[]}){return a.jsx(i,{children:a.jsxs("div",{className:"w-full",children:[a.jsx(s,{title:"PRESTASI",subTitle:"SEKOLAH"}),a.jsx(e,{contents:[["Nama Kejuaraan","Hasil yang dicapai"],...t]})]})})}export{m as default};
-========
-import{j as a}from"./app-C9bpAKuo.js";import{C as s}from"./ContentTitle-CaEJD5ko.js";import{A as e}from"./AppTable-ucD7rfYa.js";import{D as i}from"./DefaultLayout-BwqJco77.js";function m({daftarKejuaraan:t=[]}){return a.jsx(i,{children:a.jsxs("div",{className:"w-full",children:[a.jsx(s,{title:"PRESTASI",subTitle:"SEKOLAH"}),a.jsx(e,{contents:[["Nama Kejuaraan","Hasil yang dicapai"],...t]})]})})}export{m as default};
->>>>>>>> dev-ray:public/build/assets/PrestasiSekolah-Bn8hfZox.js

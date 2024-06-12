@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/StrukturOrganisasi-LlGujJX1.js
-import{j as a}from"./app-BmwKG7a7.js";import{C as s}from"./ContentTitle-Ce23v5hT.js";import{D as t}from"./DefaultLayout-BjbUHBhg.js";function l(){return a.jsxs(t,{children:[a.jsx(s,{title:"PROFIL",subTitle:"STRUKTUR ORGANISASI"}),a.jsx("div",{className:"overflow-x-auto",children:a.jsx("div",{className:"min-w-96 aspect-[5/3]",children:a.jsx("div",{className:"bg-cover bg-center h-full",style:{backgroundImage:"url('images/chart.jpg')"}})})})]})}export{l as default};
-========
-import{j as a}from"./app-C9bpAKuo.js";import{C as s}from"./ContentTitle-CaEJD5ko.js";import{D as t}from"./DefaultLayout-BwqJco77.js";function l(){return a.jsxs(t,{children:[a.jsx(s,{title:"PROFIL",subTitle:"STRUKTUR ORGANISASI"}),a.jsx("div",{className:"overflow-x-auto",children:a.jsx("div",{className:"min-w-96 aspect-[5/3]",children:a.jsx("div",{className:"bg-cover bg-center h-full",style:{backgroundImage:"url('images/chart.jpg')"}})})})]})}export{l as default};
->>>>>>>> dev-ray:public/build/assets/StrukturOrganisasi-BMxfaMPK.js

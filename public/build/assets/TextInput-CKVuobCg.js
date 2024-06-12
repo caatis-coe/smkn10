@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/TextInput-CKVuobCg.js
-import{j as u,r as s}from"./app-BmwKG7a7.js";function a({message:r,className:t="",...e}){return r?u.jsx("p",{...e,className:"text-sm text-red-600 "+t,children:r}):null}const d=s.forwardRef(function({type:t="text",className:e="",isFocused:c=!1,...f},n){const o=n||s.useRef();return s.useEffect(()=>{c&&o.current.focus()},[]),u.jsx("input",{...f,type:t,className:"border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "+e,ref:o})});export{a as I,d as T};
-========
-import{j as u,r as s}from"./app-C9bpAKuo.js";function a({message:r,className:t="",...e}){return r?u.jsx("p",{...e,className:"text-sm text-red-600 "+t,children:r}):null}const d=s.forwardRef(function({type:t="text",className:e="",isFocused:c=!1,...f},n){const o=n||s.useRef();return s.useEffect(()=>{c&&o.current.focus()},[]),u.jsx("input",{...f,type:t,className:"border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "+e,ref:o})});export{a as I,d as T};
->>>>>>>> dev-ray:public/build/assets/TextInput-B__De2_c.js
