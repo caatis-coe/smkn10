@@ -8,8 +8,7 @@ function KegiatanMahasiswa({kegiatanDatas = []}) {
         <DefaultLayout>
             <ContentTitle title='PEMBELAJARAN' subTitle='KEGIATAN MAHASISWA' />
             <div className='w-full'>
-                <PembelajaranSwiper title={"Ekstrakulikuler"} datas={kegiatanDatas} />
-                {/* <PembelajaranSwiper title={"Bidang Kesenian"} datas={kegiatanDatas} /> */}
+                <PembelajaranSwiper  datas={kegiatanDatas} />
             </div>
         </DefaultLayout>
     );

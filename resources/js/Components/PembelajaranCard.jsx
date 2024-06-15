@@ -11,15 +11,15 @@ function PembelajaranCard({ data }) {
                 <div className={`flex-shrink-0 h-[313px] bg-cover bg-center
                 border-grey rounded-t-md`} style={{ backgroundImage }}>
                 </div>
-                <div className='border-2 border-lightgrey border-t-0 flex flex-col justify-between min-h-[128px] 
-                px-5 pt-4 pb-7 rounded-b-md'>
-                    <div className=''>
-                        <div className='font-medium mb-2 text-[18px] line-clamp-1'>
+                <div className={`border-2 border-lightgrey border-t-0 flex flex-col  min-h-[128px] 
+                px-5 pt-4 pb-7 rounded-b-md ${data.description == "" ? "items-center justify-center" : "justify-between"}`}>
+                    <div>
+                        <div className={`${data.description == "" ? "text-[24px] font-semibold" : "text-[18px] font-medium"}  mb-2 line-clamp-1`}>
                             {data.title}
                         </div>
-                        <div className='text-[12px] line-clamp-3 group-hover:line-clamp-none transition'>
+                        {data.description != "" && <div className='text-[12px] line-clamp-3 group-hover:line-clamp-none transition'>
                             {data.description}
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
