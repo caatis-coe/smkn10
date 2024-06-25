@@ -11,7 +11,7 @@ function DefaultLayout({ children, headerChildren }) {
     return (
         <div className=' bg-white'>
             <Head>
-                <title>SMKN 10 Bandung</title>
+                <title>SMKN 10 Bandung - KEREN</title>
                 <link rel="icon" href={logoSMA} />
             </Head>
             <div className='sticky top-0 z-50'>
