@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
-import { Pagination, Scrollbar,  EffectFade } from 'swiper/modules';
+import { Pagination, Scrollbar, EffectFade } from 'swiper/modules';
 import ContentTitle from '@/Components/ContentTitle'
 import SubTitle from '@/Components/SubTitle'
 import TeachingFactoryProductCard from '@/Components/TeachingFactoryProductCard'
@@ -18,32 +18,34 @@ function TeachingFactory({ data }) {
         <DefaultLayout>
             <ContentTitle subTitle='TEACHING FACTORY' />
             {
-                data.map((konsentrasiKeahlian, index) => (
-                    <div  key={index} className='-z-0'>
-                        <SubTitle title={konsentrasiKeahlian.title} />
-                        <Swiper modules={[Pagination, Scrollbar, EffectFade]}
-                            spaceBetween={50}
-                            slidesPerView={1}
-                            breakpoints={{
-                                1024: {
-                                    slidesPerView: 4,
-                                },
-                            }}
-                            pagination={{ clickable: true }}
+                data.map((konsentrasiKeahlian, index) => {
+                    if (konsentrasiKeahlian.teaching_factory_products.length == 0) return null;
+                    return (
+                        <div key={index} className='-z-0'>
+                            <SubTitle title={konsentrasiKeahlian.title} />
+                            <Swiper modules={[Pagination, Scrollbar, EffectFade]}
+                                spaceBetween={50}
+                                slidesPerView={1}
+                                breakpoints={{
+                                    1024: {
+                                        slidesPerView: 4,
+                                    },
+                                }}
+                                pagination={{ clickable: true }}
                             >
-                            {
-                                konsentrasiKeahlian.teaching_factory_products.map((product, index) => (
-                                    <SwiperSlide key={index} className='pb-12 '>
-                                        <TeachingFactoryProductCard productData={product} />
-                                    </SwiperSlide>
-                                    
-                                ))
-                            }
-                        </Swiper>
+                                {
+                                    konsentrasiKeahlian.teaching_factory_products.map((product, index) => (
+                                        <SwiperSlide key={index} className='pb-12 '>
+                                            <TeachingFactoryProductCard productData={product} />
+                                        </SwiperSlide>
 
-                    </div>
-
-                ))
+                                    ))
+                                }
+                            </Swiper>
+                        </div>
+                    )
+                }
+                )
             }
         </DefaultLayout>
     )

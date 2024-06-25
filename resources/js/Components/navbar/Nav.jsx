@@ -116,7 +116,7 @@ function Nav() {
         <SmallScreenNavLink title="Konsentrasi Keahlian" handleClick={handleClickLink} subMenu={keahlianData} />
         <SmallScreenNavLink title="Prestasi" handleClick={handleClickLink} subMenu={prestasiData} />
         <SmallScreenNavLink title="Berita" endpoint="/berita" handleClick={handleClickLink} />
-        <SmallScreenNavLink title="Lulusan" endpoint="/" handleClick={handleClickLink} subMenu={lulusanData}/>
+        {/* <SmallScreenNavLink title="Lulusan" endpoint="/" handleClick={handleClickLink} subMenu={lulusanData}/> */}
         <SmallScreenNavLink title="Info PPDB" endpoint="/info-ppdb" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
         <SmallScreenNavLink title="Hubungi Kami" endpoint="/contact-us" handleClick={handleClickLink} />
@@ -158,7 +158,7 @@ function Nav() {
                 <DropdownNavLink title="Konsentrasi Keahlian" subMenu={keahlianData} />
                 <DropdownNavLink title="Prestasi" subMenu={prestasiData} />
                 <WideScreenNavLink title="Berita" endpoint="/berita" />
-                <DropdownNavLink title="Lulusan" endpoint="/" subMenu={lulusanData}/>
+                {/* <DropdownNavLink title="Lulusan" endpoint="/" subMenu={lulusanData}/> */}
                 <WideScreenNavLink title="Info PPDB" endpoint="/info-ppdb" />
                 <WideScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
                 <WideScreenNavLink title="Hubungi Kami" endpoint="/contact-us" />
