@@ -23,13 +23,13 @@ class UserSeeder extends Seeder
             'role' => 'administrator',
         ]);
 
-        User::create([
-            'id' => Str::uuid()->toString(),
-            'name' => 'test',
-            'username' => 'test',
-            'email' => 'test@gmail.com', 
-            'password' => bcrypt('password'), 
-            'role' => 'administrator',
-        ]);
+        // User::create([
+        //     'id' => Str::uuid()->toString(),
+        //     'name' => 'test',
+        //     'username' => 'test',
+        //     'email' => 'test@gmail.com', 
+        //     'password' => bcrypt('password'), 
+        //     'role' => 'administrator',
+        // ]);
     }
 }

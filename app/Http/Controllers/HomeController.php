@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use Inertia\Response;
-use GuzzleHttp\Client;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
@@ -74,6 +75,12 @@ class HomeController extends Controller
         //     ];
         // }, $limitedBeritaDatas, array_keys($limitedBeritaDatas));
 
-        return Inertia::Render('Home', ['blogDatas' => $this->beritaDatas] );
+        return Inertia::Render('Home', [
+            'blogDatas' => $this->beritaDatas,
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
     }
 }

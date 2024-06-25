@@ -64,15 +64,9 @@ Route::get('/prestasi-siswa', function () {
 
 Route::get('/prestasi-sekolah', [PrestasiController::class, 'show']);
 
-
-
 Route::get('/error404', function () {
     return Inertia::render('berita/Test');
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/keahlian-{titleKeahlian}', [KonsentrasiKeahlianController::class, 'show']);
 
@@ -80,7 +74,23 @@ Route::get('/info-ppdb', [InfoPpdbController::class, 'show']);
 
 Route::get('/teaching-factory', [TeachingFactoryController::class, 'show']);
 
-Route::post('/sendDataBuyer', [TeachingFactoryController::class, 'sendDataBuyer']);
+Route::post('/send-data-buyer', [TeachingFactoryController::class, 'sendDataBuyer']);
+
+// DASHBOARD ROUTES
+
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))
+        ->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
