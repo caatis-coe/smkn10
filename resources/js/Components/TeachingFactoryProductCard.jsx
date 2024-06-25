@@ -70,7 +70,7 @@ function TeachingFactoryProductCard({ productData }) {
       setErrors(newErrors);
     } else {
       const idProduct = productData.id;
-      Inertia.post('/sendDataBuyer', {
+      Inertia.post('/send-data-buyer', {
         idProduct,
         namaPembeli,
         namaPerusahaan,
