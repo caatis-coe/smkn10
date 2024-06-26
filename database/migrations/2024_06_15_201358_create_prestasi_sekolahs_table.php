@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('prestasi_sekolahs', function (Blueprint $table) {
             $table->id();
+            $table->String("achievement");
+            $table->String("result");
             $table->timestamps();
         });
     }
