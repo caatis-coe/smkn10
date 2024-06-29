@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('konsentrasi_keahlians', function (Blueprint $table) {
+        Schema::create('image_konsentrasi_keahlians', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->longText("description");
-            $table->string('endpoint');
+            $table->foreignId("ImageID")->constrained('images');
+            $table->foreignId("KonsentrasiKeahlianID")->constrained('konsentrasi_keahlians');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('konsentrasi_keahlians');
+        Schema::dropIfExists('image_konsentrasi_keahlians');
     }
 };

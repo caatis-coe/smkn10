@@ -39,7 +39,7 @@ function HomeAnalytics({ data }) {
     );
 }
 
-function Home({ blogDatas = [] }) {
+function Home({ blogDatas = [], headmaster }) {
 
     const baseURL = window.location.origin;
 

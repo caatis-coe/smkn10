@@ -46,6 +46,18 @@ Route::get('/nilai-budaya', function () {
     return Inertia::render('profil/NilaiBudaya');
 });
 
+Route::get('/nilai-budaya', function () {
+    return Inertia::render('profil/NilaiBudaya');
+});
+
+Route::get('/keterserapan-lulusan', function () {
+    return Inertia::render('lulusan/KeterserapanLulusan');
+});
+
+Route::get('/industri-mitra', function () {
+    return Inertia::render('lulusan/IndustriMitra');
+});
+
 Route::get('/fasilitas', [FasilitasController::class, 'show']);
 
 Route::get('/kegiatan-mahasiswa', [KegiatanMahasiswaController::class, 'show']);

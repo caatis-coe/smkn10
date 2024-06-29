@@ -7,8 +7,8 @@ function DaftarKaryawan() {
   return (
     <DefaultLayout>
       <div className='w-full'>
-        <ContentTitle title='PROFIL' subTitle='DAFTAR KARYAWAN' />
-        <AppTable contents={[["Nama", 'NIK', 'pangkat', 'jabatan', 'pendidikan']]} />
+        <ContentTitle title='PROFIL' subTitle='DAFTAR TENAGA PENDIDIKAN' />
+        <AppTable contents={[["Nama", 'Posisi/Jabatan']]} />
       </div>
     </DefaultLayout>
   )

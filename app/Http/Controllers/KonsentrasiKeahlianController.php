@@ -76,20 +76,29 @@ class KonsentrasiKeahlianController extends Controller
             ],
         ],
     ];
-    
-    public function show(String $titleKeahlian) : Response {
 
-        $keahlian = null;
+    public function show(String $titleKeahlian): Response
+    {
+
+        $keahlian = KonsentrasiKeahlian::with('images')
+            ->where('endpoint', 'keahlian-' . $titleKeahlian)
+            ->firstOrFail();
+
+        $imagePaths = $keahlian->images->pluck('image_path')->toArray();
+
+        $transformedKeahlian = [
+            'id' => $keahlian->id,
+            'title' => $keahlian->title,
+            'description' => $keahlian->description,
+            'endpoint' => $keahlian->endpoint,
+            'image_path' => $imagePaths,
+        ];
+
     
-        foreach($this->keahlianDatas as $keahlianData){
-            if ($keahlianData["endpoint"] == "keahlian-" . $titleKeahlian) {
-                $keahlian = $keahlianData;
-                break; 
-            }
-        }
-    
+
+
         return Inertia::render('konsentrasi_keahlian/KonsentrasiKeahlian', [
-            'data' => $keahlian
+            'data' => $transformedKeahlian
         ]);
-    }    
+    }
 }
