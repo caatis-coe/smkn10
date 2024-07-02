@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->String("description")->nullable();
+            $table->LongText("description")->nullable();
             $table->String("image_path");
             $table->String("used_as")->nullable();
         });

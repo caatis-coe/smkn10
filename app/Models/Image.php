@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    public static function getImagesByUsage($usage)
+    {
+        return self::where('used_as', $usage)->get();
+    }
+
+    // Method untuk mendapatkan satu data berdasarkan 'used_as'
+    public static function getSingleImageByUsage($usage)
+    {
+        return self::where('used_as', $usage)->first();
+    }
 }

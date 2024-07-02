@@ -33,6 +33,7 @@ function DefaultLayout({ children, headerChildren }) {
                 />
                 <ScrollToTop />
                 <RightDrawer />
+                
             </div>
         </div>
 

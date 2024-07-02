@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\AdminBeritaController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DaftarGuruController;
 use App\Http\Controllers\FasilitasController;
@@ -16,9 +18,9 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'show']);
 
-Route::get('/contact-us', function () {
-    return Inertia::render('ContactUs');
-});
+Route::get('/contact-us', [ContactController::class, 'show']);
+
+Route::post('/send-email', [ContactController::class, 'sendEmail'])->name('send-email');
 
 Route::prefix('/berita')->group(function () {
     Route::get('', [BeritaController::class, 'show']);
@@ -102,6 +104,8 @@ Route::post('/send-data-buyer', [TeachingFactoryController::class, 'sendDataBuye
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))
         ->name('dashboard');
+
+    Route::resource('berita-db', AdminBeritaController::class);
 });
 
 Route::middleware('auth')->group(function () {

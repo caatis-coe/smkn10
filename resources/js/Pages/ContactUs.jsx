@@ -2,12 +2,57 @@ import DefaultLayout from '@/Layouts/DefaultLayout'
 import React, { useState } from 'react'
 import { MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import contactData from '@/Data/ContactData.jsx';
+import { useForm } from 'react-hook-form';
+import { DevTool } from '@hookform/devtools';
+import { Inertia } from '@inertiajs/inertia';
+import { toast } from 'react-toastify';
+import { usePage } from '@inertiajs/react';
 
 function ContactUs() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [subject, setSubject] = useState("")
-  const [message, setMessage] = useState("")
+  const { register, handleSubmit, formState: { errors }, reset, control} = useForm();
+  const { props } = usePage();
+  const { success, error } = props;
+
+  React.useEffect(() => {
+    if (success) {
+      toast.success(success, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+    }
+
+    if (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+    }
+  }, [success, error]);
+
+  const onSubmit = (data) => {
+    Inertia.post('/send-email', data, {
+      onSuccess: () => {
+        reset();
+      },
+      onError: (errors) => {
+        console.error(errors);
+      }
+    });
+  };
 
   const inputStyle = `border-grey w-full rounded-xl py-3 px-4 border-2 focus:bg-[#FFF] placeholder:text-black bg-white`
 
@@ -52,21 +97,64 @@ function ContactUs() {
             </div>
           </div>
         </div>
-        <form className=' flex flex-col flex-1 gap-y-6'>
+
+        {/* FORM EMAIL  */}
+        <form className=' flex flex-col flex-1 gap-y-6' onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className='flex flex-col sm:flex-row lg:flex-col gap-y-6 xl:flex-row gap-x-6'>
-            <input placeholder='Your Name'
-              className={inputStyle} />
-            <input placeholder='Your Email'
-              className={inputStyle} />
+            <div className='grow'>
+              <input placeholder='Your Name'
+                className={inputStyle} {...register("name", {
+                  required: "Name is required"
+                })} />
+              <p>{errors.name?.message}</p>
+            </div>
+            <div className='grow'>
+              <input placeholder='Your Email' type='email'
+                className={inputStyle} {...register("email", {
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/,
+                    message: "Invalid email format"
+                  },
+                  required: "Email is required"
+                })} />
+              <p>{errors.email?.message}</p>
+            </div>
           </div>
-          <input placeholder='Subject'
-              className={inputStyle} />
-          <textarea placeholder='Message'
-              className={`flex-1 min-h-72 lg:min-h-0  ${inputStyle}`}/>
-          <button className='p-3 self-end bg-primary rounded-lg
+          <div>
+            <input placeholder='Subject'
+              className={inputStyle} {...register("subject", {
+                required: {
+                  value: true,
+                  message: "Subject is required"
+                }
+              })} />
+            <p>{errors.subject?.message}</p>
+          </div>
+          <div>
+            <textarea placeholder='Message'
+              className={`flex-1 h-36 lg:min-h-0  ${inputStyle}`}
+              {...register("message", {
+                required: {
+                  value: true,
+                  message: "Message is required"
+                }
+              })} />
+            <p>{errors.message?.message}</p>
+          </div>
+
+          <button className='p-3 self-center bg-primary rounded-lg
           text-white hover:bg-lighttertiary transition duration-75 ease-in w-32'>Submit</button>
         </form>
+
+
       </div>
+      <DevTool control={control} />
+      <style jsx="true">{`
+                p {
+                    color : rgb(239 68 68);
+                    margin-top : 2px
+                }
+            `}</style>
     </DefaultLayout>
   )
 }

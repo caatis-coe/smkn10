@@ -39,20 +39,9 @@ function HomeAnalytics({ data }) {
     );
 }
 
-function Home({ blogDatas = [], headmaster }) {
-
-    const baseURL = window.location.origin;
-
-    const homeImage1 = `url('${baseURL}/images/slide4.jpg')`;
-    const homeImage2 = `url('${baseURL}/images/slide5.jpg')`;
-    const homeImage3 = `url('${baseURL}/images/slide6.jpg')`;
-
-    const homeImages = [homeImage1, homeImage2, homeImage3]
-
-    const kepsek = `url('images/slamet-heryadi.jpg')`
+function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
 
     const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
-
 
     const numberData = [
         {
@@ -88,9 +77,9 @@ function Home({ blogDatas = [], headmaster }) {
                         }}
                         loop={true}
                     >
-                        {homeImages.map((data, index) => (
+                        {swiperImage.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: data }}></div>
+                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/images/${data.image_path})` }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -152,14 +141,10 @@ function Home({ blogDatas = [], headmaster }) {
             </div>
             <SubTitle title={"Kepala Sekolah"} />
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: kepsek }} />
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage:  `url(/images/${headmaster.image_path})`}} />
                 <div className='flex-1 md:ms-12'>
-                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>Drs. H. Slamet Heryadi, M.Pd. </div>
-                    <div>“ Salam sejahtera kepada seluruh warga SMKN! Kami dengan bangga menyambut Anda di website resmi
-                        Sekolah Menengah Kejuruan Negeri (SMKN) kami. Di sini, kami berkomitmen untuk
-                        memberikan pendidikan berkualitas, membuka peluang, dan menginspirasi para siswa
-                        untuk meraih impian mereka. Selamat datang di dunia belajar yang penuh dengan
-                        potensi dan peluang! ”
+                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>{headmaster.description.split('#')[0]}</div>
+                    <div>“{headmaster.description.split('#').slice(1).join(' ')}”
                     </div>
                 </div>
             </div>

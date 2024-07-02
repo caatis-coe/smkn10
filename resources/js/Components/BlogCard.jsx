@@ -5,12 +5,12 @@ function BlogCard({ blogData = {
     "id": "1",
     "title": "Trekking to Everest Base Camp",
     "description": "Embarking on a challenging trek to the base camp of the world's highest mountain.",
-    "image_path": "image1.jpg",
+    "thumbnail_image": "image1.jpg",
     "date_updated": "2022-01-22"
 } }) {
 
     const backgroundImageStyle = {
-        backgroundImage: `url('${blogData.image_path}')`
+        backgroundImage: `url('${blogData.thumbnail_image}')`
     };
 
     return (
