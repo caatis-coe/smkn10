@@ -42,12 +42,12 @@ export default function WhatsAppButton({phone, text}) {
     };
 
     const handleSendButtonClick = () => {
-        const URL = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        const URL = `https://api.whatsapp.com/send?phone=${phone.replace(/[\+ -]/g, '')}&text=${encodeURIComponent(message)}`;
         window.open(URL, '_blank');
     };
 
     return (
-        <div className="fixed scale-75 bottom-2 right-2 lg:scale-100 lg:bottom-5 lg:right-5 z-10">
+        <div className="fixed scale-75 bottom-2 right-2 lg:scale-100 lg:bottom-5 lg:right-5 z-40">
             {!isCloseClicked ? (
                 <a 
                     href="#" 

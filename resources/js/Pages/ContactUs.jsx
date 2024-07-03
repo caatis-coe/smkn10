@@ -148,7 +148,7 @@ function ContactUs() {
 
 
       </div>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
       <style jsx="true">{`
                 p {
                     color : rgb(239 68 68);

@@ -6,6 +6,7 @@ import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
 import WhatsAppButton from '@/Components/WhatsappButton'
 import ScrollToTop from '@/Components/ScrollToTop'
 import RightDrawer from '@/Components/RightDrawer'
+import contactData from '@/Data/ContactData'
 
 function DefaultLayout({ children, headerChildren }) {
     return (
@@ -28,7 +29,8 @@ function DefaultLayout({ children, headerChildren }) {
                     <Footer />
                 </div>
                 <WhatsAppButton 
-                    phone='6281396969696'
+                    // phone='6281396969696'
+                    phone={contactData.phone}
                     text='Chat with SMKN 10'
                 />
                 <ScrollToTop />
