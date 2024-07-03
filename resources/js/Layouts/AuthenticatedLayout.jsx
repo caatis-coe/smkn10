@@ -25,13 +25,15 @@ export default function AuthenticatedLayout({ user, header, children }) {
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
                                 <NavLink href={route('berita-db.index')} active={route().current('berita-db.index')}>
                                     Berita
+                                </NavLink>
+                                <NavLink href={route('pembelajaran-db.index')} active={route().current('pembelajaran-db.index')}>
+                                    Pembelajaran
                                 </NavLink>
                             </div>
                         </div>

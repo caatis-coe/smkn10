@@ -38,7 +38,7 @@ class AdminBeritaController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        dd($request);
+        dd($request->all());
         $data = $request->validated();
     }
 

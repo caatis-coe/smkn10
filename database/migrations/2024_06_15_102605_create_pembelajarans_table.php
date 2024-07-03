@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('pembelajarans', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("description");
+            $table->longText("description")->nullable();
             $table->string("type");
             $table->string("group");
-            $table->string("image_path");
+            $table->string("image_path")->nullable();
+            $table->foreignId("updated_by")->constrained("users");
+            $table->foreignId("published_by")->constrained("users");
             $table->timestamps();
         });
     }

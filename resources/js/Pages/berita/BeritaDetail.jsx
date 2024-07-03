@@ -10,13 +10,17 @@ function BeritaDetail({ data = {
     "date_updated": "2022-01-22"
 } }) {
 
-    const beritaImageURL = `url('${data.image_path}')`  
+    const resolveImagePath = (path) => {
+        if (path.startsWith('http')) {
+            return path;
+        }
+        return `${window.location.origin}/${path}`;
+    };
 
     return (
         <DefaultLayout>
             <ContentTitle subTitle={data.title} />
-            <div className='min-w-[324px] min-h-[484px] shadow-md bg-cover bg-center mb-12' style={{backgroundImage : beritaImageURL}}>
-            </div>
+            <img src={resolveImagePath(data.thumbnail_image)} className='min-w-[324px] min-h-[484px] rounded shadow-md bg-cover bg-center mb-12'/>
             <div>
                 {data.description}
             </div>

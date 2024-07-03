@@ -2,6 +2,8 @@ import React from 'react'
 
 function PembelajaranCard({ data }) {
 
+    console.log(data.description)
+
     const backgroundImage = `url('images/${data.image_path}')`;
 
     return (
@@ -12,12 +14,12 @@ function PembelajaranCard({ data }) {
                 border-grey rounded-t-md`} style={{ backgroundImage }}>
                 </div>
                 <div className={`border-2 border-lightgrey border-t-0 flex flex-col  min-h-[128px] 
-                px-5 pt-4 pb-7 rounded-b-md ${data.description == "" ? "items-center justify-center" : "justify-between"}`}>
+                px-5 pt-4 pb-7 rounded-b-md ${data.description == "" || data.description == null ? "items-center justify-center" : "justify-between"}`}>
                     <div>
-                        <div className={`${data.description == "" ? "text-[24px] font-semibold" : "text-[18px] font-medium"}  mb-2 line-clamp-1`}>
+                        <div className={`${data.description == "" || data.description == null  ? "text-[24px] font-semibold" : "text-[18px] font-medium"}  mb-2 line-clamp-1`}>
                             {data.title}
                         </div>
-                        {data.description != "" && <div className='text-[12px] line-clamp-3 group-hover:line-clamp-none transition'>
+                        {(data.description != '' || data.description != null) && <div className='text-[12px] line-clamp-3 group-hover:line-clamp-none transition'>
                             {data.description}
                         </div>}
                     </div>

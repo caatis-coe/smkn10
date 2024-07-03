@@ -79,6 +79,8 @@ class PembelajaranSeeder extends Seeder
                 'type' => 'kegiatan mahasiswa',
                 'group' => 'Ekstrakulikuler',
                 'image_path' => $data['image_path'],
+                'published_by' => 1,
+                'updated_by' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -92,6 +94,8 @@ class PembelajaranSeeder extends Seeder
                 'type' => 'fasilitas',
                 'group' => 'Sarana Prasarana',
                 'image_path' => $data['image_path'],
+                'published_by' => 1,
+                'updated_by' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

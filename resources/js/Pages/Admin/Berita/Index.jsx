@@ -4,6 +4,7 @@ import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 
 function Index({ auth, beritas }) {
+
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -29,7 +30,7 @@ function Index({ auth, beritas }) {
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div className="p-6 text-gray-900">
+            <div className="p-6 text-gray-950">
               <table className='w-full text-sm text-left rtl:text-right
               text-gray-500 '>
                 <thead className='text-xs text-gray-700 uppercase bg-gray-100

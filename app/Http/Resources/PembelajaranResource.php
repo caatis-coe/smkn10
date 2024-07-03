@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BeritaResource extends JsonResource
+class PembelajaranResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,11 +19,13 @@ class BeritaResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'thumbnail_image' => $this->thumbnail_image,
+            'type' => $this->type,
+            'group' => $this->group,
+            'image_path' => $this->image_path,
             'published_by' => new UserResource($this->publishedBy),
             'updated_by' => new UserResource($this->updatedBy),
-            'created_at' => (new Carbon($this->created_at))->format('d-m-Y'),
-            'updated_at' => (new Carbon($this->updated_at))->format('d-m-Y'),
+            'created_at' => (new Carbon($this->created_at)) -> format('d-m-Y'),
+            'updated_at' => (new Carbon($this->updated_at)) -> format('d-m-Y'),
         ];
     }
 }

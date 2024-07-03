@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminBeritaController;
+use App\Http\Controllers\admin\AdminPembelajaranController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -106,6 +107,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         ->name('dashboard');
 
     Route::resource('berita-db', AdminBeritaController::class);
+    Route::resource('pembelajaran-db', AdminPembelajaranController::class);
 });
 
 Route::middleware('auth')->group(function () {

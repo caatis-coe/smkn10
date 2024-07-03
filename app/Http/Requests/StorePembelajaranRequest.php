@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreBlogRequest extends FormRequest
+class StorePembelajaranRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +24,10 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             "title" => ['required', 'max:121'],
-            "thumbnail_image" => ['required'],
-            "description" => ['required', 'string', 'max:255'],
+            "image_path" => ['nullable', 'image'],
+            "description" => ['max:512'],
+            "type" => ['required'],
+            "group" => ['required']
         ];
     }
 }

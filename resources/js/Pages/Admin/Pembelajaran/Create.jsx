@@ -1,26 +1,27 @@
 import InputError from '@/Components/InputError'
 import InputLabel from '@/Components/InputLabel'
+import SelectInput from '@/Components/SelectInput'
 import TextAreaInput from '@/Components/TextAreaInput'
 import TextInput from '@/Components/TextInput'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, useForm } from '@inertiajs/react'
 import React from 'react'
 
-function Create({ auth }) {
-    
-    
+function Create({ auth, groups }) {
 
     const {data, setData, post, errors, reset} = useForm({
-        thumbnail_image : '',
+        image_path : '',
         title : '',
         description : '',
+        type : '',
+        group : '',
     })
-    
+
+
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        post(route("berita-db.store"))
+        post(route("pembelajaran-db.store"))
     }
 
     return (
@@ -29,36 +30,36 @@ function Create({ auth }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Create New Berita
+                        Create New Pembelajaran
                     </h2>
                 </div>
             }
         >
-            <Head title="Berita" />
+            <Head title="Pembelajaran" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg text-gray-900">
                             <form
                             onSubmit={onSubmit}
-                            className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'
-                            method='POST'>
+                            className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
+                                
                                 <div>
-                                    <InputLabel htmlFor = "berita_image_path" value="Thumbnail Image"/>
+                                    <InputLabel htmlFor = "pembelajaran_image_path" value="Thumbnail Image"/>
                                     <TextInput 
-                                        id = "berita_image_path"
+                                        id = "pembelajaran_image_path"
                                         type = "file"
                                         name ="image"
-                                        value = {data.thumbnail_image}
+                                        
                                         className = "mt-1 block w-full"
-                                        onChange = {e => setData('thumbnail_image', e.target.value)}
+                                        onChange = {e => setData('image_path', e.target.files[0])}
                                     />
-                                    <InputError message={errors.thumbnail_image} className='mt-2' />
+                                    <InputError message={errors.image_path} className='mt-2' />
                                 </div>
                                 <div className='mt-4'>
-                                    <InputLabel htmlFor = "berita_title" value="Title"/>
+                                    <InputLabel htmlFor = "pembelajaran_title" value="Title"/>
                                     <TextInput 
-                                        id = "berita_title"
+                                        id = "pembelajaran_title"
                                         type = "text"
                                         name ="title"
                                         value = {data.title}
@@ -69,9 +70,9 @@ function Create({ auth }) {
                                     <InputError message={errors.title} className='mt-2' />
                                 </div>
                                 <div className='mt-4'>
-                                    <InputLabel htmlFor = "berita_description" value="Description"/>
+                                    <InputLabel htmlFor = "pembelajaran_description" value="Description"/>
                                     <TextAreaInput 
-                                        id = "berita_description"
+                                        id = "pembelajaran_description"
                                         type = "text"
                                         name ="description"
                                         value = {data.description}
@@ -81,8 +82,42 @@ function Create({ auth }) {
                                     />
                                     <InputError message={errors.description} className='mt-2' />
                                 </div>
+                                <div className='mt-4'>
+                                    <InputLabel htmlFor = "pembelajaran_type" value="Type"/>
+                                    <SelectInput
+                                        id = "pembelajaran_type"
+                                        name ="type"
+                                        className = "mt-1 block w-full"
+                                        onChange = {(e) => {
+                                            setData('group', '');
+                                            setData('type', e.target.value);
+                                        }}
+                                    >
+                                        <option value="">Select Type</option>
+                                        <option value="fasilitas">Fasilitas</option>
+                                        <option value="kegiatan mahasiswa">Kegiatan Mahasiswa</option>
+                                    </SelectInput>
+                                    <InputError message={errors.type} className='mt-2' />
+                                </div>
+                                <div className='mt-4'>
+                                    <InputLabel htmlFor = "pembelajaran_group" value="Group"/>
+                                    <SelectInput
+                                        id = "pembelajaran_group"
+                                        name ="group"
+                                        className = {`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
+                                        onChange = {e => setData ('group', e.target.value)}
+                                    >
+                                        {!data.type ? <option value="">Select Type First</option> : <>
+                                            <option value="">Select Group</option>
+                                            {groups[data.type].map((group) => (
+                                                <option key={group} value={group}>{group}</option>
+                                            ))}
+                                        </>}
+                                    </SelectInput>
+                                    <InputError message={errors.group} className='mt-2' />
+                                </div>
                                 <div className='mt-4 text-right'>
-                                    <Link href={route("berita-db.index")} 
+                                    <Link href={route("pembelajaran-db.index")} 
                                     className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
                                     transition-all hover:bg-gray-200 mr-2 text-sm
                                     '>
