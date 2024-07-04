@@ -10,9 +10,11 @@ function BlogCard({ blogData = {
 } }) {
 
     const backgroundImageStyle = {
-        backgroundImage: `url('${blogData.thumbnail_image}')`
+        backgroundImage: blogData.thumbnail_image.startsWith('https')
+            ? `url('${blogData.thumbnail_image}')`
+            : `url('storage/${blogData.thumbnail_image}')`
     };
-
+    
     return (
         <div className='flex flex-col min-w-[256px]  min-h-[484px] bg-white shadow-md rounded-2xl '>
             <div className={`flex-1  bg-cover bg-center
@@ -23,7 +25,7 @@ function BlogCard({ blogData = {
                     <div className='font-medium mb-2 text-[18px]'>
                         {blogData.title}
                     </div>
-                    <div className='text-[12px] line-clamp-6'>
+                    <div className='text-[12px] line-clamp-6 md:line-clamp-4 lg:line-clamp-6'>
                         {blogData.description}
                     </div>
                 </div>

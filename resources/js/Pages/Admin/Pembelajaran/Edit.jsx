@@ -42,9 +42,9 @@ function Edit({ auth, groups, pembelajaran }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg text-gray-900">
 
-                        <pre>
+                        {/* <pre>
                             {JSON.stringify(data, undefined, 2)}
-                        </pre>
+                        </pre> */}
                         <form
                             onSubmit={onSubmit}
                             className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
@@ -71,7 +71,7 @@ function Edit({ auth, groups, pembelajaran }) {
                                 <InputError message={errors.image_path} className='mt-2' />
                             </div>
                             <div className='mt-4'>
-                                <InputLabel htmlFor="pembelajaran_title" value="Title" />
+                                <InputLabel htmlFor="pembelajaran_title" value="*Title" />
                                 <TextInput
                                     id="pembelajaran_title"
                                     type="text"
@@ -97,7 +97,7 @@ function Edit({ auth, groups, pembelajaran }) {
                                 <InputError message={errors.description} className='mt-2' />
                             </div>
                             <div className='mt-4'>
-                                <InputLabel htmlFor="pembelajaran_type" value="Type" />
+                                <InputLabel htmlFor="pembelajaran_type" value="*Type" />
                                 <SelectInput
                                     id="pembelajaran_type"
                                     name="type"
@@ -119,7 +119,7 @@ function Edit({ auth, groups, pembelajaran }) {
                             </div>
                             <div className='mt-4'>
                                 <InputLabel htmlFor="pembelajaran_group">
-                                    Group {
+                                    *Group {
                                         data.type &&
                                         <span >
                                             | <span className='hover:underline cursor-pointer text-blue-500  transition-all'
@@ -162,17 +162,23 @@ function Edit({ auth, groups, pembelajaran }) {
 
                                 <InputError message={errors.group} className='mt-2' />
                             </div>
-                            <div className='mt-4 text-right'>
-                                <Link href={route("pembelajaran-db.index")}
-                                    className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
+                            <div className='mt-4 flex items-end justify-between'>
+                                <div className='text-xs'>
+                                    *required
+                                </div>
+                                <div className=''>
+
+                                    <Link href={route("pembelajaran-db.index")}
+                                        className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
                                     transition-all hover:bg-gray-200 mr-2 text-sm
                                     '>
-                                    Cancel
-                                </Link>
-                                <button className='bg-emerald-500 py-2 px-4 text-white
+                                        Cancel
+                                    </Link>
+                                    <button className='bg-emerald-500 py-2 px-4 text-white
                                     rounded shadow transition-all hover:bg-emerald-600 text-sm'>
-                                    Submit
-                                </button>
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>

@@ -64,7 +64,7 @@ function Create({ auth, groups }) {
                                 <InputError message={errors.image_path} className='mt-2' />
                             </div>
                             <div className='mt-4'>
-                                <InputLabel htmlFor="pembelajaran_title" value="Title" />
+                                <InputLabel htmlFor="pembelajaran_title" value="*Title" />
                                 <TextInput
                                     id="pembelajaran_title"
                                     type="text"
@@ -90,7 +90,7 @@ function Create({ auth, groups }) {
                                 <InputError message={errors.description} className='mt-2' />
                             </div>
                             <div className='mt-4'>
-                                <InputLabel htmlFor="pembelajaran_type" value="Type" />
+                                <InputLabel htmlFor="pembelajaran_type" value="*Type" />
                                 <SelectInput
                                     id="pembelajaran_type"
                                     name="type"
@@ -112,8 +112,8 @@ function Create({ auth, groups }) {
                             </div>
                             <div className='mt-4'>
                                 <InputLabel htmlFor="pembelajaran_group">
-                                    Group {
-                                        data.type && 
+                                    *Group {
+                                        data.type &&
                                         <span >
                                             | <span className='hover:underline cursor-pointer text-blue-500  transition-all'
                                                 onClick={() => {
@@ -121,51 +121,59 @@ function Create({ auth, groups }) {
                                                     setData('group', '')
                                                 }}
                                             >
-                                                {toogleGroupOption ? "Make new group" : "Select existing one"} 
+                                                {toogleGroupOption ? "Make new group" : "Select existing one"}
                                             </span>
                                         </span>
-                                    }   
+                                    }
                                 </InputLabel>
-                                {toogleGroupOption ? 
-                                <SelectInput
-                                    id="pembelajaran_group"
-                                    name="group"
-                                    className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
-                                    onChange={e => setData('group', e.target.value)}
-                                >
-                                    {!data.type ? <option value="">Select Type First</option> : <>
-                                        <option value="">Select Group</option>
-                                        {groups[data.type].map((group) => (
-                                            <option key={group} value={group}>{group}</option>
-                                        ))}
-                                    </>}
-                                </SelectInput> 
-                                : 
-                                <TextInput
-                                    id="pembelajaran_group"
-                                    type="text"
-                                    name="group"
-                                    value={data.group}
-                                    className="mt-1 block w-full capitalize"
-                                    isFocused={true}
-                                    onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
-                                />
+                                {toogleGroupOption ?
+                                    <SelectInput
+                                        id="pembelajaran_group"
+                                        name="group"
+                                        className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
+                                        onChange={e => setData('group', e.target.value)}
+                                    >
+                                        {!data.type ? <option value="">Select Type First</option> : <>
+                                            <option value="">Select Group</option>
+                                            {groups[data.type].map((group) => (
+                                                <option key={group} value={group}>{group}</option>
+                                            ))}
+                                        </>}
+                                    </SelectInput>
+                                    :
+                                    <TextInput
+                                        id="pembelajaran_group"
+                                        type="text"
+                                        name="group"
+                                        value={data.group}
+                                        className="mt-1 block w-full capitalize"
+                                        isFocused={true}
+                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
+                                    />
                                 }
-                                
+
                                 <InputError message={errors.group} className='mt-2' />
                             </div>
-                            <div className='mt-4 text-right'>
-                                <Link href={route("pembelajaran-db.index")}
-                                    className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
+                            <div className='mt-4 flex items-end justify-between'>
+                                <div className='text-xs'>
+                                    *required
+                                </div>
+                                <div className=''>
+
+                                    <Link href={route("pembelajaran-db.index")}
+                                        className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
                                     transition-all hover:bg-gray-200 mr-2 text-sm
                                     '>
-                                    Cancel
-                                </Link>
-                                <button className='bg-emerald-500 py-2 px-4 text-white
+                                        Cancel
+                                    </Link>
+                                    <button className='bg-emerald-500 py-2 px-4 text-white
                                     rounded shadow transition-all hover:bg-emerald-600 text-sm'>
-                                    Submit
-                                </button>
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

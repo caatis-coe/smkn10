@@ -4,22 +4,20 @@ import TextAreaInput from '@/Components/TextAreaInput'
 import TextInput from '@/Components/TextInput'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, useForm } from '@inertiajs/react'
-import React, { useState } from 'react'
+import React from 'react'
 
-function Create({ auth, groups }) {
-
-    const [toogleGroupOption, setToogleGroupOption] = useState(true)
+function Edit({ auth, berita }) {
 
     const { data, setData, post, errors, reset } = useForm({
-        thumbnail_image: '',
-        title: '',
-        description: '',
+        thumbnail_image: null,
+        title: berita.title || "",
+        description: berita.description || "",
+        _method: 'PUT'
     })
-
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route("berita-db.store"))
+        post(route("berita-db.update", berita.id))
     }
 
     return (
@@ -28,33 +26,40 @@ function Create({ auth, groups }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Create New Berita
+                        Edit {berita.title}
                     </h2>
                 </div>
             }
         >
             <Head title="Berita" />
+
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg text-gray-900">
+
+                        {/* <pre>
+                            {JSON.stringify(data, undefined, 2)}
+                        </pre> */}
                         <form
                             onSubmit={onSubmit}
                             className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
-                            {data.thumbnail_image &&
-                                <div className='mb-4'>
-                                    <img src={URL.createObjectURL(data.thumbnail_image)} alt="" className='aspect-video w-full object-cover' />
-                                </div>
+                            {
+                                data.thumbnail_image ?
+                                    <div className='mb-4'>
+                                        <img src={URL.createObjectURL(data.thumbnail_image)} alt="" className='aspect-video w-full object-cover' />
+                                    </div>
+                                    :
+                                    berita.thumbnail_image &&
+                                    <div className='mb-4'>
+                                        <img src={berita.thumbnail_image} alt="" className='aspect-video w-full object-cover' />
+                                    </div>
                             }
-                            {/* <pre>
-                                {JSON.stringify(data,undefined,2)}
-                            </pre> */}
                             <div>
                                 <InputLabel htmlFor="berita_thumbnail_image" value="*Thumbnail Image" />
                                 <TextInput
                                     id="berita_thumbnail_image"
                                     type="file"
                                     name="image"
-
                                     className="mt-1 block w-full"
                                     onChange={e => setData('thumbnail_image', e.target.files[0])}
                                 />
@@ -103,6 +108,7 @@ function Create({ auth, groups }) {
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -111,4 +117,4 @@ function Create({ auth, groups }) {
     )
 }
 
-export default Create
+export default Edit

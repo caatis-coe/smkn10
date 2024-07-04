@@ -9,6 +9,14 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'thumbnail_image',
+        'title',
+        'description',
+        'published_by',
+        'updated_by'
+    ];
+
     public static function getRecentBlogs()
     {
         return self::latest('updated_at')->take(6)->get();

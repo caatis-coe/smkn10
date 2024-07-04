@@ -23,8 +23,8 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             "title" => ['required', 'max:121'],
-            "thumbnail_image" => ['required'],
-            "description" => ['required', 'string', 'max:255'],
+            "thumbnail_image" => ['image'],
+            "description" => ['required', 'max:512'],
         ];
     }
 }

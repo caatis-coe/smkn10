@@ -11,7 +11,7 @@ class UpdateBlogRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => ['required', 'max:121'],
+            "thumbnail_image" => ['nullable','image'],
+            "description" => ['required', 'max:512'],
         ];
     }
 }
