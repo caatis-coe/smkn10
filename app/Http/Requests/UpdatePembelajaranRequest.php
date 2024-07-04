@@ -11,7 +11,7 @@ class UpdatePembelajaranRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdatePembelajaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => ['required', 'max:121'],
+            "image_path" => ['nullable', 'image'],
+            "description" => ['max:512'],
+            "type" => ['required'],
+            "group" => ['required']
         ];
     }
 }

@@ -7,22 +7,22 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, useForm } from '@inertiajs/react'
 import React, { useState } from 'react'
 
-function Create({ auth, groups }) {
+function Edit({ auth, groups, pembelajaran }) {
 
     const [toogleGroupOption, setToogleGroupOption] = useState(true)
 
     const { data, setData, post, errors, reset } = useForm({
-        image_path: '',
-        title: '',
-        description: '',
-        type: '',
-        group: '',
+        image_path: null,
+        title: pembelajaran.title || "",
+        description: pembelajaran.description || "",
+        type: pembelajaran.type || "",
+        group: pembelajaran.group || "",
+        _method: 'PUT'
     })
-
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route("pembelajaran-db.store"))
+        post(route("pembelajaran-db.update", pembelajaran.id))
     }
 
     return (
@@ -31,33 +31,40 @@ function Create({ auth, groups }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Create New Pembelajaran
+                        Edit {pembelajaran.title}
                     </h2>
                 </div>
             }
         >
             <Head title="Pembelajaran" />
+
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg text-gray-900">
+
+                        <pre>
+                            {JSON.stringify(data, undefined, 2)}
+                        </pre>
                         <form
                             onSubmit={onSubmit}
                             className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
-                            {data.image_path &&
-                                <div className='mb-4'>
-                                    <img src={URL.createObjectURL(data.image_path)} alt="" className='aspect-video w-full object-cover' />
-                                </div>
+                            {
+                                data.image_path ?
+                                    <div className='mb-4'>
+                                        <img src={URL.createObjectURL(data.image_path)} alt="" className='aspect-video w-full object-cover' />
+                                    </div>
+                                    :
+                                    pembelajaran.image_path &&
+                                    <div className='mb-4'>
+                                        <img src={pembelajaran.image_path} alt="" className='aspect-video w-full object-cover' />
+                                    </div>
                             }
-                            {/* <pre>
-                                {JSON.stringify(data,undefined,2)}
-                            </pre> */}
                             <div>
                                 <InputLabel htmlFor="pembelajaran_image_path" value="Thumbnail Image" />
                                 <TextInput
                                     id="pembelajaran_image_path"
                                     type="file"
                                     name="image"
-
                                     className="mt-1 block w-full"
                                     onChange={e => setData('image_path', e.target.files[0])}
                                 />
@@ -94,14 +101,14 @@ function Create({ auth, groups }) {
                                 <SelectInput
                                     id="pembelajaran_type"
                                     name="type"
+                                    value={data.type}
                                     className="mt-1 block w-full"
                                     onChange={(e) => {
                                         setData((prevData) => ({
                                             ...prevData,
                                             type: e.target.value,
-                                            group: ''
+                                            group: ''  // Reset 'group' when 'type' changes
                                         }));
-                                        setToogleGroupOption(true);
                                     }}
                                 >
                                     <option value="">Select Type</option>
@@ -113,7 +120,7 @@ function Create({ auth, groups }) {
                             <div className='mt-4'>
                                 <InputLabel htmlFor="pembelajaran_group">
                                     Group {
-                                        data.type && 
+                                        data.type &&
                                         <span >
                                             | <span className='hover:underline cursor-pointer text-blue-500  transition-all'
                                                 onClick={() => {
@@ -121,37 +128,38 @@ function Create({ auth, groups }) {
                                                     setData('group', '')
                                                 }}
                                             >
-                                                {toogleGroupOption ? "Make new group" : "Select existing one"} 
+                                                {toogleGroupOption ? "Make new group" : "Select existing one"}
                                             </span>
                                         </span>
-                                    }   
+                                    }
                                 </InputLabel>
-                                {toogleGroupOption ? 
-                                <SelectInput
-                                    id="pembelajaran_group"
-                                    name="group"
-                                    className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
-                                    onChange={e => setData('group', e.target.value)}
-                                >
-                                    {!data.type ? <option value="">Select Type First</option> : <>
-                                        <option value="">Select Group</option>
-                                        {groups[data.type].map((group) => (
-                                            <option key={group} value={group}>{group}</option>
-                                        ))}
-                                    </>}
-                                </SelectInput> 
-                                : 
-                                <TextInput
-                                    id="pembelajaran_group"
-                                    type="text"
-                                    name="group"
-                                    value={data.group}
-                                    className="mt-1 block w-full capitalize"
-                                    isFocused={true}
-                                    onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
-                                />
+                                {toogleGroupOption ?
+                                    <SelectInput
+                                        id="pembelajaran_group"
+                                        name="group"
+                                        value={data.group}
+                                        className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
+                                        onChange={e => setData('group', e.target.value)}
+                                    >
+                                        {!data.type ? <option value="">Select Type First</option> : <>
+                                            <option value="">Select Group</option>
+                                            {groups[data.type].map((group) => (
+                                                <option key={group} value={group}>{group}</option>
+                                            ))}
+                                        </>}
+                                    </SelectInput>
+                                    :
+                                    <TextInput
+                                        id="pembelajaran_group"
+                                        type="text"
+                                        name="group"
+                                        value={data.group}
+                                        className="mt-1 block w-full capitalize"
+                                        isFocused={true}
+                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
+                                    />
                                 }
-                                
+
                                 <InputError message={errors.group} className='mt-2' />
                             </div>
                             <div className='mt-4 text-right'>
@@ -174,4 +182,4 @@ function Create({ auth, groups }) {
     )
 }
 
-export default Create
+export default Edit

@@ -3,7 +3,6 @@ import React from 'react'
 
 function Pagination({ links, additionalUrlParams = ""}) {
 
-    console.log(links)
 
     return (
         <nav className='text-center mt-4'>

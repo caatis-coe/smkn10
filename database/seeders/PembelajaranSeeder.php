@@ -11,61 +11,50 @@ class PembelajaranSeeder extends Seeder
     private $dataKegiatanMahasiswa = [
         [
             "title" => "Ekskul Angklung",
-            "description" => "",
-            "image_path" => 'ekskul-angklung.jpg',
+            "image_path" => 'images/pembelajaran/ekskul-angklung.jpg',
         ],
         [
             "title" => "Ekskul Futsal",
-            "description" => "",
-            "image_path" => 'ekskul-futsal.jpg',
+            "image_path" => 'images/pembelajaran/ekskul-futsal.jpg',
         ],
         [
             "title" => "Ekskul Paduan Suara",
-            "description" => "",
-            "image_path" => 'ekskul-paduan.jpg',
+            "image_path" => 'images/pembelajaran/ekskul-paduan.jpg',
         ],
         [
             "title" => "Ekskul Taekwondo",
-            "description" => "",
-            "image_path" => 'ekskul-taekwondo.jpg',
+            "image_path" => 'images/pembelajaran/ekskul-taekwondo.jpg',
         ],
     ];
 
     private $dataFasilitas = [
         [
             "title" => "Kantor Pusat Manajemen",
-            "description" => "",
-            "image_path" => 'kantor.jpg',
+            "image_path" => 'images/pembelajaran/kantor.jpg',
         ],
         [
             "title" => "Perpustakaan",
-            "description" => "",
-            "image_path" => 'perpustakaan.jpg',
+            "image_path" => 'images/pembelajaran/perpustakaan.jpg',
         ],
         [
             "title" => "RPS Broadcasting dan Perfilman",
-            "description" => "",
-            "image_path" => 'broadcasting.jpg',
+            "image_path" => 'images/pembelajaran/broadcasting.jpg',
         ],
         [
             "title" => "Ruang Kelas",
-            "description" => "",
-            "image_path" => 'kelas.jpg',
+            "image_path" => 'images/pembelajaran/kelas.jpg',
         ],
         [
             "title" => "Lapangan Basket",
-            "description" => "",
-            "image_path" => 'lap-basket.jpg',
+            "image_path" => 'images/pembelajaran/lap-basket.jpg',
         ],
         [
             "title" => "Studio Televisi",
-            "description" => "",
-            "image_path" => 'televisi.jpg',
+            "image_path" => 'images/pembelajaran/televisi.jpg',
         ],
         [
             "title" => "Taman Sekolah",
-            "description" => "",
-            "image_path" => 'taman.jpg',
+            "image_path" => 'images/pembelajaran/taman.jpg',
         ],
     ];
 
@@ -75,10 +64,10 @@ class PembelajaranSeeder extends Seeder
         foreach ($this->dataKegiatanMahasiswa as $data) {
             DB::table('pembelajarans')->insert([
                 'title' => $data['title'],
-                'description' => $data['description'],
+                'description' => $data['description'] ?? '',
                 'type' => 'kegiatan mahasiswa',
                 'group' => 'Ekstrakulikuler',
-                'image_path' => $data['image_path'],
+                'image_path' => $data['image_path'] ?? '',
                 'published_by' => 1,
                 'updated_by' => 1,
                 'created_at' => now(),
@@ -90,10 +79,10 @@ class PembelajaranSeeder extends Seeder
         foreach ($this->dataFasilitas as $data) {
             DB::table('pembelajarans')->insert([
                 'title' => $data['title'],
-                'description' => $data['description'],
+                'description' => $data['description'] ?? '',
                 'type' => 'fasilitas',
                 'group' => 'Sarana Prasarana',
-                'image_path' => $data['image_path'],
+                'image_path' => $data['image_path'] ?? '',
                 'published_by' => 1,
                 'updated_by' => 1,
                 'created_at' => now(),
