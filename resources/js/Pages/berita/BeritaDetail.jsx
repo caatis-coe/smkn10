@@ -14,7 +14,7 @@ function BeritaDetail({ data = {
         if (path.startsWith('http')) {
             return path;
         }
-        return `${window.location.origin}/${path}`;
+        return `${window.location.origin}/storage/${path}`;
     };
 
     return (

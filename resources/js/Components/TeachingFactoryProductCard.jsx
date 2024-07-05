@@ -37,7 +37,7 @@ function FormText({title, callbackText, isNumber = false, errorMessage}){
 }
 
 function TeachingFactoryProductCard({ productData }) {
-  const backgroundImage = `url('images/image1.jpg')`;
+  const backgroundImage = `url('storage/${productData.image_path}')`;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [namaPembeli, setNamaPembeli] = useState("")
   const [namaPerusahaan, setNamaPerusahaan] = useState("")

@@ -9,6 +9,14 @@ class Image extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
+    protected $fillable = [
+        'description',
+        'image_path',
+        'used_as',
+    ];
+
     public static function getImagesByUsage($usage)
     {
         return self::where('used_as', $usage)->get();

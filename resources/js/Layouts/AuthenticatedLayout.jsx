@@ -35,6 +35,9 @@ export default function AuthenticatedLayout({ user, header, children }) {
                                 <NavLink href={route('pembelajaran-db.index')} active={route().current('pembelajaran-db.*')}>
                                     Pembelajaran
                                 </NavLink>
+                                <NavLink href={route('konsentrasi-keahlian-db.index')} active={route().current('konsentrasi-keahlian-db.*')}>
+                                    Konsentrasi Keahlian
+                                </NavLink>
                             </div>
                         </div>
 

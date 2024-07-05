@@ -204,7 +204,7 @@ function InfoPpdb({ contentTable =
                         <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
                         <img
                             
-                            src={data.image}
+                            src={"storage/"+data.image}
                             alt={`PPDB Image ${index + 1}`}
                             className='content shadow-md lg:h-[600px] sm:h-[184px] slide-in-up sm:mb-5 md:mb-20'
                             style={{ objectFit: 'cover' }}

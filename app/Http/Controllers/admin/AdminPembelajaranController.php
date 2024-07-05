@@ -108,6 +108,7 @@ class AdminPembelajaranController extends Controller
         $data = $request->validated();
         $data['updated_by'] = Auth::id();
         $image = $data['image_path'] ?? null;
+        dd($pembelajaran_db->image_path);
         if ($image) {
             if($pembelajaran_db->image_path) {
                 Storage::disk('public')->delete($pembelajaran_db->image_path);

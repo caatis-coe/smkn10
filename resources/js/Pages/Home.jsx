@@ -79,7 +79,7 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
                     >
                         {swiperImage.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/images/${data.image_path})` }}></div>
+                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/storage/${data.image_path})` }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -141,7 +141,7 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
             </div>
             <SubTitle title={"Kepala Sekolah"} />
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage:  `url(/images/${headmaster.image_path})`}} />
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage:  `url(/storage/${headmaster.image_path})`}} />
                 <div className='flex-1 md:ms-12'>
                     <div className='font-semibold text-[24px] text-center md:text-left mb-2'>{headmaster.description.split('#')[0]}</div>
                     <div>“{headmaster.description.split('#').slice(1).join(' ')}”

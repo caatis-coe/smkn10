@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Image;
+use App\Models\KonsentrasiKeahlian;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Foundation\Application;
@@ -21,6 +22,13 @@ class HomeController extends Controller
         $this->beritaDatas = Blog::getRecentBlogs();
         $this->homeSwipers = Image::getImagesByUsage('home_swiper');
         $this->headmaster = Image::getSingleImageByUsage('headmaster');
+
+        Inertia::share('keahlianDatas', KonsentrasiKeahlian::all()->map(function ($keahlian) {
+            return [
+                'title' => $keahlian->title,
+                'endpoint' => "/{$keahlian->slug}",
+            ];
+        }));
     }
 
     public function show(): Response

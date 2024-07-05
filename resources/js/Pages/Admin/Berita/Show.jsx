@@ -46,7 +46,7 @@ function Show({ auth, berita }) {
                                             {berita.title}
                                         </p>
                                     </div>
-                                    <div className='mt-4'>
+                                    <div>
                                         <label className='text-lg'>
                                             Published by
                                         </label>
