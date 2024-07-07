@@ -1,12 +1,23 @@
 <?php
 
-use App\Http\Controllers\admin\AdminBeritaController;
+use App\Http\Controllers\Admin\AdminBeritaController;
+use App\Http\Controllers\Admin\AdminBuyerController;
+use App\Http\Controllers\Admin\AdminDaftarTenagaPendidikanController;
+use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminKonsentrasiKeahlianController;
 use App\Http\Controllers\admin\AdminPembelajaranController;
+use App\Http\Controllers\Admin\AdminPrestasiGuruController;
+use App\Http\Controllers\Admin\AdminPrestasiSekolahController;
+use App\Http\Controllers\Admin\AdminPrestasiSiswaController;
+use App\Http\Controllers\Admin\AdminProfilController;
+use App\Http\Controllers\Admin\AdminTeachingFactoryProductController;
+use App\Http\Controllers\Admin\AdminDaftarGuruController;
+use App\Http\Controllers\Admin\AdminStrukturOrganisasiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DaftarGuruController;
+use App\Http\Controllers\DaftarTenagaPendidikanController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoPpdbController;
@@ -16,6 +27,7 @@ use App\Http\Controllers\PrestasiSekolahController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\TeachingFactoryController;
 use App\Http\Middleware\ShareKeahlianData;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,9 +46,7 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
 
     Route::get('/daftar-guru', [DaftarGuruController::class, 'show']);
 
-    Route::get('/daftar-karyawan', function () {
-        return Inertia::render('profil/DaftarKaryawan');
-    });
+    Route::get('/daftar-tenaga-pendidikan', [DaftarTenagaPendidikanController::class, 'show']);
 
     Route::get('/sejarah', [SejarahController::class, 'show']);
 
@@ -95,26 +105,28 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
     Route::post('/send-data-buyer', [TeachingFactoryController::class, 'sendDataBuyer']);
 });
 
-
-
-// DASHBOARD ROUTES
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))
+    Route::get('/dashboard', fn () =>  Redirect::route('home-db.index'))
         ->name('dashboard');
 
+    Route::resource('home-db', AdminHomeController::class);
+    Route::resource('struktur-organisasi-db',  AdminStrukturOrganisasiController::class);
+    Route::resource('daftar-guru-db',  AdminDaftarGuruController::class);
+    Route::resource('daftar-tenaga-pendidikan-db', AdminDaftarTenagaPendidikanController::class);
+    Route::resource('profil-db', AdminProfilController::class);
+    Route::resource('buyer-db', AdminBuyerController::class);
     Route::resource('berita-db', AdminBeritaController::class);
     Route::resource('pembelajaran-db', AdminPembelajaranController::class);
     Route::resource('konsentrasi-keahlian-db', AdminKonsentrasiKeahlianController::class);
+    Route::resource('teaching-factory-product-db', AdminTeachingFactoryProductController::class);
+    Route::resource('prestasi-sekolah-db', AdminPrestasiSekolahController::class);
+    Route::resource('prestasi-siswa-db', AdminPrestasiSiswaController::class);
+    Route::resource('prestasi-guru-db', AdminPrestasiGuruController::class);
+
+    //Additional route to edit noSQL database
+    Route::post('home-db/edit-doc-home-analytics', [AdminHomeController::class, 'editDocHomeAnalytics'])->name('home-db.editDocHomeAnalytics');
+    Route::post('home-db/edit-doc-headmaster', [AdminHomeController::class, 'editDocHeadmaster'])->name('home-db.editDocHeadmaster');
+    Route::post('home-db/edit-doc-url-video-profile', [AdminHomeController::class, 'editDocURLVideoProfile'])->name('home-db.editDocURLVideoProfile');
 });
 
 Route::middleware('auth')->group(function () {

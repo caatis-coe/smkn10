@@ -7,9 +7,10 @@ use App\Models\KonsentrasiKeahlian;
 use App\Http\Requests\StoreKonsentrasiKeahlianRequest;
 use App\Http\Requests\UpdateKonsentrasiKeahlianRequest;
 use App\Http\Resources\KonsentrasiKeahlianResource;
+use App\Models\Buyer;
 use App\Models\Image;
 use App\Models\ImageKonsentrasiKeahlian;
-use Illuminate\Support\Facades\Log;
+use App\Models\TeachingFactoryProduct;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -132,6 +133,23 @@ class AdminKonsentrasiKeahlianController extends Controller
                 ->where('KonsentrasiKeahlianID', $konsentrasi_keahlian_db->id)
                 ->delete();
             Image::find($image['id'])->delete();
+        }
+
+        $teachingFactoryProducts = TeachingFactoryProduct::where('KonsentrasiKeahlianID', $konsentrasi_keahlian_db->id)->get();
+        foreach ($teachingFactoryProducts as $product) {
+            // Remove product image file from storage
+            if ($product->image_path) {
+                Storage::disk('public')->delete($product->image_path);
+            }
+    
+            // Fetch and delete all buyers associated with this product
+            $buyers = Buyer::where('TeachingFactoryProductID', $product->id)->get();
+            foreach ($buyers as $buyer) {
+                $buyer->delete();
+            }
+    
+            // Delete the product record
+            $product->delete();
         }
 
         // Delete the KonsentrasiKeahlian record

@@ -35,7 +35,7 @@ class KonsentrasiKeahlianResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'images' => $images,
+            'images' => $images, 
             'teaching_factory_products' => TeachingFactoryProductResource::collection($this->teachingFactoryProducts),
             'created_at' => (new Carbon($this->created_at))->format('d-m-Y'),
             'updated_at' => (new Carbon($this->updated_at))->format('d-m-Y'),

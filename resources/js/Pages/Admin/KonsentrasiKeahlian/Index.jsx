@@ -1,19 +1,29 @@
 import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
-import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
 
 function Index({ auth, datas, success }) {
 
     const deleteKonsentrasiKeahlian = (konsentrasiKeahlian) => {
-        if (!window.confirm(`Are you sure you want to delete "${konsentrasiKeahlian.title}"`)){
+        const confirmationMessage = 
+`
+Are you sure you want to delete "${konsentrasiKeahlian.title}"?
+
+WARNING!!!
+Deleting this data will also delete the corresponding "Teaching Factory Products" and their associated "Buyers".
+Please consider this consequence before proceeding.
+
+Do you still want to delete "${konsentrasiKeahlian.title}"?
+`;
+        if (!window.confirm(confirmationMessage.trim())) {
             return;
         }
-        router.delete(route("konsentrasi-keahlian-db.destroy", konsentrasiKeahlian.id))
+    
+        router.delete(route("konsentrasi-keahlian-db.destroy", konsentrasiKeahlian.id));
     }
 
-    console.log(datas)
+   
 
     return (
         <AuthenticatedLayout

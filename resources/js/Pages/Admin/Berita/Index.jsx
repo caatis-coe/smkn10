@@ -7,11 +7,6 @@ import React from 'react'
 function Index({ auth, datas, success }) {
 
 
-    const changeNavStatus = (url) => {
-        Inertia.get(`berita-db?type=${url}`)
-    }
-
-
     const deleteBerita = (berita) => {
         if (!window.confirm(`Are you sure you want to delete "${berita.title}"`)){
             return;
@@ -19,7 +14,7 @@ function Index({ auth, datas, success }) {
         router.delete(route("berita-db.destroy", berita.id))
     }
 
-    console.log(datas)
+    
 
     return (
         <AuthenticatedLayout

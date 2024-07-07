@@ -11,7 +11,7 @@ class UpdateTeachingFactoryProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateTeachingFactoryProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => ['required', 'max:121'],
+            "description" => ['required','max:512'],
+            'konsentrasi_keahlian_id' => ['required'],
+            'image_path' => ['nullable', 'image'],
         ];
     }
 }

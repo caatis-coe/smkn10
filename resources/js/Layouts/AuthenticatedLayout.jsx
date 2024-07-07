@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
+import ApplicationLogo from '@/Assets/Logo-SMK-10-Bandung.png';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
@@ -8,7 +8,7 @@ import logoSMA from '@/Assets/Logo-SMK-10-Bandung.png'
 
 export default function AuthenticatedLayout({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    
+
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -22,12 +22,15 @@ export default function AuthenticatedLayout({ user, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                    <img src={ApplicationLogo} className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
+                            <div className="hidden space-x-6 sm:-my-px sm:ms-6 sm:flex">
+                                <NavLink href={route('home-db.index')} active={route().current('home-db.*')}>
+                                    Home
+                                </NavLink>
+                                <NavLink href={route('daftar-guru-db.index')} active={route().current('daftar-guru-db.*')}>
+                                    Profil
                                 </NavLink>
                                 <NavLink href={route('berita-db.index')} active={route().current('berita-db.*')}>
                                     Berita
@@ -37,6 +40,19 @@ export default function AuthenticatedLayout({ user, header, children }) {
                                 </NavLink>
                                 <NavLink href={route('konsentrasi-keahlian-db.index')} active={route().current('konsentrasi-keahlian-db.*')}>
                                     Konsentrasi Keahlian
+                                </NavLink>
+                                <NavLink href={route('teaching-factory-product-db.index')} active={route().current('teaching-factory-product-db.*')}>
+                                    Teaching Factory
+                                </NavLink>
+                                <NavLink href={route('buyer-db.index')} active={route().current('buyer-db.*')}>
+                                    Buyer
+                                </NavLink>
+                                <NavLink href={route('prestasi-sekolah-db.index')} active={
+                                    route().current('prestasi-sekolah-db.*') ||
+                                    route().current('prestasi-siswa-db.*') ||
+                                    route().current('prestasi-guru-db.*')
+                                }>
+                                    Prestasi
                                 </NavLink>
                             </div>
                         </div>
@@ -106,8 +122,30 @@ export default function AuthenticatedLayout({ user, header, children }) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            Dashboard
+                        <ResponsiveNavLink href={route('home-db.index')} active={route().current('home-db.*')}>
+                            Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('berita-db.index')} active={route().current('berita-db.*')}>
+                            Berita
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('pembelajaran-db.index')} active={route().current('pembelajaran-db.*')}>
+                            Pembelajaran
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('konsentrasi-keahlian-db.index')} active={route().current('konsentrasi-keahlian-db.*')}>
+                            Konsentrasi Keahlian
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('teaching-factory-product-db.index')} active={route().current('teaching-factory-product-db.*')}>
+                            Teaching Factory
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('buyer-db.index')} active={route().current('buyer-db.*')}>
+                            Buyer
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('prestasi-sekolah-db.index')} active={
+                            route().current('prestasi-sekolah-db.*') ||
+                            route().current('prestasi-siswa-db.*') ||
+                            route().current('prestasi-guru-db.*')
+                        }>
+                            Prestasi
                         </ResponsiveNavLink>
                     </div>
 

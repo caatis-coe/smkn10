@@ -4,7 +4,7 @@ import DefaultLayout from '@/Layouts/DefaultLayout'
 
 function StrukturOrganisasi() {
 
-  const bagan = `url('images/chart.jpg')`
+  const bagan = `url('storage/images/strukturOrganisasi/chart.jpg')`
 
   return (
     <DefaultLayout>

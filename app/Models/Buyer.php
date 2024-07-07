@@ -16,4 +16,8 @@ class Buyer extends Model
         'contact',
         'TeachingFactoryProductID',
     ];
+
+    public function teachingFactoryProduct() {
+        return $this->belongsTo(TeachingFactoryProduct::class, 'TeachingFactoryProductID');
+    }
 }

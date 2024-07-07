@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('daftar_gurus', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("nip_nuptk");
+            $table->string("nip_nuptk")->default('-')->nullable(); 
             $table->timestamps();
         });
     }

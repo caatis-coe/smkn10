@@ -20,8 +20,8 @@ function Nav() {
       "endpoint": "/daftar-guru"
     },
     {
-      "title": "Daftar Karyawan",
-      "endpoint": "/daftar-karyawan"
+      "title": "Daftar Tenaga Pendidikan",
+      "endpoint": "/daftar-tenaga-pendidikan"
     },
     {
       "title": "Visi dan Misi",
@@ -42,7 +42,7 @@ function Nav() {
       "endpoint": "/fasilitas"
     },
     {
-      "title": "Kegiatan Mahasiswa",
+      "title": "Kegiatan Siswa",
       "endpoint": "/kegiatan-mahasiswa"
     },
     {

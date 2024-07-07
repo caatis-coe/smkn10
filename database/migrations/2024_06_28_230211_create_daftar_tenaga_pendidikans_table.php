@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('daftar_tenaga_pendidikans', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("nik");
             $table->string("position");
             $table->timestamps();
         });

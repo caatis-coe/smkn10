@@ -141,7 +141,7 @@ function Edit({ auth, konsentrasiKeahlian }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        {`${konsentrasiKeahlian.title}`}
+                        {`Edit "${konsentrasiKeahlian.title}"`}
                     </h2>
                 </div>
             }
@@ -152,151 +152,160 @@ function Edit({ auth, konsentrasiKeahlian }) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className='p-4 sm:p-8 shadow sm:rounded-lg flex flex-col lg:flex-row gap-9'>
-                            <form className='basis-1/2'
+                        <div className='p-4 sm:p-8 shadow sm:rounded-lg'>
+                            <form
                                 onSubmit={onSubmit}>
-
-                                <div className='mt-4'>
-                                    <InputLabel htmlFor="konsentrasiKeahlian_title" value="*Title" />
-                                    <TextInput
-                                        id="konsentrasiKeahlian_title"
-                                        type="text"
-                                        name="title"
-                                        value={data.title}
-                                        className="mt-1 block w-full"
-                                        isFocused={true}
-                                        onChange={e => setData('title', e.target.value)}
-                                    />
-                                    <InputError message={errors.title} className='mt-2' />
-                                </div>
-                                <div className='mt-4'>
-                                    <InputLabel htmlFor="konsentrasiKeahlian_description" value="*Description" />
-                                    <TextAreaInput
-                                        id="konsentrasiKeahlian_description"
-                                        type="text"
-                                        name="description"
-                                        value={data.description}
-                                        className="mt-1 block w-full h-72"
-                                        isFocused={true}
-                                        onChange={e => setData('description', e.target.value)}
-                                    />
-                                    <InputError message={errors.description} className='mt-2' />
-                                </div>
-                            </form>
-                            <div className='mt-4 flex-grow border rounded p-4 border-gray-200'>
-                                <label className='text-lg'>
-                                    Images
-                                </label>
-                                <div className='h-96 overflow-auto'>
-                                    <table className='text-sm text-left rtl:text-right
+                                <div className='flex flex-col lg:flex-row gap-4 lg:gap-9 '>
+                                    <div className='basis-1/2 '>
+                                        <div className='mt-4'>
+                                            <InputLabel htmlFor="konsentrasiKeahlian_title" value="*Title" />
+                                            <TextInput
+                                                id="konsentrasiKeahlian_title"
+                                                type="text"
+                                                name="title"
+                                                value={data.title}
+                                                className="mt-1 block w-full"
+                                                isFocused={true}
+                                                onChange={e => setData('title', e.target.value)}
+                                            />
+                                            <InputError message={errors.title} className='mt-2' />
+                                        </div>
+                                        <div className='mt-4'>
+                                            <InputLabel htmlFor="konsentrasiKeahlian_description" value="*Description" />
+                                            <TextAreaInput
+                                                id="konsentrasiKeahlian_description"
+                                                type="text"
+                                                name="description"
+                                                value={data.description}
+                                                className="mt-1 block w-full h-96"
+                                                isFocused={true}
+                                                onChange={e => setData('description', e.target.value)}
+                                            />
+                                            <InputError message={errors.description} className='mt-2' />
+                                        </div>
+                                    </div>
+                                    <div className=' flex-grow border rounded px-4 pb-4 border-gray-200 overflow-auto h-[512px]'>
+                                        <div className='pt-4 sticky top-0 bg-white z-10 w-full'>
+                                            <label className='text-lg w-full'>
+                                                Images
+                                            </label>
+                                        </div>
+                                        <div className='mt-4 '>
+                                            <table className='text-sm text-left rtl:text-right
                                     text-gray-500 w-full'>
 
-                                        <thead className='text-xs text-gray-700 uppercase bg-gray-100
-                                        border-b-2 border-gray-500  w-full'>
-                                            <tr className='text-nowrap'>
-                                                <th className='px-3 py-5'>ID Image</th>
-                                                <th className='px-3 py-5'>Image</th>
-                                                <th className='px-3 py-5 text-right'>Action</th>
-                                            </tr>
-                                        </thead>
+                                                <thead className='text-xs text-gray-700 uppercase bg-gray-100
+                                        border-b-2 border-gray-500 sticky top-4 z-10  w-full'>
+                                                    <tr className='text-nowrap'>
+                                                        <th className='px-3 py-5'>ID Image</th>
+                                                        <th className='px-3 py-5'>Image</th>
+                                                        <th className='px-3 py-5 text-right'>Action</th>
+                                                    </tr>
+                                                </thead>
 
-                                        <tbody>
-                                            {data.images.map((image, index) => (
-                                                <tr key={index} className={`${imageStatus[index].statusState.includes('delete') ?
-                                                    'bg-red-50' : imageStatus[index].statusState.includes('post') ?
-                                                        (imageStatus[index].initStatus ? 'bg-blue-50' : 'bg-green-50')
-                                                        : 'bg-white-50'} 
+                                                <tbody>
+                                                    {data.images.map((image, index) => (
+                                                        <tr key={index} className={`${imageStatus[index].statusState.includes('delete') ?
+                                                            'bg-red-50' : imageStatus[index].statusState.includes('post') ?
+                                                                (imageStatus[index].initStatus ? 'bg-blue-50' : 'bg-green-50')
+                                                                : 'bg-white-50'} 
                                                 border-b border-gray-300`}>
-                                                    <td className='px-3 py-2 text-left'>{
-                                                        imageStatus[index].statusState.includes('delete') ?
-                                                            <span className='text-red-400 font-medium'>Delete id : {image.id}</span> :
-                                                            imageStatus[index].statusState.includes('post') ?
-                                                                (imageStatus[index].initStatus ?
-                                                                    <span className='text-blue-400 font-medium'>Update id : {image.id}</span>
-                                                                    :
-                                                                    <span className='text-green-400 font-medium'>Store New Image </span>
-                                                                ) : image.id
-                                                    }</td>
+                                                            <td className='px-3 py-2 text-left'>{
+                                                                imageStatus[index].statusState.includes('delete') ?
+                                                                    <span className='text-red-400 font-medium'>Delete id : {image.id}</span> :
+                                                                    imageStatus[index].statusState.includes('post') ?
+                                                                        (imageStatus[index].initStatus ?
+                                                                            <span className='text-blue-400 font-medium'>Update id : {image.id}</span>
+                                                                            :
+                                                                            <span className='text-green-400 font-medium'>Store New Image </span>
+                                                                        ) : image.id
+                                                            }</td>
 
-                                                    <td className='px-3 py-2 w-48'>
-                                                        {
-                                                            image.image_path ?
-                                                                <img
-                                                                    src={`${image.image_path}`}
-                                                                    alt={`${image.image_path}`}
-                                                                /> :
-                                                                <div className='text-gray-300 font-semibold text-center text-xl py-9'>
-                                                                    None
-                                                                </div>
-                                                        }
+                                                            <td className='px-3 py-2 w-48'>
+                                                                {
+                                                                    image.image_path ?
+                                                                        <img
+                                                                            src={`${image.image_path}`}
+                                                                            alt={`${image.image_path}`}
+                                                                        /> :
+                                                                        <div className='text-gray-300 font-semibold text-center text-xl py-9'>
+                                                                            None
+                                                                        </div>
+                                                                }
 
-                                                    </td>
+                                                            </td>
 
-                                                    <td className='px-3 py-2 text-right'>
-                                                        <div className='inline-block'>
-                                                            <button onClick={() => {
-                                                                changeModalSession(index, image, 'edit')
-                                                                toogleIsModalOpen()
-                                                            }}
-                                                                className='font-medium text-blue-500 hover:underline mx-1 inline-block'>
-                                                                {imageStatus[index].text_button_1}
-                                                            </button>
-                                                            {image.id ?
-                                                                <button
-                                                                    onClick={() => {
-                                                                        changeImageStatus(index,
-                                                                            imageStatus[index].statusState.includes('available') ? 'delete' : 'cancel'
-                                                                        )
+                                                            <td className='px-3 py-2 text-right'>
+                                                                <div className='inline-block'>
+                                                                    <button onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        changeModalSession(index, image, 'edit')
+                                                                        toogleIsModalOpen()
                                                                     }}
-                                                                    className={`font-medium hover:underline mx-1 inline-block
-                                                                ${imageStatus[index].statusState.includes('delete') ||
-                                                                            imageStatus[index].statusState.includes('post')
-                                                                            ? 'text-gray-500'
-                                                                            : 'text-red-500'
-                                                                        }`}
-                                                                >
-                                                                    {imageStatus[index].text_button_2}
-                                                                </button>
-                                                                :
-                                                                <>
-                                                                    <button
-                                                                        onClick={() => {
-                                                                            changeModalSession(index, image, 'create')
-                                                                            toogleIsModalOpen()
-                                                                        }}
-                                                                        className={`font-medium hover:underline mx-1 inline-block
-                                                                text-blue-500`}
-                                                                    >
-                                                                        {imageStatus[index].text_button_2}
+                                                                        className='font-medium text-blue-500 hover:underline mx-1 inline-block'>
+                                                                        {imageStatus[index].text_button_1}
                                                                     </button>
-                                                                </>
-                                                            }
+                                                                    {image.id ?
+                                                                        <button
+                                                                            onClick={(e) => {
+                                                                                e.preventDefault();
+                                                                                changeImageStatus(index,
+                                                                                    imageStatus[index].statusState.includes('available') ? 'delete' : 'cancel'
+                                                                                )
+                                                                            }}
+                                                                            className={`font-medium hover:underline mx-1 inline-block
+                                                                ${imageStatus[index].statusState.includes('delete') ||
+                                                                                    imageStatus[index].statusState.includes('post')
+                                                                                    ? 'text-gray-500'
+                                                                                    : 'text-red-500'
+                                                                                }`}
+                                                                        >
+                                                                            {imageStatus[index].text_button_2}
+                                                                        </button>
+                                                                        :
+                                                                        <>
+                                                                            <button
+                                                                                onClick={(e) => {
+                                                                                    e.preventDefault();
+                                                                                    changeModalSession(index, image, 'create')
+                                                                                    toogleIsModalOpen()
+                                                                                }}
+                                                                                className={`font-medium hover:underline mx-1 inline-block
+                                                                text-blue-500`}
+                                                                            >
+                                                                                {imageStatus[index].text_button_2}
+                                                                            </button>
+                                                                        </>
+                                                                    }
 
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className='mt-4 flex items-end justify-between'>
-                            <div className='text-xs'>
-                                *required
-                            </div>
-                            <div className='mt-4 text-right'>
-                                <Link href={route("konsentrasi-keahlian-db.index")}
-                                    className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
+
+                                <div className='mt-4 flex items-end justify-between'>
+                                    <div className='text-xs'>
+                                        *required
+                                    </div>
+                                    <div className='mt-4 text-right'>
+                                        <Link href={route("konsentrasi-keahlian-db.index")}
+                                            className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
                                     transition-all hover:bg-gray-200 mr-2 text-sm
                                     '>
-                                    Cancel
-                                </Link>
-                                <button className='bg-emerald-500 py-2 px-4 text-white
+                                            Cancel
+                                        </Link>
+                                        <button className='bg-emerald-500 py-2 px-4 text-white
                                     rounded shadow transition-all hover:bg-emerald-600 text-sm'>
-                                    Submit
-                                </button>
-                            </div>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

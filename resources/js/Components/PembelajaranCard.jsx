@@ -2,7 +2,7 @@ import React from 'react'
 
 function PembelajaranCard({ data }) {
 
-    console.log(data.description)
+
 
     const backgroundImage = `url('storage/${data.image_path}')`;
 
