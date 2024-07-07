@@ -9,6 +9,7 @@ use App\Http\Requests\StoreTeachingFactoryProductRequest;
 use App\Http\Requests\UpdateTeachingFactoryProductRequest;
 
 use App\Http\Resources\TeachingFactoryProductResource;
+use App\Models\Buyer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -140,6 +141,12 @@ class AdminTeachingFactoryProductController extends Controller
     {
         $type = $request->input('type');
         $title = $teaching_factory_product_db->title;
+        $buyers = Buyer::where('TeachingFactoryProductID', $teaching_factory_product_db->id)->get();
+
+        foreach ($buyers as $buyer) {
+            $buyer->delete();
+        }
+
         if ($teaching_factory_product_db->image_path) {
             Storage::disk('public')->delete($teaching_factory_product_db->image_path);
         }
