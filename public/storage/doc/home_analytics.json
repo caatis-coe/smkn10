@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "title": "Siswa",
+            "amount": "7590"
+        },
+        {
+            "title": "Guru",
+            "amount": "103"
+        },
+        {
+            "title": "Laboratorium",
+            "amount": "10"
+        },
+        {
+            "title": "Lulusan",
+            "amount": "1039032"
+        }
+    ]
+}

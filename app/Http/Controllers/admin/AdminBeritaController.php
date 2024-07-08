@@ -103,7 +103,6 @@ class AdminBeritaController extends Controller
     public function destroy(Blog $berita_db)
     {
         $title = $berita_db->title;
-        
         if($berita_db->thumbnail_image) {
             Storage::disk('public')->delete($berita_db->thumbnail_image);
         }

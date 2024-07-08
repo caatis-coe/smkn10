@@ -66,7 +66,7 @@ class AdminHomeController extends Controller
         unset($data['file']);
         File::put(public_path('storage/doc/headmaster.json'),  json_encode($data,JSON_PRETTY_PRINT));
         
-        return Redirect::route('home-db.index',['type'=>3])->with('success', 'Heamaster data has been created');
+        return Redirect::route('home-db.index',['type'=>3])->with('success', 'Headmaster data has been updated');
     }
 
     public function editDocURLVideoProfile(UpdateURLVideoProfileRequest $request)

@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AdminPrestasiSiswaController;
 use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminTeachingFactoryProductController;
 use App\Http\Controllers\Admin\AdminDaftarGuruController;
+use App\Http\Controllers\Admin\AdminLulusanController;
+use App\Http\Controllers\Admin\AdminSejarahController;
 use App\Http\Controllers\Admin\AdminStrukturOrganisasiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
@@ -27,6 +29,7 @@ use App\Http\Controllers\PrestasiSekolahController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\TeachingFactoryController;
 use App\Http\Middleware\ShareKeahlianData;
+use App\Models\Image;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -51,7 +54,9 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
     Route::get('/sejarah', [SejarahController::class, 'show']);
 
     Route::get('/struktur-organisasi', function () {
-        return Inertia::render('profil/StrukturOrganisasi');
+        return Inertia::render('profil/StrukturOrganisasi', [
+            "image" => Image::where('used_as', 'struktur_organisasi')->first()
+        ]);
     });
 
     Route::get('/visi-misi', function () {
@@ -67,11 +72,15 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
     });
 
     Route::get('/keterserapan-lulusan', function () {
-        return Inertia::render('lulusan/KeterserapanLulusan');
+        return Inertia::render('lulusan/KeterserapanLulusan', [
+            'datas' => Image::where('used_as', 'keterserapan_lulusan')->get()
+        ]);
     });
 
     Route::get('/industri-mitra', function () {
-        return Inertia::render('lulusan/IndustriMitra');
+        return Inertia::render('lulusan/IndustriMitra', [
+            'datas' => Image::where('used_as', 'industri_mitra')->get()
+        ]);
     });
 
     Route::get('/fasilitas', [FasilitasController::class, 'show']);
@@ -110,6 +119,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard');
 
     Route::resource('home-db', AdminHomeController::class);
+    Route::resource('lulusan-db', AdminLulusanController::class);
+    Route::resource('sejarah-db', AdminSejarahController::class);
     Route::resource('struktur-organisasi-db',  AdminStrukturOrganisasiController::class);
     Route::resource('daftar-guru-db',  AdminDaftarGuruController::class);
     Route::resource('daftar-tenaga-pendidikan-db', AdminDaftarTenagaPendidikanController::class);

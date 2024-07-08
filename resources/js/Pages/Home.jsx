@@ -71,13 +71,14 @@ function HomeAnalytics({ data }) {
     );
 }
 
-function Home({ blogDatas, headmaster , swiperImage, homeAnalytics, urlVideoProfile}) {
+function Home({ blogDatas, headmaster, swiperImage, homeAnalytics, urlVideoProfile }) {
 
     const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
 
     const profilePage = () => {
         window.open(youtubeLink, '_blank')
     }
+
 
     return (
         <DefaultLayout headerChildren={
@@ -106,7 +107,7 @@ function Home({ blogDatas, headmaster , swiperImage, homeAnalytics, urlVideoProf
                             SMKN 10 Bandung
                         </div>
                         <div className='font-medium  text-2xl'>
-                        Kapabilitas Edutaiment Rasional Enerjik Nilai Budaya
+                            Kapabilitas Edutaiment Rasional Enerjik Nilai Budaya
                         </div>
                         <div>
                             #SMKN10BANDUNG
@@ -154,25 +155,29 @@ function Home({ blogDatas, headmaster , swiperImage, homeAnalytics, urlVideoProf
             </div>
             <SubTitle title={"Kepala Sekolah"} />
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage:  `url(/storage/${headmaster.image_path})`}} />
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: `url(/storage/${headmaster.image_path})` }} />
                 <div className='flex-1 md:ms-12'>
                     <div className='font-semibold text-[24px] text-center md:text-left mb-2'>{headmaster.name}</div>
                     <div>“{headmaster.message}”
                     </div>
                 </div>
             </div>
-            <SubTitle title={"Blog"} />
-            <div className='grid grid-cols-1 place-items md:grid-cols-2 xl:grid-cols-3  gap-x-16 gap-y-12 '>
-                {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
-            </div>
-            <div className='grid place-items-center mt-9'>
-                <Link href='berita'>
-                    <div className='grid place-items-center text-[16px] font-medium text-white 
-                    rounded-md bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
-                        Lihat Selebihnya
+            {blogDatas.length > 0 && (
+                <>
+                    <SubTitle title={"Berita"} />
+                    <div className='grid grid-cols-1 place-items md:grid-cols-2 xl:grid-cols-3  gap-x-16 gap-y-12 '>
+                        {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
                     </div>
-                </Link>
-            </div>
+                    <div className='grid place-items-center mt-9'>
+                        <Link href='berita'>
+                            <div className='grid place-items-center text-[16px] font-medium text-white 
+                    rounded-md bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
+                                Lihat Selebihnya
+                            </div>
+                        </Link>
+                    </div>
+                </>
+            )}
             <div className='text-center grid place-items-center gap-4 lg:gap-8 border-t-2 mt-12 pt-12'>
                 <div className='text-3xl lg:text-4xl font-bold text-secondary'>Penerimaan Peserta Didik Baru</div>
                 <div className='text-sm md:text-md lg:text-lg font-light'>Butuh Informasi Lebih Lengkap mengenai penerimaan peserta didik baru?</div>

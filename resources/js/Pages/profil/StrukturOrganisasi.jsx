@@ -2,9 +2,10 @@ import React from 'react'
 import ContentTitle from '@/Components/ContentTitle'
 import DefaultLayout from '@/Layouts/DefaultLayout'
 
-function StrukturOrganisasi() {
+function StrukturOrganisasi({image}) {
 
-  const bagan = `url('storage/images/strukturOrganisasi/chart.jpg')`
+
+  const bagan = `url('storage/${image.image_path}')`
 
   return (
     <DefaultLayout>

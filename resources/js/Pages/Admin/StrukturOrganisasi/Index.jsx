@@ -1,6 +1,8 @@
+import InputError from '@/Components/InputError';
+import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
-import { Head, router, useForm } from '@inertiajs/react'
+import { Head, Link, router, useForm } from '@inertiajs/react'
 import React from 'react'
 
 function Index({ auth, image, success, session }) {
@@ -9,7 +11,10 @@ function Index({ auth, image, success, session }) {
         _method: 'PUT'
     });
 
-    console.log('hit')
+    const onSubmit = (e) => {
+        e.preventDefault()
+        post(route('struktur-organisasi-db.update', image.id))
+    }
     // Home swiper image Functions
 
     return (
@@ -47,7 +52,7 @@ function Index({ auth, image, success, session }) {
                                 </div>
                                 <div className={`${session == 2 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                        transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block text-center flex items-center`} onClick={() => changeNavStatus(2)}>
+                                        transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block text-center flex items-center`} onClick={() => Inertia.get(`sejarah-db`)}>
                                     Sejarah
                                 </div>
                                 <div className={`${session == 3 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
@@ -56,12 +61,39 @@ function Index({ auth, image, success, session }) {
                                     Struktur Organisasi
                                 </div>
                             </nav>
-                            <pre>
-                            {JSON.stringify(image,undefined,2)}
-                            </pre>
-                            <div className='border border-gray-200'>
-                                <img src={image.image_path} alt="" />
-                            </div>
+                            {/* <pre>
+                                {JSON.stringify(image, undefined, 2)}
+                            </pre> */}
+                            <form onSubmit={onSubmit} className='p-4'>
+                                <div className='border border-gray-200 flex justify-center rounded p-6 '>
+                                    <img className='max-h-96 w-auto' src={data.file ? URL.createObjectURL(data.file) : image.image_path} alt="" />
+                                </div>
+                                <TextInput
+                                    id={`struktur-organisasi-image`}
+                                    type="file"
+                                    name={`struktur-organisasi-image`}
+                                    className="mt-4 block w-full"
+                                    isFocused={true}
+                                    onChange={e => setData('file', e.target.files[0])}
+                                />
+                                <InputError message={errors.file} className='mt-2' />
+                                <div className='mt-4 flex justify-end col-span-2'>
+                                    <div className='mt-4 flex-nowrap flex-shrink-0'>
+                                        <Link href={route("struktur-organisasi-db.index")}
+                                            className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
+                                                        transition-all hover:bg-gray-200 mr-2 text-sm
+                                                        '>
+                                            Reset
+                                        </Link>
+                                        <button className={`bg-emerald-500 py-2 px-4 text-white
+                                        rounded shadow transition-all hover:bg-emerald-600 text-sm
+                                        ${data.file ? "bg-emerald-500 " : "bg-emerald-100 cursor-auto pointer-events-none"}`}>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
 

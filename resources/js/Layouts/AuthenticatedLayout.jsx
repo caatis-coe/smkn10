@@ -17,19 +17,24 @@ export default function AuthenticatedLayout({ user, header, children }) {
                 <link rel="icon" href={logoSMA} />
             </Head>
             <nav className="bg-white border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 xl:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
-                            <div className="shrink-0 flex items-center">
+                            <div className="shrink-0 flex xl:hidden items-center">
                                 <Link href="/">
                                     <img src={ApplicationLogo} className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-                            <div className="hidden space-x-6 sm:-my-px sm:ms-6 sm:flex">
+                            <div className="hidden space-x-6 xl:-my-px xl:flex">
                                 <NavLink href={route('home-db.index')} active={route().current('home-db.*')}>
                                     Home
                                 </NavLink>
-                                <NavLink href={route('daftar-guru-db.index')} active={route().current('daftar-guru-db.*')}>
+                                <NavLink href={route('daftar-guru-db.index')} active={
+                                    route().current('daftar-guru-db.*') ||
+                                    route().current('daftar-tenaga-pendidikan-db.*') ||
+                                    route().current('sejarah-db.*') ||
+                                    route().current('struktur-organisasi-db.*')
+                                }>
                                     Profil
                                 </NavLink>
                                 <NavLink href={route('berita-db.index')} active={route().current('berita-db.*')}>
@@ -54,10 +59,13 @@ export default function AuthenticatedLayout({ user, header, children }) {
                                 }>
                                     Prestasi
                                 </NavLink>
+                                <NavLink href={route('lulusan-db.index')} active={route().current('lulusan-db.*')}>
+                                    Lulusan
+                                </NavLink>
                             </div>
                         </div>
 
-                        <div className="hidden sm:flex sm:items-center sm:ms-6">
+                        <div className="hidden xl:flex xl:items-center xl:ms-6">
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -94,7 +102,7 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        <div className="-me-2 flex items-center xl:hidden">
                             <button
                                 onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
@@ -120,10 +128,18 @@ export default function AuthenticatedLayout({ user, header, children }) {
                     </div>
                 </div>
 
-                <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
+                <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' xl:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('home-db.index')} active={route().current('home-db.*')}>
                             Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('daftar-guru-db.index')} active={
+                            route().current('daftar-guru-db.*') ||
+                            route().current('daftar-tenaga-pendidikan-db.*') ||
+                            route().current('sejarah-db.*') ||
+                            route().current('struktur-organisasi-db.*')
+                        }>
+                            Profil
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href={route('berita-db.index')} active={route().current('berita-db.*')}>
                             Berita
@@ -146,6 +162,9 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             route().current('prestasi-guru-db.*')
                         }>
                             Prestasi
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('lulusan-db.index')} active={route().current('lulusan-db.*')}>
+                            Lulusan
                         </ResponsiveNavLink>
                     </div>
 

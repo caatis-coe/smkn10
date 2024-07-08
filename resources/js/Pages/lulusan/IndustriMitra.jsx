@@ -10,45 +10,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination, Scrollbar, Autoplay } from 'swiper/modules';
 
-function IndustriMitra({
-    data = [
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-    {
-        "image_path": "logo-smk-10-bandung.png",
-        "description": "SMKN 10 Bandung"
-    },
-]}) {
+function IndustriMitra({datas}) {
 
     
     return (
@@ -83,10 +45,10 @@ function IndustriMitra({
             >
                 
                 {
-                    Array(Math.ceil(data.length / 2)).fill(0).map((_, i) => (
+                    datas && Array(Math.ceil(datas.length / 2)).fill(0).map((_, i) => (
                         <SwiperSlide key={i} className='pb-12 '>
                             <div className='flex flex-col w-full items-center gap-9'>
-                                {data.slice(i * 2, i * 2 + 2).map((item, index) =>
+                                {datas.slice(i * 2, i * 2 + 2).map((item, index) =>
                                 (
                                     <div key={index} className=' border-2 p-12
                                     w-full h-56 flex flex-col justify-center items-center
@@ -96,7 +58,7 @@ function IndustriMitra({
                                         <img className='size-24 group-hover:scale-110 translate-y-4
                                         transition ease-out group-hover:translate-y-0
                                         duration-500' 
-                                        src={`images/${item.image_path}`} alt={item.description} />
+                                        src={`storage/${item.image_path}`} alt={item.description} />
                                         <div className='font-medium text-white translate-y-0 opacity-0 
                                         group-hover:opacity-100 group-hover:translate-y-1 
                                         transition ease-out duration-100 text-center'>
