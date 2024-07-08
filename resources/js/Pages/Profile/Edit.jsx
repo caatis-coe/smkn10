@@ -1,10 +1,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import DeleteUserForm from './Partials/DeleteUserForm';
+
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
 import { Head } from '@inertiajs/react';
+import DataUserTable from './Partials/DataUserTable';
 
-export default function Edit({ auth, mustVerifyEmail, status }) {
+export default function Edit({ auth, mustVerifyEmail, status, users }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -25,10 +26,15 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <UpdatePasswordForm className="max-w-xl" />
                     </div>
-
+                    
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <DeleteUserForm className="max-w-xl" />
+                        <DataUserTable  users={users.data}/>
                     </div>
+                    
+
+                    {/* <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                        <DeleteUserForm className="max-w-xl" />
+                    </div> */}
                 </div>
             </div>
         </AuthenticatedLayout>
