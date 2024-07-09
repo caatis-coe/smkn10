@@ -89,7 +89,7 @@ function Nav() {
 
   const content = (
     <div className='xl:hidden block absolute w-full left-0 right-0 bg-white transition'>
-      <ul className='text-center text-[14px] overflow-y-auto max-h-[80vh] border-b-[1px]'>
+      <ul className='text-[14px] w-full overflow-y-auto max-h-[80vh] border-b-[1px]'>
         <SmallScreenNavLink title="Home" endpoint="/" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Profil" handleClick={handleClickLink} subMenu={profilData} />
         <SmallScreenNavLink title="Pembelajaran" handleClick={handleClickLink} subMenu={pembelajaranData} />

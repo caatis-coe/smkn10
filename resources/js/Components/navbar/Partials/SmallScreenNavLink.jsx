@@ -30,12 +30,12 @@ function SmallScreenNavLink({ title, endpoint = "", handleClick, subMenu = null 
         <div ref={ref} className='group'>
             {!subMenu? ( // NO SUBMENU
                 <Link href={endpoint} onClick={handleClick}>
-                    <li className={`${id === endpoint && "bg-tertiary text-white"} py-4 border-b border-grey hover:bg-tertiary hover:text-white cursor-pointer`}>
+                    <li className={`${id === endpoint && "bg-lighttertiary text-white pointer-events-none cursor-default"} px-4 py-3  text-gray-700 font-medium transition-all hover:bg-lightgrey cursor-pointer`}>
                         {title}
                     </li>
                 </Link>
             ) : ( // WITH SUBMENU
-                <li className={`${clicked && "bg-tertiary text-white"} flex gap-2 justify-center items-center py-4 border-b border-grey  cursor-pointer`}
+                <li className={`${clicked && "bg-lighttertiary text-white"} flex gap-2 px-4 items-center text-gray-700 py-3 font-medium  cursor-pointer`}
                     onClick={() => setExpand(!expand)}
                 >
                     {title}
@@ -43,11 +43,13 @@ function SmallScreenNavLink({ title, endpoint = "", handleClick, subMenu = null 
                 </li>
             )}
             {subMenu && ( //SUBMENU CONTENT
-                <div className={`${expand ? "block" : "hidden"}`}>
+                <div className={`${expand ? "block" : "hidden"} w-full h-full`}>
                     {
                     subMenu.map((navLink, index) => (
                         <Link key = {index} href={navLink.endpoint} onClick={handleClick}>
-                            <li className={`${navLink.endpoint === id ? " bg-lighttertiary text-white font-semibold event cursor-default" : "hover:bg-tertiary hover:text-white cursor-pointer"} py-4 text-[12px] bg-lightgrey text-black border-b border-grey `}>
+                            <li className={`${navLink.endpoint === id ? " text-black font-bold event cursor-default" : "hover:bg-lightgrey   cursor-pointer"} 
+                            px-9 py-4  w-full h-full transition-all text-xs
+                            text-black  `}>
                                 {navLink.title}
                             </li>
                         </Link>
