@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import DefaultLayout from '@/Layouts/DefaultLayout'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import BlogCard from '@/Components/BlogCard';
 import { Link } from '@inertiajs/react';
 import HomeMiniButton from '@/Components/HomeMiniButton';
@@ -16,55 +16,69 @@ import { FaPlay } from 'react-icons/fa';
 
 function HomeAnalytics({ data }) {
     const [displayedTotal, setDisplayedTotal] = useState(0);
+    const analyticsRef = useRef(null); // Ref to hold reference to the component's DOM element
 
     useEffect(() => {
-        let currentValue = 0;
-        const incrementValue = () => {
-            if (currentValue < data.total) {
-                setDisplayedTotal(currentValue);
-                currentValue += Math.ceil(data.total * 0.01);
-                setTimeout(incrementValue, 10);
-            } else {
-                setDisplayedTotal(data.total)
+        // Function to handle the intersection observer callback
+        const handleIntersect = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    let currentValue = 0;
+                    const incrementValue = () => {
+                        if (currentValue < data.amount) {
+                            setDisplayedTotal(currentValue);
+                            currentValue += Math.ceil(data.amount * 0.01);
+                            setTimeout(incrementValue, 10);
+                        } else {
+                            setDisplayedTotal(data.amount);
+                        }
+                    };
+                    incrementValue();
+
+                    // Once we start updating, disconnect the observer to avoid unnecessary updates
+                    observer.disconnect();
+                }
+            });
+        };
+
+        // Creating an Intersection Observer
+        const observer = new IntersectionObserver(handleIntersect, {
+            root: null, // Use the viewport as the root
+            rootMargin: '0px', // No margin around the viewport
+            threshold: 0.5, // Trigger when 10% of the component is visible
+        });
+
+        // Observe the component's DOM element
+        if (analyticsRef.current) {
+            observer.observe(analyticsRef.current);
+        }
+
+        // Clean up function to disconnect the observer when component unmounts or if already observed
+        return () => {
+            if (analyticsRef.current) {
+                observer.unobserve(analyticsRef.current);
             }
         };
-        incrementValue();
-    }, [data.total]);
+    }, [data.amount]);
 
     return (
-        <div className='flex flex-col w-24 items-center'>
-            <div className='text-2xl sm:text-4xl md:text-6xl font-bold text-lighttertiary'>{displayedTotal}</div>
-            <div className='text-[9px] sm:text-base md:text-lg text-black'>{data.context}</div>
+        <div ref={analyticsRef} className='flex flex-col w-24 items-center'>
+            <div className='text-2xl sm:text-4xl md:text-6xl font-bold text-lighttertiary'>
+                {displayedTotal < 10000 ? displayedTotal : `${(displayedTotal / 1000).toFixed()}k`}
+            </div>
+            <div className='text-[9px] sm:text-base md:text-lg text-black'>{data.title}</div>
         </div>
     );
 }
 
-function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
+function Home({ blogDatas, headmaster, swiperImage, homeAnalytics, urlVideoProfile }) {
 
     const youtubeLink = 'https://youtu.be/51HWQSC-B-o?si=eeoUBjIuQZJzs8hF'
-
-    const numberData = [
-        {
-            'total': 1152,
-            'context': 'Siswa'
-        },
-        {
-            'total': 72,
-            'context': 'Guru'
-        },
-        {
-            'total': 4,
-            'context': 'Laboratorium'
-        },
-        {
-            'total': 8765,
-            'context': 'Lulusan'
-        },
-    ]
 
     const profilePage = () => {
         window.open(youtubeLink, '_blank')
     }
+
 
     return (
         <DefaultLayout headerChildren={
@@ -79,7 +93,7 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
                     >
                         {swiperImage.map((data, index) => (
                             <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/images/${data.image_path})` }}></div>
+                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/storage/${data.image_path})` }}></div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -93,7 +107,7 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
                             SMKN 10 Bandung
                         </div>
                         <div className='font-medium  text-2xl'>
-                        Kapabilitas Edutaiment Rasional Enerjik Nilai Budaya
+                            Kapabilitas Edutaiment Rasional Enerjik Nilai Budaya
                         </div>
                         <div>
                             #SMKN10BANDUNG
@@ -130,10 +144,10 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
             )
         }>
             <div className='my-4 md:my-8 flex items-center justify-around'>
-                {numberData.map((data, index) => <HomeAnalytics key={index} data={data} />)}
+                {homeAnalytics && homeAnalytics.map((data, index) => <HomeAnalytics key={index} data={data} />)}
             </div>
             <SubTitle containerClassName={"my-0 mb-6"} title={"Profil Sekolah"} />
-            <iframe className='aspect-video w-full' src="https://www.youtube.com/embed/51HWQSC-B-o?si=EBbtuj02VqSDFhgN" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe className='aspect-video w-full' src={urlVideoProfile} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <div className='mt-6 lg:mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6'>
                 <HomeMiniButton text={"Visi Misi"} link='visi-misi' />
                 <HomeMiniButton text={"Sejarah"} link='sejarah' />
@@ -141,25 +155,29 @@ function Home({ blogDatas = [], headmaster = [] , swiperImage = [] }) {
             </div>
             <SubTitle title={"Kepala Sekolah"} />
             <div className='flex flex-col items-center justify-center gap-y-12 md:flex-row md:gap-y-0'>
-                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage:  `url(/images/${headmaster.image_path})`}} />
+                <div className='bg-cover bg-center h-72 aspect-[3/4] ' style={{ backgroundImage: `url(/storage/${headmaster.image_path})` }} />
                 <div className='flex-1 md:ms-12'>
-                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>{headmaster.description.split('#')[0]}</div>
-                    <div>“{headmaster.description.split('#').slice(1).join(' ')}”
+                    <div className='font-semibold text-[24px] text-center md:text-left mb-2'>{headmaster.name}</div>
+                    <div>“{headmaster.message}”
                     </div>
                 </div>
             </div>
-            <SubTitle title={"Blog"} />
-            <div className='grid grid-cols-1 place-items md:grid-cols-2 xl:grid-cols-3  gap-x-16 gap-y-12 '>
-                {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
-            </div>
-            <div className='grid place-items-center mt-9'>
-                <Link href='berita'>
-                    <div className='grid place-items-center text-[16px] font-medium text-white 
-                    rounded-md bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
-                        Lihat Selebihnya
+            {blogDatas.length > 0 && (
+                <>
+                    <SubTitle title={"Berita"} />
+                    <div className='grid grid-cols-1 place-items md:grid-cols-2 xl:grid-cols-3  gap-x-16 gap-y-12 '>
+                        {blogDatas.map((blogdata, index) => <BlogCard key={index} blogData={blogdata} />)}
                     </div>
-                </Link>
-            </div>
+                    <div className='grid place-items-center mt-9'>
+                        <Link href='berita'>
+                            <div className='grid place-items-center text-[16px] font-medium text-white 
+                    rounded-md bg-primary py-3 px-16 cursor-pointer hover:bg-lighttertiary transition duration-75'>
+                                Lihat Selebihnya
+                            </div>
+                        </Link>
+                    </div>
+                </>
+            )}
             <div className='text-center grid place-items-center gap-4 lg:gap-8 border-t-2 mt-12 pt-12'>
                 <div className='text-3xl lg:text-4xl font-bold text-secondary'>Penerimaan Peserta Didik Baru</div>
                 <div className='text-sm md:text-md lg:text-lg font-light'>Butuh Informasi Lebih Lengkap mengenai penerimaan peserta didik baru?</div>

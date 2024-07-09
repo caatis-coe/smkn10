@@ -47,7 +47,7 @@ function TableBodyRows({ content = [
     );
 }
 
-function InfoPpdb({ contentTable =
+function InfoPpdb({ konsentrasiData, contentTable =
     [
         {
             "Aspek": "Rencana Jumlah Peserta Didik Baru Kelas X",
@@ -167,34 +167,6 @@ function InfoPpdb({ contentTable =
         },
     ];
 
-    const konsentrasiData = [
-        {
-            "title": "Konsentrasi Keahlian",
-            "image": "images/karawitan.jpg",
-        },
-        {
-            "title": "",
-            "image": "images/seni-tari.jpg",
-        },
-        {
-            "title": "",
-            "image": "images/seni-musik.jpg",
-        },
-        {
-            "title": "",
-            "image": "images/seni-teater.jpg",
-        },
-        {
-            "title": "",
-            "image": "images/siaran.jpg",
-        },
-        {
-            "title": "",
-            "image": "images/produksi-film.jpg",
-        },
-
-    ];
-
     return (
         <DefaultLayout>
             <ContentTitle subTitle='INFO PPDB' />
@@ -203,8 +175,8 @@ function InfoPpdb({ contentTable =
                     <div key={index}>
                         <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
                         <img
-                            
-                            src={data.image}
+
+                            src={"storage/" + data.image}
                             alt={`PPDB Image ${index + 1}`}
                             className='content shadow-md lg:h-[600px] sm:h-[184px] slide-in-up sm:mb-5 md:mb-20'
                             style={{ objectFit: 'cover' }}
@@ -212,21 +184,29 @@ function InfoPpdb({ contentTable =
                     </div>
                 ))}
             </div>
+            
             <section>
-                <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center`}>Konsentrasi Keahlian</div>
+                {
+                    konsentrasiData && (
+                        <>
+                            <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center`}>Konsentrasi Keahlian</div>
 
-                <div className="flex flex-wrap justify-center items-center">
-                    {konsentrasiData.map((data, index) => (
-                        <div key={index} className="m-2">
-                            <img
-                                src={data.image}
-                                alt={`PPDB Image ${index + 1}`}
-                                className='content shadow-md lg:h-[300px] sm:h-[184px] slide-in-up'
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                    ))}
-                </div>
+                            <div className="flex flex-wrap justify-center items-center">
+                                {konsentrasiData.map((data, index) => (
+                                    <div key={index} className="m-2">
+                                        <img
+                                            src={'/storage/'+data.images[0].image_path}
+                                            alt={`PPDB Image ${index + 1}`}
+                                            className='content shadow-md lg:h-[300px] sm:h-[184px] slide-in-up'
+                                            style={{ objectFit: 'cover' }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
+
             </section>
 
             <div className="mx-auto my-20 p-9 border-[1px] rounded-xl group hover:scale-[1.01] transition ease-in-out

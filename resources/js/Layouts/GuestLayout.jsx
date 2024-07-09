@@ -7,7 +7,7 @@ export default function Guest({ children }) {
             <div>
                 <Link href="/">
                     <div className='flex flex-col items-center gap-6'>
-                        <div className='text-6xl font-semibold text-gray-200'>Dashboard</div>
+                        <div className='text-6xl font-semibold text-gray-300'>Dashboard</div>
                         
                     </div>
                     

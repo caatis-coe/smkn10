@@ -2,9 +2,9 @@ import React from 'react'
 
 function PembelajaranCard({ data }) {
 
-    console.log(data.description)
 
-    const backgroundImage = `url('images/${data.image_path}')`;
+
+    const backgroundImage = `url('storage/${data.image_path}')`;
 
     return (
         <div className='relative flex flex-col min-w-[256px] h-[441px] group hover:scale-[1.01] 

@@ -7,6 +7,7 @@ import logoSMA from '@/Assets/slogan.png'
 import WideScreenNavLink from './Partials/WideScreenNavLink';
 import { FaPhone, FaEnvelope } from 'react-icons/fa'
 import contactData from '@/Data/ContactData';
+import { usePage } from '@inertiajs/react';
 
 function Nav() {
   const profilData = ([
@@ -19,8 +20,8 @@ function Nav() {
       "endpoint": "/daftar-guru"
     },
     {
-      "title": "Daftar Karyawan",
-      "endpoint": "/daftar-karyawan"
+      "title": "Daftar Tenaga Pendidikan",
+      "endpoint": "/daftar-tenaga-pendidikan"
     },
     {
       "title": "Visi dan Misi",
@@ -41,7 +42,7 @@ function Nav() {
       "endpoint": "/fasilitas"
     },
     {
-      "title": "Kegiatan Mahasiswa",
+      "title": "Kegiatan Siswa",
       "endpoint": "/kegiatan-mahasiswa"
     },
     {
@@ -49,32 +50,9 @@ function Nav() {
       "endpoint": "/kurikulum"
     },
   ])
-  const keahlianData = [
-    {
-        "title": "Seni Karawitan",
-        "endpoint": "/keahlian-seni-karawitan",
-    },
-    {
-        "title": "Seni Tari",
-        "endpoint": "/keahlian-seni-tari",
-    },
-    {
-        "title": "Seni Musik",
-        "endpoint": "/keahlian-seni-musik",
-    },
-    {
-        "title": "Seni Teater",
-        "endpoint": "/keahlian-seni-teater",
-    },
-    {
-        "title": "Produksi dan Siaran Program Televisi",
-        "endpoint": "/keahlian-produksi-dan-siaran-program-televisi",
-    },
-    {
-        "title": "Produksi Film",
-        "endpoint": "/keahlian-produksi-film",
-    },
-];
+
+  const { keahlianData } = usePage().props;
+ 
   const prestasiData = ([
     {
       "title": "Prestasi Sekolah",
@@ -102,6 +80,8 @@ function Nav() {
   ])
 
   const [click, setClick] = useState(false)
+
+  
 
   const handleClickLink = () => {
     setClick(false)

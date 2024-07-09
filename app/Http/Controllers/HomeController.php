@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use App\Models\Blog;
 use App\Models\Image;
+use App\Models\KonsentrasiKeahlian;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Foundation\Application;
@@ -11,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
-    private $apiUrl = 'https://api-berita-indonesia.vercel.app/sindonews/edukasi/';
-
-    private $beritaDatas = [];
-    private $homeSwipers = [];
-    private $headmaster = [];
 
     public function __construct(){
-        $this->beritaDatas = Blog::getRecentBlogs();
-        $this->homeSwipers = Image::getImagesByUsage('home_swiper');
-        $this->headmaster = Image::getSingleImageByUsage('headmaster');
+        
+
+        Inertia::share('keahlianDatas', KonsentrasiKeahlian::all()->map(function ($keahlian) {
+            return [
+                'title' => $keahlian->title,
+                'endpoint' => "/{$keahlian->slug}",
+            ];
+        }));
     }
 
     public function show(): Response
@@ -42,10 +44,18 @@ class HomeController extends Controller
         //     ];
         // }, $limitedBeritaDatas, array_keys($limitedBeritaDatas));
 
+        $home_analytics = json_decode(File::get(public_path('storage/doc/home_analytics.json')), true);
+        $beritaDatas = Blog::getRecentBlogs();
+        $homeSwipers = Image::getImagesByUsage('home_swiper');
+        $headmaster = json_decode(File::get(public_path('storage/doc/headmaster.json')), true);
+        $url_video_profile = trim(File::get(public_path('storage/doc/url_video_profile.txt')));
+
         return Inertia::Render('Home', [
-            'blogDatas' => $this->beritaDatas,
-            'headmaster' => $this->headmaster,
-            'swiperImage' => $this->homeSwipers,
+            'blogDatas' => $beritaDatas,
+            'headmaster' => $headmaster,
+            'swiperImage' => $homeSwipers,
+            'urlVideoProfile' => $url_video_profile,
+            'homeAnalytics' => $home_analytics['data'],
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,

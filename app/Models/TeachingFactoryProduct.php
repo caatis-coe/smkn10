@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class TeachingFactoryProduct extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image_path',
+        'KonsentrasiKeahlianID'
+    ];
+    public function konsentrasiKeahlian()
+    {
+        return $this->belongsTo(KonsentrasiKeahlian::class, 'KonsentrasiKeahlianID');
+    }
 }

@@ -9,6 +9,12 @@ class KonsentrasiKeahlian extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'endpoint'
+    ];
+
     public function images()
     {
         return $this->belongsToMany(Image::class, 'image_konsentrasi_keahlians', 'KonsentrasiKeahlianID', 'ImageID');

@@ -19,10 +19,10 @@ class BlogFactory extends Factory
     {
 
         $thumbnail_images = [
-            "images/ekskul-angklung.jpg",
-            "images/ekskul-paduan.jpg",
-            "images/ekskul-taekwondo.jpg",
-            "images/ekskul-angklung.jpg",
+            "images/berita/ekskul-angklung.jpg",
+            "images/berita/ekskul-paduan.jpg",
+            "images/berita/ekskul-taekwondo.jpg",
+            "images/berita/ekskul-angklung.jpg",
             "https://cdn-sekolah.annibuku.com/20219176/1.jpg",
             "https://majalahsora.com/wp-content/uploads/2023/06/IMG-20230609-WA0048.jpg",
             "https://sambasnews.id/wp-content/uploads/2023/03/WhatsApp-Image-2023-03-17-at-21.36.17.jpeg",

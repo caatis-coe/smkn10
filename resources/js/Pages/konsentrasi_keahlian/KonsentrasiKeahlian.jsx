@@ -1,4 +1,5 @@
 import ContentTitle from '@/Components/ContentTitle'
+import SubTitle from '@/Components/SubTitle'
 import DefaultLayout from '@/Layouts/DefaultLayout'
 import React from 'react'
 
@@ -17,19 +18,19 @@ function KonsentrasiKeahlian({ data }) {
       //   </div>
       // }
     >
-      <ContentTitle title={"KEAHLIAN"} subTitle={data.title} />
+      <ContentTitle title={"KEAHLIAN"} subTitle={data.title.toUpperCase()} />
       <div>
         <p>{data.description}</p>
       </div>
-
-      <div className="flex flex-wrap justify-center mt-20">
+      <SubTitle title={"Dokumentasi"}></SubTitle>
+      <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center lg:gap-16 border border-gray-200 p-12 rounded-lg">
 
         {data.image_path.map((url, index) => (
           <img
             key={index}
-            src={'/images/' + url}
+            src={'storage/' + url}
             alt={`Image ${index + 1}`}
-            className='m-2 shadow-md lg:max-h-[600px] lg:max-w-[600px] md:max-w-[300px]'
+            className='m-2 shadow-md w-full'
             style={{ objectFit: 'cover' }}
           />
         ))}

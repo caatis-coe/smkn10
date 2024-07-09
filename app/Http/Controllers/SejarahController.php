@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -125,6 +126,6 @@ class SejarahController extends Controller
 
     public function show(): Response
     {
-        return Inertia::Render('profil/Sejarah', ['data' => $this->sejarahDatas] );
+        return Inertia::Render('profil/Sejarah', ['data' => Storage::disk('public')->get('doc/sejarah.html')] );
     }
 }

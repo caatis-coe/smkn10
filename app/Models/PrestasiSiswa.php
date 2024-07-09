@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PrestasiSiswa extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'achievement',
+        'year'
+    ];
 }

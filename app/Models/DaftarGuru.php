@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class DaftarGuru extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'nip_nuptk'
+    ];
 }
