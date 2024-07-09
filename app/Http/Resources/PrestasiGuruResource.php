@@ -2,11 +2,13 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PrestasiGuruResource extends JsonResource
 {
+    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
@@ -14,6 +16,12 @@ class PrestasiGuruResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            'achievement' => $this->achievement,
+            'year' => $this->year,
+            'created_at' => (new Carbon($this->created_at))->format('d-m-Y'),
+            'updated_at' => (new Carbon($this->updated_at))->format('d-m-Y'),
+        ];
     }
 }

@@ -11,7 +11,7 @@ class UpdatePrestasiGuruRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdatePrestasiGuruRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'achievement' => ['required', 'max:255'],
+            'year' => ['required', 'digits:4', 'integer','min:2000', 'max:' . date('Y')],
         ];
     }
 }

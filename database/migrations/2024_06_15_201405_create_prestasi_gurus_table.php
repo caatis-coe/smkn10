@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('prestasi_gurus', function (Blueprint $table) {
             $table->id();
+            $table->string('achievement');
+            $table->year('year');
             $table->timestamps();
         });
     }

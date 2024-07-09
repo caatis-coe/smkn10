@@ -6,6 +6,10 @@ import { Head } from '@inertiajs/react';
 import DataUserTable from './Partials/DataUserTable';
 
 export default function Edit({ auth, mustVerifyEmail, status, users }) {
+    // users.data.forEach((_, index) => {
+    //     delete users.data[index].email
+    // })
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -26,9 +30,8 @@ export default function Edit({ auth, mustVerifyEmail, status, users }) {
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <UpdatePasswordForm className="max-w-xl" />
                     </div>
-                    
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <DataUserTable  users={users.data}/>
+                        <DataUserTable  users={users.data} auth={auth}/>
                     </div>
                     
 
