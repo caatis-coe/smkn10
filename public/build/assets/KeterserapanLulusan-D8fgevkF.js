@@ -1,1 +1,0 @@
-import{j as t}from"./app-B8sgcMSX.js";import{C as r}from"./ContentTitle-aAOJQL72.js";import{D as e}from"./DefaultLayout-CGWBRPuu.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function i(){return t.jsx(e,{children:t.jsx(r,{title:"Lulusan",subTitle:"KETERSERAPAN LULUSAN"})})}export{i as default};
