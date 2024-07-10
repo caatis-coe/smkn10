@@ -81,7 +81,6 @@ class AdminBeritaController extends Controller
     public function update(UpdateBlogRequest $request, Blog $berita_db)
     {
         $data = $request->validated();
-        dd($data);
         $data['updated_by'] = Auth::id();
         $image = $data['thumbnail_image'] ?? null;
         if ($image) {
