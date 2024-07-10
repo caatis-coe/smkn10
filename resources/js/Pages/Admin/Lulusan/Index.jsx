@@ -65,7 +65,7 @@ function Index({ auth, datas, success, session }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Home
+                        {session == 0 ? 'Keterserapan Lulusan' : 'Industri Mitra'}
                     </h2>
                     <button onClick={() => {
                         setIsModalOpen((prev) => !prev)
@@ -80,13 +80,13 @@ function Index({ auth, datas, success, session }) {
                         className='bg-emerald-500 py-2 px-3 text-white rounded
                         shadow transition-all hover:bg-emerald-600'
                     >
-                        Add new swiper image
+                        Add new
                     </button>
 
                 </div>
             }
         >
-            <Head title="Home" />
+            <Head title={session == 0 ? 'Keterserapan Lulusan' : 'Industri Mitra'} />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

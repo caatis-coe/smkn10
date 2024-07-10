@@ -30,7 +30,9 @@ function Index({ auth, datas, session, success }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Pembelajaran
+                        {
+                            session ? 'Fasilitas' : 'Kegiatan Mahasiswa'
+                        }
                     </h2>
                     <Link href={route('pembelajaran-db.create')}
                         className='bg-emerald-500 py-2 px-3 text-white rounded
@@ -41,7 +43,9 @@ function Index({ auth, datas, session, success }) {
                 </div>
             }
         >
-            <Head title="Pembelajaran" />
+            <Head title={
+                            session ? 'Fasilitas' : 'Kegiatan Mahasiswa'
+                        } />
 
 
 

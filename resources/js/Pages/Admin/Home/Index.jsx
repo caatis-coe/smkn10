@@ -86,7 +86,12 @@ function Index({ auth, datas, success, session }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Home datas
+                        {
+                            session == 0 ? "Swiper Image"
+                            : session == 1 ? "Home Analytics"
+                            : session == 2 ? "Youtube Link" 
+                            : session == 3 ? "Headmaster" : ""
+                        }
                     </h2>
                     {session == 0 &&
                         (

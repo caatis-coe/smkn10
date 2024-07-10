@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\AdminBuyerController;
 use App\Http\Controllers\Admin\AdminDaftarTenagaPendidikanController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminKonsentrasiKeahlianController;
-use App\Http\Controllers\admin\AdminPembelajaranController;
+use App\Http\Controllers\Admin\AdminPembelajaranController;
 use App\Http\Controllers\Admin\AdminPrestasiGuruController;
 use App\Http\Controllers\Admin\AdminPrestasiSekolahController;
 use App\Http\Controllers\Admin\AdminPrestasiSiswaController;
