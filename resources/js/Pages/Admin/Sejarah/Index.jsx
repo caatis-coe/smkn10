@@ -21,12 +21,12 @@ function Index({ auth, data, success, session }) {
             header={
                 <div className='flex justify-between items-center'>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Struktur Organisasi
+                        Sejarah
                     </h2>
                 </div>
             }
         >
-            <Head title="Home" />
+            <Head title="Sejarah" />I
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

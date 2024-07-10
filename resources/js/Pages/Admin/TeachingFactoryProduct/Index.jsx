@@ -5,7 +5,7 @@ import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
 
 function Index({ auth, datas, session, success,teachingFactoryProducts }) {
-    
+     
     const changeNavStatus = (url) => {
         Inertia.get(`teaching-factory-product-db?type=${url}`)
     }
@@ -19,7 +19,6 @@ function Index({ auth, datas, session, success,teachingFactoryProducts }) {
             data: { type: session }
         });
     }
-
 
     return (
         <AuthenticatedLayout
