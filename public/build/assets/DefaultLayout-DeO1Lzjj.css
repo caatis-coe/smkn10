@@ -1,0 +1,1 @@
+@keyframes slideInUp{0%{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}.submenu-animate{display:none;min-width:100%}.group:hover .submenu-animate{display:block;animation:slideInUp .3s ease-out forwards}
