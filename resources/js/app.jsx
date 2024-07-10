@@ -7,6 +7,8 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 const appName = import.meta.env.VITE_APP_NAME || 'SMKN 10 Bandung';
 
+console.log('Environment:', import.meta.env.VITE_APP_ENV);
+
 
 createInertiaApp({
     title: (title) => `${title}`,

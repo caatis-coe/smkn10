@@ -1,0 +1,9 @@
+import{j as e}from"./app-BUFdCYY6.js";import{C as i}from"./ContentTitle-Dd8Q5-wD.js";import{D as l}from"./DefaultLayout-CHn6jCk1.js";import{S as o,a as n}from"./swiper-C7YS_jeE.js";import{P as c,S as p}from"./pagination-CfpJOd30.js";import{A as u}from"./autoplay-Bwn3UqKg.js";import"./index-qIJob6tS.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function b({datas:t}){return e.jsxs(l,{children:[e.jsx(i,{title:"Lulusan",subTitle:"INDUSTRI MITRA"}),e.jsx(o,{modules:[c,p,u],slidesPerView:1,spaceBetween:10,pagination:{clickable:!0},autoplay:{delay:2e3,disableOnInteraction:!1},breakpoints:{640:{slidesPerView:2,spaceBetween:20},768:{slidesPerView:3,spaceBetween:40},1024:{slidesPerView:4,spaceBetween:50}},className:"w-full",children:t&&Array(Math.ceil(t.length/2)).fill(0).map((m,r)=>e.jsx(n,{className:"pb-12 ",children:e.jsx("div",{className:"flex flex-col w-full items-center gap-9",children:t.slice(r*2,r*2+2).map((a,s)=>e.jsxs("div",{className:` border-2 p-12
+                                    w-full h-56 flex flex-col justify-center items-center
+                                    gap-4 rounded-lg group static cursor-pointer hover:bg-lighttertiary
+                                    duration-500 transition ease-out
+                                    `,children:[e.jsx("img",{className:`size-24 group-hover:scale-110 translate-y-4
+                                        transition ease-out group-hover:translate-y-0
+                                        duration-500`,src:`storage/${a.image_path}`,alt:a.description}),e.jsx("div",{className:`font-medium text-white translate-y-0 opacity-0 
+                                        group-hover:opacity-100 group-hover:translate-y-1 
+                                        transition ease-out duration-100 text-center`,children:a.description})]},s))})},r))})]})}export{b as default};
