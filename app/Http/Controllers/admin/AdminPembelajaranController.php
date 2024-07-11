@@ -57,7 +57,7 @@ class AdminPembelajaranController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePembelajaranRequest $request)
+    public function store( StorePembelajaranRequest $request)
     {
         $data = $request->validated();
         /** @var $image \Illuminate\Http\UploadedFile  */
@@ -69,7 +69,7 @@ class AdminPembelajaranController extends Controller
         }
         Pembelajaran::create($data);
         
-        return Redirect::route('pembelajaran-db.index')->with('success', 'Pembelajaran data has been created');
+        return Redirect::route('pembelajaran-db.index', ['type' => $request->type == 'kegiatan mahasiswa' ? 'kegiatanMahasiswa' : 'fasilitas'])->with('success', 'Pembelajaran data has been created');
     }
 
     /**
@@ -118,19 +118,19 @@ class AdminPembelajaranController extends Controller
         }
         $pembelajaran_db->update($data);
 
-        return Redirect::route('pembelajaran-db.index')->with('success', "\"$pembelajaran_db->title\" has been updated");
+        return Redirect::route('pembelajaran-db.index', ['type' => $request->type == 'kegiatan mahasiswa' ? 'kegiatanMahasiswa' : 'fasilitas'])->with('success', "\"$pembelajaran_db->title\" has been updated");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pembelajaran $pembelajaran_db)
+    public function destroy(Request $request, Pembelajaran $pembelajaran_db)
     {
         $title = $pembelajaran_db->title;
         if($pembelajaran_db->image_path) {
             Storage::disk('public')->delete($pembelajaran_db->image_path);
         }
         $pembelajaran_db->delete();
-        return Redirect::route('pembelajaran-db.index')->with('success', "\"$title\" has been deleted");
+        return Redirect::route('pembelajaran-db.index', ['type' => $request->input('session') ? "fasilitas" : "kegiatanMahasiswa"])->with('success', "\"$title\" has been deleted");
     }
 }

@@ -15,12 +15,15 @@ function Index({ auth, datas, session, success }) {
         Inertia.get(`pembelajaran-db?type=${url}`)
     }
 
+    console.log(datas)
 
     const deletePembelajaran = (pembelajaran) => {
         if (!window.confirm(`Are you sure you want to delete "${pembelajaran.title}"`)){
             return;
         }
-        router.delete(route("pembelajaran-db.destroy", pembelajaran.id))
+        router.delete(route("pembelajaran-db.destroy", pembelajaran.id), {
+            data: {session : session}
+        })
     }
 
 

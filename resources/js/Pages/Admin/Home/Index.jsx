@@ -21,7 +21,7 @@ function Index({ auth, datas, success, session }) {
         } : session == 3 ? { ...datas, 'file': null } : null
     );
 
-
+    
 
     const resetAllState = () => {
         setModalSession({

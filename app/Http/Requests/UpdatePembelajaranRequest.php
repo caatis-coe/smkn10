@@ -22,7 +22,7 @@ class UpdatePembelajaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => ['required', 'max:121'],
+            "title" => ['required', 'max:72'],
             "image_path" => ['nullable', 'image'],
             "description" => ['max:512'],
             "type" => ['required'],
