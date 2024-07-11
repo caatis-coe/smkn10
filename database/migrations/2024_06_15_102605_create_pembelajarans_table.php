@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText("description")->nullable();
             $table->string("type");
             $table->string("group");
-            $table->string("image_path")->nullable();
+            $table->string("image_path");
             $table->foreignId("updated_by")->constrained("users");
             $table->foreignId("published_by")->constrained("users");
             $table->timestamps();

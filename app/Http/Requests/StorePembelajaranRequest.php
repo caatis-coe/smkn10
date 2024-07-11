@@ -24,7 +24,7 @@ class StorePembelajaranRequest extends FormRequest
     {
         return [
             "title" => ['required', 'max:72'],
-            "image_path" => ['nullable', 'image'],
+            "image_path" => ['required', 'image'],
             "description" => ['max:512'],
             "type" => ['required'],
             "group" => ['required']

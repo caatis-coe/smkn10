@@ -23,7 +23,7 @@ class UpdateHeadmasterRequest extends FormRequest
     {
         return [
             'file' => ['nullable'],
-            'image_path' => ['required'],
+            'image_path' => ['required', 'image'],
             'name' => ['required'],
             'message' => ['required', 'string', 'max:512']
         ];

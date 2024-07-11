@@ -60,7 +60,7 @@ function Edit({ auth, groups, pembelajaran }) {
                                     </div>
                             }
                             <div>
-                                <InputLabel htmlFor="pembelajaran_image_path" value="Thumbnail Image" />
+                                <InputLabel htmlFor="pembelajaran_image_path" value="*Thumbnail Image" />
                                 <TextInput
                                     id="pembelajaran_image_path"
                                     type="file"

@@ -53,7 +53,7 @@ function Create({ auth, groups }) {
                                 {JSON.stringify(data,undefined,2)}
                             </pre> */}
                             <div>
-                                <InputLabel htmlFor="pembelajaran_image_path" value="Thumbnail Image" />
+                                <InputLabel htmlFor="pembelajaran_image_path" value="*Thumbnail Image" />
                                 <TextInput
                                     id="pembelajaran_image_path"
                                     type="file"
