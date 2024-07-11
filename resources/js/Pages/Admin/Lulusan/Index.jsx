@@ -7,15 +7,19 @@ import TextInput from '@/Components/TextInput'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router, useForm } from '@inertiajs/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdImage } from 'react-icons/io'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success, session }) {
+    const [isSuccess, setIsSuccess] = useState(false);
     const { data, setData, post, errors, reset } = useForm({
         file: null,
-        description : session == 0 ? '-' :  '',
+        description: session == 0 ? '-' : '',
         _method: 'PUT',
     });
+
+    console.log()
 
     const resetAllState = () => {
         setModalSession({
@@ -25,18 +29,6 @@ function Index({ auth, datas, success, session }) {
             'action': ''
         })
         reset();
-    }
-
-    // Headmaster Functions
-    const handleHeadmasterSubmit = (e) => {
-        e.preventDefault();
-        post(route("lulusan-db.editDocHeadmaster"))
-    }
-
-    // URL Video Profile Functions
-    const handleURLVideoProfileSubmit = (e) => {
-        e.preventDefault();
-        post(route("lulusan-db.editDocURLVideoProfile"))
     }
 
     // Home swiper image Functions
@@ -73,14 +65,14 @@ function Index({ auth, datas, success, session }) {
                         ({
                             ...prev,
                             'used_as': session == 0 ? 'keterserapan_lulusan' : 'industri_mitra',
-                            'action' : "create",
+                            'action': "create",
                         })
                         )
                     }}
                         className='bg-emerald-500 py-2 px-3 text-white rounded
                         shadow transition-all hover:bg-emerald-600'
                     >
-                        Add new
+                        Add new {session == 0 ? 'keterserapan lulusan' : 'industri mitra'}
                     </button>
 
                 </div>
@@ -135,7 +127,7 @@ function Index({ auth, datas, success, session }) {
                                                     />
                                                 </td>
                                                 {session == 1 && <th className='px-3 py-5 font-normal'>{data.description}</th>}
-                                                <td className='px-3 py-2 text-right'>
+                                                <td className='px-3 py-2 text-right space-x-2'>
                                                     <button onClick={() => {
                                                         setIsModalOpen((prev) => !prev)
                                                         setModalSession(
@@ -146,19 +138,19 @@ function Index({ auth, datas, success, session }) {
                                                         )
                                                         setData((prev) => ({
                                                             ...prev,
-                                                            used_as : data.used_as,
-                                                            description : session == 1 ? data.description : '-'
+                                                            used_as: data.used_as,
+                                                            description: session == 1 ? data.description : '-'
                                                         }))
                                                     }}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
+                                                        className='text-blue-500 hover:text-blue-400 transition-all text-lg'
                                                     >
-                                                        edit
+                                                        <MdEdit />
                                                     </button>
                                                     <button
                                                         onClick={() => deleteImage(data)}
-                                                        className='font-medium text-red-500 hover:underline mx-1'
+                                                        className='text-red-500 hover:text-blue-400 transition-all text-lg'
                                                     >
-                                                        delete
+                                                        <MdDelete />
                                                     </button>
                                                 </td>
                                             </tr>
@@ -219,7 +211,7 @@ function Index({ auth, datas, success, session }) {
                             }}
                         />
                         <InputError message={errors.file} className='mt-2' />
-                    </div> 
+                    </div>
                     {session == 1 && <div className='mt-4'>
                         <InputLabel htmlFor="lulusan_description" value="*Description" />
                         <TextInput
@@ -231,11 +223,11 @@ function Index({ auth, datas, success, session }) {
                             onChange={e => {
                                 setData((prev) => ({
                                     ...prev,
-                                    "description" : e.target.value,
+                                    "description": e.target.value,
                                 }))
                                 setModalSession((prev) => ({
                                     ...prev,
-                                    "description" : e.target.value,
+                                    "description": e.target.value,
                                 })
 
                                 )
@@ -256,11 +248,13 @@ function Index({ auth, datas, success, session }) {
                             Cancel
                         </button>
                         <button onClick={() => {
-                            setIsModalOpen((prev) => !prev)
                             post(modalSession.action == 'create' ? route('lulusan-db.store') : route('lulusan-db.update', modalSession.id))
-                            setTimeout(() => {
-                                resetAllState();
-                            }, 200);
+                            if (success) {
+                                setIsModalOpen((prev) => !prev)
+                                setTimeout(() => {
+                                    resetAllState();
+                                }, 200);
+                            }
                         }}
                             className={`bg-emerald-500 py-2 px-4 text-white
                                     rounded shadow transition-all hover:bg-emerald-600 text-sm

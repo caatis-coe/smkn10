@@ -24,7 +24,7 @@ class StoreLulusanRequest extends FormRequest
         return [
             'file' => ['nullable', 'image'],
             'used_as' => ['required'],
-            'description' => ['string', 'required', 'max:255']
+            'description' => ['string', 'required', 'max:72']
         ];
     }
 }

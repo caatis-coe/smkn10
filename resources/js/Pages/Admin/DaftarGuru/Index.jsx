@@ -3,10 +3,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success, session }) {
 
-    const deleteBerita = (daftarGuru) => {
+    const deleteDaftarGuru = (daftarGuru) => {
         if (!window.confirm(`Are you sure you want to delete "${daftarGuru.name}"`)) {
             return;
         }
@@ -45,12 +46,12 @@ function Index({ auth, datas, success, session }) {
                             <nav className='border-b text-gray-400 border-gray-200 w-full mb-4 flex gap-x-6 pt-2 h-12 px-4 text-sm'>
                                 <div className={`${session == 0 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                        transition-all border-b-2  text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={()=> Inertia.get(`daftar-guru-db`)}>
+                                        transition-all border-b-2  text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => Inertia.get(`daftar-guru-db`)}>
                                     Daftar Guru
                                 </div>
                                 <div className={`${session == 1 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                        transition-all border-b-2  text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={()=> Inertia.get(`daftar-tenaga-pendidikan-db`)}>
+                                        transition-all border-b-2  text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => Inertia.get(`daftar-tenaga-pendidikan-db`)}>
                                     Daftar Tenaga Pendidikan
                                 </div>
                                 <div className={`${session == 2 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
@@ -60,7 +61,7 @@ function Index({ auth, datas, success, session }) {
                                 </div>
                                 <div className={`${session == 3 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                        transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={()=> Inertia.get(`struktur-organisasi-db`)}>
+                                        transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => Inertia.get(`struktur-organisasi-db`)}>
                                     Struktur Organisasi
                                 </div>
                             </nav>
@@ -94,17 +95,19 @@ function Index({ auth, datas, success, session }) {
                                                 <td className='px-3 py-4 text-nowrap'>{data.created_at}</td>
                                                 <td className='px-3 py-4 text-nowrap'>{data.created_at}</td>
                                                 <td className='px-3 py-4 text-nowrap text-right' >
-                                                    <Link href={route("daftar-guru-db.edit", data.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => deleteBerita(data)}
-                                                        className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("daftar-guru-db.edit", data.id)}
+                                                            className=' text-blue-500 hover:text-blue-400 transition-all text-lg'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteDaftarGuru(data)}
+                                                            className=' text-red-500 hover:text-red-400 transition-all text-lg'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}

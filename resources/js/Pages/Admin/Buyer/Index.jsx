@@ -2,6 +2,7 @@ import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete } from 'react-icons/md'
 
 function Index({ auth, datas, success }) {
 
@@ -49,7 +50,7 @@ function Index({ auth, datas, success }) {
                                             <th className='px-3 py-5'>Company Address</th>
                                             <th className='px-3 py-5'>Created At</th>
                                             <th className='px-3 py-5'>Teaching Factory Product</th>
-                                            <th className='px-3 py-5 text-center'>Actions</th>
+                                            <th className='px-3 py-5 text-right'>Actions</th>
                                         </tr>
                                     </thead>
 
@@ -57,28 +58,28 @@ function Index({ auth, datas, success }) {
                                         {datas.data.map((buyer, index) => (
                                             <tr key={index} className='bg-white border-b 
                                                 border-gray-300'>
-                                                <td className='px-3 py-2 text-nowrap'>{buyer.id}</td>
-                                                <td className='px-3 py-2 text-nowrap text-gray-600 font-medium  hover:underline'>
+                                                <td className='px-3 py-4 text-nowrap'>{buyer.id}</td>
+                                                <td className='px-3 py-4 text-nowrap text-gray-600 font-medium  hover:underline'>
                                                     <Link href={route('buyer-db.show', buyer.id)}>
                                                         {buyer.name}
                                                     </Link>
                                                 </td>
-                                                <td className='px-3 py-2  text-nowrap'>
+                                                <td className='px-3 py-4  text-nowrap'>
                                                     {buyer.company_name}
                                                 </td>
-                                                <td className='px-3 py-2 '>
+                                                <td className='px-3 py-4 '>
                                                     {buyer.company_address}
                                                 </td>
-                                                <td className='px-3 py-2 text-nowrap'>{buyer.created_at}</td>
-                                                <td className='px-3 py-2 '>
+                                                <td className='px-3 py-4 text-nowrap'>{buyer.created_at}</td>
+                                                <td className='px-3 py-4 '>
                                                     {buyer.teaching_factory_product.title}
                                                 </td>
-                                                <td className='px-3 py-2' >
+                                                <td className='px-3 py-4 text-right' >
                                                     <button 
                                                     onClick={() => deleteBerita(buyer)}
-                                                    className='font-medium text-red-500 hover:underline mx-1'
+                                                    className=' text-red-500 hover:text-red-400 transition-all text-lg'
                                                     >
-                                                        delete
+                                                        <MdDelete/>
                                                     </button>
                                                 </td>
                                             </tr>

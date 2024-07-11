@@ -109,6 +109,7 @@ function Edit({ auth, groups, pembelajaran }) {
                                             type: e.target.value,
                                             group: ''  // Reset 'group' when 'type' changes
                                         }));
+                                        setToogleGroupOption(true);
                                     }}
                                 >
                                     <option value="">Select Type</option>
@@ -138,10 +139,13 @@ function Edit({ auth, groups, pembelajaran }) {
                                         id="pembelajaran_group"
                                         name="group"
                                         value={data.group}
-                                        className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
+                                        className={`mt-1 block w-full ${!data.type || !groups[data.type] ? "pointer-events-none text-gray-200" : ''}`}
                                         onChange={e => setData('group', e.target.value)}
                                     >
-                                        {!data.type ? <option value="">Select Type First</option> : <>
+                                        {!data.type ?  <option value="">Select Type First</option> : 
+                                        !groups[data.type] ? 
+                                        <option value="">No groups available, create a new one</option> :
+                                        <>
                                             <option value="">Select Group</option>
                                             {groups[data.type].map((group) => (
                                                 <option key={group} value={group}>{group}</option>
@@ -156,7 +160,7 @@ function Edit({ auth, groups, pembelajaran }) {
                                         value={data.group}
                                         className="mt-1 block w-full capitalize"
                                         isFocused={true}
-                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
+                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" "))}
                                     />
                                 }
 

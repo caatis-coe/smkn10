@@ -40,16 +40,18 @@ function Edit({ auth, konsentrasiKeahlian,teachingFactoryProduct }) {
                         <form
                             onSubmit={onSubmit}
                             className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
+                            <div className='border border-gray-200 flex justify-center rounded p-6 mb-4'>
                                 {data.image_path ?
-                                        <div className='mb-4'>
-                                            <img src={URL.createObjectURL(data.image_path)} alt="data Image" className='aspect-video w-full object-cover' />
+                                        <div>
+                                            <img src={URL.createObjectURL(data.image_path)} alt="data Image" className='aspect-square w-96 object-cover' />
                                         </div>
                                         :
                                 teachingFactoryProduct.image_path &&
-                                <div className='mb-4'>
-                                    <img src={'/storage/'+teachingFactoryProduct.image_path} alt="image" className='aspect-video w-full object-cover' />
+                                <div >
+                                    <img src={'/storage/'+teachingFactoryProduct.image_path} alt="image" className='aspect-square w-96 object-cover' />
                                 </div>
                             }
+                            </div>
                             <div>
                                 <InputLabel htmlFor="teachingFactoryProduct_image_path" value="*Thumbnail Image" />
                                 <TextInput

@@ -3,10 +3,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success }) {
 
-    const deleteBerita = (prestasiSekolah) => {
+    const deletePrestasiSekolah = (prestasiSekolah) => {
         if (!window.confirm(`Are you sure you want to delete "${prestasiSekolah.achievement}" with id: ${prestasiSekolah.id} `)) {
             return;
         }
@@ -25,7 +26,7 @@ function Index({ auth, datas, success }) {
                         className='bg-emerald-500 py-2 px-3 text-white rounded
                 shadow transition-all hover:bg-emerald-600'
                     >
-                        Add new Prestasi Sekolah
+                        Add new prestasi sekolah
                     </Link>
                 </div>
 
@@ -88,18 +89,20 @@ function Index({ auth, datas, success }) {
                                                 </td>
                                                 <td className='px-5 py-4 text-nowrap'>{data.created_at}</td>
                                                 <td className='px-5 py-4 text-nowrap'>{data.created_at}</td>
-                                                <td className='px-5 py-4 text-nowrap text-right' >
-                                                    <Link href={route("prestasi-sekolah-db.edit", data.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => deleteBerita(data)}
-                                                        className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                <td className='px-3 py-2 text-nowrap text-right'>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("prestasi-sekolah-db.edit", data.id)}
+                                                            className='text-blue-500 text-lg hover:text-blue-400 transition-all'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deletePrestasiSekolah(data)}
+                                                            className='text-red-500 text-lg hover:text-red-400 transition-all'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}

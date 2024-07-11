@@ -7,6 +7,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, useForm } from '@inertiajs/react'
 import React, { useEffect, useState } from 'react'
 import { IoMdImage } from 'react-icons/io'
+import { MdAdd, MdCancel, MdDelete, MdEdit } from 'react-icons/md'
 
 function Edit({ auth, konsentrasiKeahlian }) {
 
@@ -14,15 +15,15 @@ function Edit({ auth, konsentrasiKeahlian }) {
         image.id ? {
             'initStatus': true,
             'statusState': 'available',
-            'text_button_1': 'edit',
-            'text_button_2': 'delete',
+            'text_button_1': <MdEdit/>,
+            'text_button_2': <MdDelete/>,
         }
             :
             {
                 'initStatus': false,
                 'statusState': '',
                 'text_button_1': '',
-                'text_button_2': 'create',
+                'text_button_2': <MdAdd/>,
             }
     ))
     const [shouldSubmit, setShouldSubmit] = useState(false);
@@ -41,9 +42,6 @@ function Edit({ auth, konsentrasiKeahlian }) {
         images: konsentrasiKeahlian.images || "",
         _method: 'PUT'
     })
-
-
-
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -95,9 +93,9 @@ function Edit({ auth, konsentrasiKeahlian }) {
                             : prev.statusState === 'post'
                                 ? 'delete'
                                 : 'post',
-                text_button_1: prev.text_button_1 === 'edit' ? '' : 'edit',
+                text_button_1: prev.text_button_1.type == (<MdEdit />).type ? '' : <MdEdit />,
                 text_button_2:
-                    prev.text_button_2 === 'delete' ? 'cancel' : 'delete',
+                    prev.text_button_2.type === (<MdDelete/>).type ? <MdCancel/> : <MdDelete/>,
             };
 
 
@@ -113,8 +111,8 @@ function Edit({ auth, konsentrasiKeahlian }) {
             newImageStatus[index] = {
                 ...prev,
                 statusState: 'post',
-                text_button_1: 'edit',
-                text_button_2: 'cancel',
+                text_button_1: <MdEdit />,
+                text_button_2: <MdCancel/>,
             };
         } else if (action == 'cancel') {
             setData(prev => {
@@ -128,8 +126,8 @@ function Edit({ auth, konsentrasiKeahlian }) {
             newImageStatus[index] = {
                 ...prev,
                 statusState: prev.initStatus ? 'available' : '',
-                text_button_1: prev.initStatus ? 'edit' : '',
-                text_button_2: prev.initStatus ? 'delete' : 'create',
+                text_button_1: prev.initStatus ? <MdEdit /> : '',
+                text_button_2: prev.initStatus ? <MdDelete/> : <MdAdd/>,
             };
         }
         setImageStatus(newImageStatus)
@@ -235,14 +233,15 @@ function Edit({ auth, konsentrasiKeahlian }) {
 
                                                             </td>
 
-                                                            <td className='px-3 py-2 text-right'>
+                                                            <td className='px-3 py-2 text-right text-lg'>
                                                                 <div className='inline-block'>
                                                                     <button onClick={(e) => {
                                                                         e.preventDefault();
                                                                         changeModalSession(index, image, 'edit')
                                                                         toogleIsModalOpen()
                                                                     }}
-                                                                        className='font-medium text-blue-500 hover:underline mx-1 inline-block'>
+                                                                        className='font-medium text-blue-500 hover:text-blue-400 transition-all 
+                                                                        hover:underline mx-1 inline-block'>
                                                                         {imageStatus[index].text_button_1}
                                                                     </button>
                                                                     {image.id ?
@@ -253,11 +252,11 @@ function Edit({ auth, konsentrasiKeahlian }) {
                                                                                     imageStatus[index].statusState.includes('available') ? 'delete' : 'cancel'
                                                                                 )
                                                                             }}
-                                                                            className={`font-medium hover:underline mx-1 inline-block
+                                                                            className={`font-medium hover:underline mx-1 inline-block transition-all
                                                                 ${imageStatus[index].statusState.includes('delete') ||
                                                                                     imageStatus[index].statusState.includes('post')
-                                                                                    ? 'text-gray-500'
-                                                                                    : 'text-red-500'
+                                                                                    ? 'text-gray-500 hover:text-gray-400'
+                                                                                    : 'text-red-500 hover:text-red-400'
                                                                                 }`}
                                                                         >
                                                                             {imageStatus[index].text_button_2}
@@ -271,7 +270,7 @@ function Edit({ auth, konsentrasiKeahlian }) {
                                                                                     toogleIsModalOpen()
                                                                                 }}
                                                                                 className={`font-medium hover:underline mx-1 inline-block
-                                                                text-blue-500`}
+                                                                text-green-500 hover:text-green-400 transition-all`}
                                                                             >
                                                                                 {imageStatus[index].text_button_2}
                                                                             </button>

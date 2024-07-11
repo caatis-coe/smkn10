@@ -9,6 +9,7 @@ import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router, useForm } from '@inertiajs/react'
 import React, { useState } from 'react'
 import { IoMdImage } from 'react-icons/io'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success, session }) {
     const { data, setData, post, errors, reset } = useForm(
@@ -178,7 +179,7 @@ function Index({ auth, datas, success, session }) {
                                                                 />
                                                             </div>
                                                         </td>
-                                                        <td className='px-3 py-2 text-right'>
+                                                        <td className='px-3 py-2 text-right text-lg space-x-2'>
                                                             <button onClick={() => {
                                                                 setIsModalOpen((prev) => !prev)
                                                                 setModalSession(
@@ -188,15 +189,15 @@ function Index({ auth, datas, success, session }) {
                                                                     }
                                                                 )
                                                             }}
-                                                                className='font-medium text-blue-500 hover:underline mx-1'
+                                                                className='text-blue-500 hover:text-blue-400 transition-all'
                                                             >
-                                                                edit
+                                                                <MdEdit/>
                                                             </button>
                                                             <button
                                                                 onClick={() => deleteImage(data)}
-                                                                className='font-medium text-red-500 hover:underline mx-1'
+                                                                className='text-red-500 hover:text-red-400 transition-all'
                                                             >
-                                                                delete
+                                                                <MdDelete/>
                                                             </button>
                                                         </td>
                                                     </tr>

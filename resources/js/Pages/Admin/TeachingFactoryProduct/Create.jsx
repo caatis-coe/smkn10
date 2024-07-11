@@ -40,14 +40,13 @@ function Create({ auth, konsentrasiKeahlian }) {
                         <form
                             onSubmit={onSubmit}
                             className='p-4 sm:p-8 bg-white shadow sm:rounded-lg'>
-                            {data.image_path &&
-                                <div className='mb-4'>
-                                    <img src={URL.createObjectURL(data.image_path)} alt="" className='aspect-video w-full object-cover' />
-                                </div>
-                            }
-                            {/* <pre>
-                                {JSON.stringify(data,undefined,2)}
-                            </pre> */}
+                            <div className='border border-gray-200 flex justify-center rounded p-6 mb-4'>
+                                {data.image_path &&
+                                    <div className='mb-4'>
+                                        <img src={URL.createObjectURL(data.image_path)} alt="" className='aspect-square w-96 object-cover' />
+                                    </div>
+                                }
+                            </div>
                             <div>
                                 <InputLabel htmlFor="teachingFactoryProduct_image_path" value="*Thumbnail Image" />
                                 <TextInput

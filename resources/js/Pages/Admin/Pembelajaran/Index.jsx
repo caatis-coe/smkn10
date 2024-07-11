@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, session, success }) {
     const navStatus = {
@@ -14,8 +15,6 @@ function Index({ auth, datas, session, success }) {
     const changeNavStatus = (url) => {
         Inertia.get(`pembelajaran-db?type=${url}`)
     }
-
-    console.log(datas)
 
     const deletePembelajaran = (pembelajaran) => {
         if (!window.confirm(`Are you sure you want to delete "${pembelajaran.title}"`)){
@@ -120,20 +119,22 @@ function Index({ auth, datas, session, success }) {
                                                 <td className='px-3 py-2'>{pembelajaran.group}</td>
                                                 <td className='px-3 py-2 text-nowrap'>{pembelajaran.created_at}</td>
                                                 <td className='px-3 py-2 text-nowrap'>{pembelajaran.updated_at}</td>
-                                                <td className='px-3 py-2'>{pembelajaran.published_by.name}</td>
-                                                <td className='px-3 py-2'>{pembelajaran.updated_by.name}</td>
-                                                <td className='px-3 py-2 text-nowrap'>
-                                                    <Link href={route("pembelajaran-db.edit", pembelajaran.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button 
-                                                    onClick={() => deletePembelajaran(pembelajaran)}
-                                                    className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                <td className='px-3 py-2 text-nowrap'>{pembelajaran.published_by.name}</td>
+                                                <td className='px-3 py-2 text-nowrap'>{pembelajaran.updated_by.name}</td>
+                                                <td className='px-3 py-2  text-right'>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("pembelajaran-db.edit", pembelajaran.id)}
+                                                            className='text-blue-500 text-lg hover:text-blue-400 transition-all'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deletePembelajaran(pembelajaran)}
+                                                            className='text-red-500 text-lg hover:text-red-400 transition-all'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}
