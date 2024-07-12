@@ -13,7 +13,7 @@ class UpdateHeadmasterRequest extends FormRequest
     {
         return true;
     }
-
+ 
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,7 +22,7 @@ class UpdateHeadmasterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['nullable'],
+            'file' => ['nullable', 'image'],
             'image_path' => ['required'],
             'name' => ['required'],
             'message' => ['required', 'string', 'max:512']

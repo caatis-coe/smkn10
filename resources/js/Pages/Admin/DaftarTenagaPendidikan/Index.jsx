@@ -3,10 +3,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success, session }) {
 
-    const deleteBerita = (daftarTenagaPendidikan) => {
+    const deleteDaftarTenagaPendidikan = (daftarTenagaPendidikan) => {
         if (!window.confirm(`Are you sure you want to delete "${daftarTenagaPendidikan.name}"`)) {
             return;
         }
@@ -98,17 +99,19 @@ function Index({ auth, datas, success, session }) {
                                                 <td className='px-3 py-4 text-nowrap'>{data.created_at}</td>
                                                 <td className='px-3 py-4 text-nowrap'>{data.created_at}</td>
                                                 <td className='px-3 py-4 text-nowrap text-right' >
-                                                    <Link href={route("daftar-tenaga-pendidikan-db.edit", data.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => deleteBerita(data)}
-                                                        className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("daftar-tenaga-pendidikan-db.edit", data.id)}
+                                                            className=' text-blue-500 hover:text-blue-400 transition-all text-lg'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteDaftarTenagaPendidikan(data)}
+                                                            className=' text-red-500 hover:text-red-400 transition-all text-lg'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}

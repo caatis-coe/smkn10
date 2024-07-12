@@ -23,8 +23,8 @@ class StorePembelajaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => ['required', 'max:121'],
-            "image_path" => ['nullable', 'image'],
+            "title" => ['required', 'max:72'],
+            "image_path" => ['required', 'image'],
             "description" => ['max:512'],
             "type" => ['required'],
             "group" => ['required']

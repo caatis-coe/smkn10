@@ -3,9 +3,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
-function Index({ auth, datas, session, success,teachingFactoryProducts }) {
-     
+function Index({ auth, datas, session, success, teachingFactoryProducts }) {
+
     const changeNavStatus = (url) => {
         Inertia.get(`teaching-factory-product-db?type=${url}`)
     }
@@ -75,7 +76,7 @@ function Index({ auth, datas, session, success,teachingFactoryProducts }) {
                                             <th className='px-3 py-5'>Description</th>
                                             <th className='px-3 py-5'>Created At</th>
                                             <th className='px-3 py-5'>Updated At</th>
-                                            <th className='px-3 py-5 text-center'>Actions</th>
+                                            <th className='px-3 py-5 text-right'>Actions</th>
                                         </tr>
                                     </thead>
 
@@ -84,8 +85,8 @@ function Index({ auth, datas, session, success,teachingFactoryProducts }) {
                                             <tr key={index} className='bg-white border-b 
                                                 border-gray-300'>
                                                 <td className='px-3 py-2'>{teachingFactoryProduct.id}</td>
-                                                <td className='px-3 py-2 overflow-hidden w-48'>
-                                                    <div className="relative w-full h-0 pb-[56.25%]"> {/* Aspect ratio container */}
+                                                <td className='px-3 py-2 overflow-hidden w-32'>
+                                                    <div className="relative w-full h-0 pb-[100%]"> {/* Aspect ratio container */}
                                                         <img
                                                             src={`${teachingFactoryProduct.image_path}`}
                                                             alt={`${teachingFactoryProduct.image_path}`}
@@ -106,17 +107,20 @@ function Index({ auth, datas, session, success,teachingFactoryProducts }) {
                                                 <td className='px-3 py-2 text-nowrap'>{teachingFactoryProduct.created_at}</td>
                                                 <td className='px-3 py-2 text-nowrap'>{teachingFactoryProduct.updated_at}</td>
                                                 <td className='px-3 py-2 text-nowrap'>
-                                                    <Link href={route("teaching-factory-product-db.edit", teachingFactoryProduct.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => deleteTeachingFactoryProduct(teachingFactoryProduct)}
-                                                        className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("teaching-factory-product-db.edit", teachingFactoryProduct.id)}
+                                                            className='text-blue-500 hover:text-blue-400 transition-all text-lg'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteTeachingFactoryProduct(teachingFactoryProduct)}
+                                                            className='text-red-500 hover:text-red-400 transition-all text-lg'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         ))}

@@ -16,7 +16,7 @@ function PembelajaranCard({ data }) {
                 <div className={`border-2 border-lightgrey border-t-0 flex flex-col  min-h-[128px] 
                 px-5 pt-4 pb-7 rounded-b-md ${data.description == "" || data.description == null ? "items-center justify-center" : "justify-between"}`}>
                     <div>
-                        <div className={`${data.description == "" || data.description == null  ? "text-[24px] font-semibold" : "text-[18px] font-medium"}  mb-2 line-clamp-1`}>
+                        <div className={`${data.description == "" || data.description == null  ? "text-[24px] font-semibold line-clamp-2 text-center" : "text-[18px] font-medium line-clamp-1 mb-2 " }  group-hover:line-clamp-none`}>
                             {data.title}
                         </div>
                         {(data.description != '' || data.description != null) && <div className='text-[12px] line-clamp-3 group-hover:line-clamp-none transition'>

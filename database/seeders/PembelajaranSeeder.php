@@ -65,8 +65,7 @@ class PembelajaranSeeder extends Seeder
             DB::table('pembelajarans')->insert([
                 'title' => $data['title'],
                 'description' => $data['description'] ?? '',
-                'type' => 'kegiatan mahasiswa',
-                'group' => 'Ekstrakulikuler',
+                'GroupID' => 2,
                 'image_path' => $data['image_path'] ?? '',
                 'published_by' => 1,
                 'updated_by' => 1,
@@ -80,8 +79,7 @@ class PembelajaranSeeder extends Seeder
             DB::table('pembelajarans')->insert([
                 'title' => $data['title'],
                 'description' => $data['description'] ?? '',
-                'type' => 'fasilitas',
-                'group' => 'Sarana Prasarana',
+                'GroupID' => 1,
                 'image_path' => $data['image_path'] ?? '',
                 'published_by' => 1,
                 'updated_by' => 1,

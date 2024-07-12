@@ -9,6 +9,7 @@ import React, { useState } from 'react'
 
 function Create({ auth, groups }) {
 
+
     const [toogleGroupOption, setToogleGroupOption] = useState(true)
 
     const { data, setData, post, errors, reset } = useForm({
@@ -19,7 +20,7 @@ function Create({ auth, groups }) {
         group: '',
     })
 
-
+    
     const onSubmit = (e) => {
         e.preventDefault();
         post(route("pembelajaran-db.store"))
@@ -52,7 +53,7 @@ function Create({ auth, groups }) {
                                 {JSON.stringify(data,undefined,2)}
                             </pre> */}
                             <div>
-                                <InputLabel htmlFor="pembelajaran_image_path" value="Thumbnail Image" />
+                                <InputLabel htmlFor="pembelajaran_image_path" value="*Thumbnail Image" />
                                 <TextInput
                                     id="pembelajaran_image_path"
                                     type="file"
@@ -113,7 +114,7 @@ function Create({ auth, groups }) {
                             <div className='mt-4'>
                                 <InputLabel htmlFor="pembelajaran_group">
                                     *Group {
-                                        data.type &&
+                                        data.type  &&
                                         <span >
                                             | <span className='hover:underline cursor-pointer text-blue-500  transition-all'
                                                 onClick={() => {
@@ -126,19 +127,23 @@ function Create({ auth, groups }) {
                                         </span>
                                     }
                                 </InputLabel>
-                                {toogleGroupOption ?
+                                {toogleGroupOption?
                                     <SelectInput
                                         id="pembelajaran_group"
                                         name="group"
-                                        className={`mt-1 block w-full ${!data.type ? "pointer-events-none text-gray-200" : ''}`}
+                                        className={`mt-1 block w-full ${!data.type || !groups[data.type] ? "pointer-events-none text-gray-200" : ''}`}
                                         onChange={e => setData('group', e.target.value)}
                                     >
-                                        {!data.type ? <option value="">Select Type First</option> : <>
+                                        {!data.type ?  <option value="">Select Type First</option> : 
+                                        !groups[data.type] ? 
+                                        <option value="">No groups available, create a new one</option> :
+                                        <>
                                             <option value="">Select Group</option>
                                             {groups[data.type].map((group) => (
                                                 <option key={group} value={group}>{group}</option>
                                             ))}
                                         </>}
+                                        
                                     </SelectInput>
                                     :
                                     <TextInput
@@ -148,7 +153,7 @@ function Create({ auth, groups }) {
                                         value={data.group}
                                         className="mt-1 block w-full capitalize"
                                         isFocused={true}
-                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "))}
+                                        onChange={e => setData('group', e.target.value.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" "))}
                                     />
                                 }
 

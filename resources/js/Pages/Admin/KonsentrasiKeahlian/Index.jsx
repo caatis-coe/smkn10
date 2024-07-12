@@ -2,12 +2,13 @@ import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, router } from '@inertiajs/react'
 import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success }) {
 
     const deleteKonsentrasiKeahlian = (konsentrasiKeahlian) => {
-        const confirmationMessage = 
-`
+        const confirmationMessage =
+            `
 Are you sure you want to delete "${konsentrasiKeahlian.title}"?
 
 WARNING!!!
@@ -19,11 +20,11 @@ Do you still want to delete "${konsentrasiKeahlian.title}"?
         if (!window.confirm(confirmationMessage.trim())) {
             return;
         }
-    
+
         router.delete(route("konsentrasi-keahlian-db.destroy", konsentrasiKeahlian.id));
     }
 
-   
+
 
     return (
         <AuthenticatedLayout
@@ -91,26 +92,28 @@ Do you still want to delete "${konsentrasiKeahlian.title}"?
                                                 </td>
                                                 <td className='px-3 py-2 text-nowrap'>{konsentrasiKeahlian.created_at}</td>
                                                 <td className='px-3 py-2 text-nowrap'>{konsentrasiKeahlian.updated_at}</td>
-                            
+
                                                 <td className='px-3 py-2 text-nowrap text-right'>
-                                                    <Link href={route("konsentrasi-keahlian-db.edit", konsentrasiKeahlian.id)}
-                                                        className='font-medium text-blue-500 hover:underline mx-1'
-                                                    >
-                                                        edit
-                                                    </Link>
-                                                    <button 
-                                                    onClick={() => deleteKonsentrasiKeahlian(konsentrasiKeahlian)}
-                                                    className='font-medium text-red-500 hover:underline mx-1'
-                                                    >
-                                                        delete
-                                                    </button>
+                                                    <div className='flex justify-end gap-x-2 items-center'>
+                                                        <Link href={route("konsentrasi-keahlian-db.edit", konsentrasiKeahlian.id)}
+                                                            className='text-blue-500 text-lg hover:text-blue-400 transition-all'
+                                                        >
+                                                            <MdEdit />
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteKonsentrasiKeahlian(konsentrasiKeahlian)}
+                                                            className='text-red-500 text-lg hover:text-red-400 transition-all'
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={datas.meta.links}/>
+                            <Pagination links={datas.meta.links} />
                         </div>
                     </div>
                 </div>
