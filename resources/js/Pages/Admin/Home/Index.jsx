@@ -1,6 +1,7 @@
 import InputError from '@/Components/InputError'
 import InputLabel from '@/Components/InputLabel'
 import Modal from '@/Components/Modal'
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import TextAreaInput from '@/Components/TextAreaInput'
 import TextInput from '@/Components/TextInput'
@@ -21,8 +22,9 @@ function Index({ auth, datas, success, session }) {
             url: datas,
         } : session == 3 ? { ...datas, 'file': null } : null
     );
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
 
-    
 
     const resetAllState = () => {
         setModalSession({
@@ -62,11 +64,14 @@ function Index({ auth, datas, success, session }) {
     };
 
     // Home swiper image Functions
-    const deleteImage = (data) => {
-        if (!window.confirm(`Are you sure you want to delete image id: ${data.id}`)) {
-            return;
-        }
-        router.delete(route("home-db.destroy", data.id))
+    const deleteImage = (image) => {
+        setSelectedData(image);
+        setIsConfirmOpen(true);
+    }
+
+    const handleConfirmDelete = () => {
+        router.delete(route("home-db.destroy", selectedData.id));
+        setIsConfirmOpen(false);
     }
 
     const changeNavStatus = (type) => {
@@ -89,9 +94,9 @@ function Index({ auth, datas, success, session }) {
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
                         {
                             session == 0 ? "Swiper Image"
-                            : session == 1 ? "Home Analytics"
-                            : session == 2 ? "Youtube Link" 
-                            : session == 3 ? "Headmaster" : ""
+                                : session == 1 ? "Home Analytics"
+                                    : session == 2 ? "Youtube Link"
+                                        : session == 3 ? "Headmaster" : ""
                         }
                     </h2>
                     {session == 0 &&
@@ -191,13 +196,13 @@ function Index({ auth, datas, success, session }) {
                                                             }}
                                                                 className='text-blue-500 hover:text-blue-400 transition-all'
                                                             >
-                                                                <MdEdit/>
+                                                                <MdEdit />
                                                             </button>
                                                             <button
                                                                 onClick={() => deleteImage(data)}
                                                                 className='text-red-500 hover:text-red-400 transition-all'
                                                             >
-                                                                <MdDelete/>
+                                                                <MdDelete />
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -440,6 +445,14 @@ function Index({ auth, datas, success, session }) {
                     </div>
                 </div>
             </Modal>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`the image with id: ${selectedData.id}`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }

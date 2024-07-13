@@ -12,7 +12,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
-        username : user.username,
+        username: user.username,
         email: user.email,
     });
 
@@ -27,9 +27,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
 
-                <p className="mt-1 text-sm text-gray-600">
-                    Update your account's profile information and email address.
-                </p>
+                <pre className="mt-1 text-sm text-gray-600 whitespace-pre-wrap">
+                    {message ?? "This will permanently delete the data"}
+                </pre>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">

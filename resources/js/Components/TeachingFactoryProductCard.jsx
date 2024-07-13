@@ -96,7 +96,6 @@ function TeachingFactoryProductCard({ productData }) {
             });
           },
           onError: (error) => {
-            // Handle error from Inertia.post
             console.error("Failed to send data:", error);
             toast.error("Failed to send data. Please try again later.", {
               position: "top-right",
@@ -132,7 +131,7 @@ function TeachingFactoryProductCard({ productData }) {
           </div>
           <div className='flex items-center gap-3 mt-4
         justify-between bg-lightgrey py-2 px-5 rounded-xl
-        self-start cursor-pointer hover:bg-lightgreenprimary hover:text-white hover:px-6
+        self-start cursor-pointer hover:bg-lightgreenprimary hover:text-white 
         transition-all
         ease-out ' onClick={openModal}>
             <IoBagRemoveOutline className='text-lg' />
@@ -159,7 +158,6 @@ function TeachingFactoryProductCard({ productData }) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
       >
         <div className='flex flex-col-reverse md:flex-row items-center'>
           <div className={`w-full md:w-72 shrink-0 aspect-square bg-cover bg-center rounded-xl`} style={{ backgroundImage }}>

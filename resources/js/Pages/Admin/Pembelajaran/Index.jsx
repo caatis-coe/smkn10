@@ -1,8 +1,9 @@
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, session, success }) {
@@ -10,6 +11,8 @@ function Index({ auth, datas, session, success }) {
         'fasilitas': session,
         'kegiatanMahasiswa': !session,
     }
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
 
 
     const changeNavStatus = (url) => {
@@ -17,14 +20,16 @@ function Index({ auth, datas, session, success }) {
     }
 
     const deletePembelajaran = (pembelajaran) => {
-        if (!window.confirm(`Are you sure you want to delete "${pembelajaran.title}"`)){
-            return;
-        }
-        router.delete(route("pembelajaran-db.destroy", pembelajaran.id), {
-            data: {session : session}
-        })
+        setSelectedData(pembelajaran);
+        setIsConfirmOpen(true);
     }
 
+    const handleConfirmDelete= () => {
+        router.delete(route("pembelajaran-db.destroy", selectedData.id),{
+            data: {session : session}
+        });
+        setIsConfirmOpen(false);
+    }
 
     return (
         <AuthenticatedLayout
@@ -63,12 +68,12 @@ function Index({ auth, datas, session, success }) {
                             <nav className='border-b text-gray-400 border-gray-200 w-full mb-6 flex gap-x-6 pt-2 h-12 px-4 text-sm'>
                                 <div className={`${navStatus.fasilitas ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                transition-all border-b-2`} onClick={() => changeNavStatus("fasilitas")}>
+                                transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => changeNavStatus("fasilitas")}>
                                     Fasilitas
                                 </div>
                                 <div className={`${navStatus.kegiatanMahasiswa ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                transition-all border-b-2`} onClick={() => changeNavStatus("kegiatanMahasiswa")}>
+                                transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => changeNavStatus("kegiatanMahasiswa")}>
                                     Kegiatan Mahasiswa
                                 </div>
                             </nav>
@@ -146,6 +151,14 @@ function Index({ auth, datas, session, success }) {
                     </div>
                 </div>
             </div>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`"${selectedData.title}"`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }
