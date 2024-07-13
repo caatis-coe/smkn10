@@ -22,8 +22,8 @@ class UpdateHeadmasterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['nullable'],
-            'image_path' => ['required', 'image'],
+            'file' => ['nullable', 'image'],
+            'image_path' => ['required'],
             'name' => ['required'],
             'message' => ['required', 'string', 'max:512']
         ];
