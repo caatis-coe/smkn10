@@ -12,7 +12,11 @@ use Inertia\Inertia;
 class ContactController extends Controller
 {
     public function show(): Response {
-        return Inertia::render('ContactUs');
+        return Inertia::render('ContactUs', [
+            'success' => session('success'),
+            'error' => session('error'),
+            'errorDetail' => session('error_detail'),
+        ]);
     }
 
     public function sendEmail(Request $request)
@@ -28,10 +32,10 @@ class ContactController extends Controller
         $data = $request->only(['name', 'email', 'subject', 'message']);
 
         try {
-            Mail::to('fasyaraihan82@gmail.com')->send(new ContactFormMail($data));
+            Mail::to(env('MAIL_TO_ADDRESS'))->send(new ContactFormMail($data));
             return redirect()->back()->with('success', 'Email sent successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to send email. Please try again.');
+            return redirect()->back()->withErrors(['error' => 'Failed to send email. Please try again later.'])->with(['error_detail' => $e->getMessage()]);
         }
     }
 }

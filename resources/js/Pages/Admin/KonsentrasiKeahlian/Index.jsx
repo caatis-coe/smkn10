@@ -1,30 +1,32 @@
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, router } from '@inertiajs/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success }) {
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
+    const [confirmationMessage, setConfirmationMessage] = useState('');
 
     const deleteKonsentrasiKeahlian = (konsentrasiKeahlian) => {
-        const confirmationMessage =
-            `
-Are you sure you want to delete "${konsentrasiKeahlian.title}"?
-
+        const message = `
 WARNING!!!
 Deleting this data will also delete the corresponding "Teaching Factory Products" and their associated "Buyers".
 Please consider this consequence before proceeding.
 
 Do you still want to delete "${konsentrasiKeahlian.title}"?
-`;
-        if (!window.confirm(confirmationMessage.trim())) {
-            return;
-        }
-
-        router.delete(route("konsentrasi-keahlian-db.destroy", konsentrasiKeahlian.id));
+        `;
+        setConfirmationMessage(message.trim());
+        setSelectedData(konsentrasiKeahlian);
+        setIsConfirmOpen(true);
     }
 
-
+    const handleConfirmDelete= () => {
+        router.delete(route("konsentrasi-keahlian-db.destroy", selectedData.id));
+        setIsConfirmOpen(false);
+    }
 
     return (
         <AuthenticatedLayout
@@ -118,6 +120,15 @@ Do you still want to delete "${konsentrasiKeahlian.title}"?
                     </div>
                 </div>
             </div>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`"${selectedData.title}"`}
+                    message={confirmationMessage}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }

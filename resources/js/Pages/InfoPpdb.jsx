@@ -176,7 +176,7 @@ function InfoPpdb({ konsentrasiData, contentTable =
                         <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
                         <img
 
-                            src={"storage/" + data.image}
+                            src={data.image}
                             alt={`PPDB Image ${index + 1}`}
                             className='content shadow-md lg:h-[600px] sm:h-[184px] slide-in-up sm:mb-5 md:mb-20'
                             style={{ objectFit: 'cover' }}
@@ -195,8 +195,8 @@ function InfoPpdb({ konsentrasiData, contentTable =
                                 {konsentrasiData.map((data, index) => (
                                     <div key={index} className="m-2">
                                         <img
-                                            src={'/storage/'+data.images[0].image_path}
-                                            alt={`PPDB Image ${index + 1}`}
+                                            src={data.images.length > 0 ? ('/storage/'+data.images[0].image_path) : ''}
+                                            alt={`PPDB Image "${data.title}"`}
                                             className='content shadow-md lg:h-[300px] sm:h-[184px] slide-in-up'
                                             style={{ objectFit: 'cover' }}
                                         />

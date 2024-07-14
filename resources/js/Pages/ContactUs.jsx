@@ -1,17 +1,18 @@
 import DefaultLayout from '@/Layouts/DefaultLayout'
-import React, { useState } from 'react'
+import React from 'react'
 import { MdLocalPhone, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import contactData from '@/Data/ContactData.jsx';
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import { Inertia } from '@inertiajs/inertia';
-import { toast } from 'react-toastify';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { usePage } from '@inertiajs/react';
 
 function ContactUs() {
-  const { register, handleSubmit, formState: { errors }, reset, control} = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { props } = usePage();
-  const { success, error } = props;
+  const { success, errors: pageErrors , errorDetail} = props;
 
   React.useEffect(() => {
     if (success) {
@@ -28,8 +29,9 @@ function ContactUs() {
       });
     }
 
-    if (error) {
-      toast.error(error, {
+    if (pageErrors?.error) {
+      console.error(errorDetail)
+      toast.error(pageErrors.error, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -41,13 +43,10 @@ function ContactUs() {
         transition: Slide,
       });
     }
-  }, [success, error]);
+  }, [success, pageErrors]);
 
   const onSubmit = (data) => {
     Inertia.post('/send-email', data, {
-      onSuccess: () => {
-        reset();
-      },
       onError: (errors) => {
         console.error(errors);
       }
@@ -148,6 +147,7 @@ function ContactUs() {
 
 
       </div>
+      <ToastContainer />
       {/* <DevTool control={control} /> */}
       <style jsx="true">{`
                 p {

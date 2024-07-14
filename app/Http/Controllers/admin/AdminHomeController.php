@@ -56,6 +56,9 @@ class AdminHomeController extends Controller
     public function editDocHeadmaster(UpdateHeadmasterRequest $request)
     {
         $data =$request->validated();
+	echo '<pre>';
+        print_r($data);
+        echo '</pre>';
         $image = $data['file'] ?? null;
         if ($image) {
             if ($data['image_path']) {

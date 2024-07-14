@@ -79,24 +79,26 @@ function Home({ blogDatas, headmaster, swiperImage, homeAnalytics, urlVideoProfi
         window.open(youtubeLink, '_blank')
     }
 
-
     return (
         <DefaultLayout headerChildren={
             (
                 <div className="relative text-white">
-                    <Swiper className='-z-50'
-                        modules={[Autoplay]} // Ensure modules are imported and passed correctly
-                        autoplay={{
-                            delay: 1500,
-                        }}
-                        loop={true}
-                    >
-                        {swiperImage.map((data, index) => (
-                            <SwiperSlide key={index}>
-                                <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/storage/${data.image_path})` }}></div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    {
+                        swiperImage.length > 0 ? <Swiper className='-z-50'
+                            modules={[Autoplay]} // Ensure modules are imported and passed correctly
+                            autoplay={{
+                                delay: 1500,
+                            }}
+                            loop={true}
+                        >
+                            {swiperImage.map((data, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className='bg-center bg-cover min-h-[650px] w-[100vw]' style={{ backgroundImage: `url(/storage/${data.image_path})` }}></div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper> : <div className='bg-center bg-cover min-h-[650px] w-[100vw]'></div>
+                    }
+
                     <div className='absolute z-40 w-full h-full top-0 flex flex-col justify-center bg-cover gap-y-1 px-10 md:px-20 bg-black/70 flex-1'>
                         <div className='flex gap-x-6 items-center'>
                             <img className='aspect-square h-12' src={logoSma} alt="" />

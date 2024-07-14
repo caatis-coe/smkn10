@@ -1,6 +1,7 @@
 import InputError from '@/Components/InputError'
 import InputLabel from '@/Components/InputLabel'
 import Modal from '@/Components/Modal'
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import TextAreaInput from '@/Components/TextAreaInput'
 import TextInput from '@/Components/TextInput'
@@ -21,8 +22,10 @@ function Index({ auth, datas, success, session }) {
             url: datas,
         } : session == 3 ? { ...datas, 'file': null } : null
     );
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
+    const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
-    
 
     const resetAllState = () => {
         setModalSession({
@@ -62,11 +65,14 @@ function Index({ auth, datas, success, session }) {
     };
 
     // Home swiper image Functions
-    const deleteImage = (data) => {
-        if (!window.confirm(`Are you sure you want to delete image id: ${data.id}`)) {
-            return;
-        }
-        router.delete(route("home-db.destroy", data.id))
+    const deleteImage = (image) => {
+        setSelectedData(image);
+        setIsConfirmOpen(true);
+    }
+
+    const handleConfirmDelete = () => {
+        router.delete(route("home-db.destroy", selectedData.id));
+        setIsConfirmOpen(false);
     }
 
     const changeNavStatus = (type) => {
@@ -89,15 +95,15 @@ function Index({ auth, datas, success, session }) {
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
                         {
                             session == 0 ? "Swiper Image"
-                            : session == 1 ? "Home Analytics"
-                            : session == 2 ? "Youtube Link" 
-                            : session == 3 ? "Headmaster" : ""
+                                : session == 1 ? "Home Analytics"
+                                    : session == 2 ? "Youtube Link"
+                                        : session == 3 ? "Headmaster" : ""
                         }
                     </h2>
                     {session == 0 &&
                         (
                             <button onClick={() => {
-                                setIsModalOpen((prev) => !prev)
+                                setIsModalOpen(true)
                                 setModalSession((prev) =>
                                 ({
                                     ...prev,
@@ -105,6 +111,7 @@ function Index({ auth, datas, success, session }) {
                                     'action': 'create',
                                 })
                                 )
+                                setIsSubmitClicked(false)
                             }}
                                 className='bg-emerald-500 py-2 px-3 text-white rounded
                 shadow transition-all hover:bg-emerald-600'
@@ -181,23 +188,24 @@ function Index({ auth, datas, success, session }) {
                                                         </td>
                                                         <td className='px-3 py-2 text-right text-lg space-x-2'>
                                                             <button onClick={() => {
-                                                                setIsModalOpen((prev) => !prev)
+                                                                setIsSubmitClicked(false)
                                                                 setModalSession(
                                                                     {
                                                                         ...data,
                                                                         'action': 'edit',
                                                                     }
                                                                 )
+                                                                setIsModalOpen(true)
                                                             }}
                                                                 className='text-blue-500 hover:text-blue-400 transition-all'
                                                             >
-                                                                <MdEdit/>
+                                                                <MdEdit />
                                                             </button>
                                                             <button
                                                                 onClick={() => deleteImage(data)}
                                                                 className='text-red-500 hover:text-red-400 transition-all'
                                                             >
-                                                                <MdDelete/>
+                                                                <MdDelete />
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -366,80 +374,96 @@ function Index({ auth, datas, success, session }) {
 
                 </div>
             </div>
-            <Modal show={isModalOpen}>
-                <div className='p-6 text-gray-700'>
-                    {/* <pre>
-                                                {JSON.stringify(modalSession, undefined, 2)}
-                                            </pre> */}
-                    <div className='mb-4 text-xl font-semibold '>
-                        {modalSession.action == 'create' ?
-                            'Create New Image' :
+            {!(Object.keys(errors).length === 0 && data.file && isSubmitClicked) 
+                && <Modal show={isModalOpen}>
+                    <div className='p-6 text-gray-700'>
+                        {/* <pre>
+                                                    {JSON.stringify(modalSession, undefined, 2)}
+                                                </pre> */}
+                        <div className='mb-4 text-xl font-semibold '>
+                            {modalSession.action == 'create' ?
+                                'Create New Image' :
 
-                            `Edit Image id: ${modalSession ? modalSession.id : ''}`
-
-                        }
-
-                    </div>
-                    <div className='border border-gray-300 mb-4 rounded h-96 p-4'>
-                        <div className=' w-full h-full flex justify-center items-center'>
-                            {
-                                modalSession.image_path ?
-                                    <img src={modalSession.image_path} alt="" className='h-full object-cover' />
-                                    :
-                                    <div className='flex flex-col items-center'>
-                                        <IoMdImage className='size-24 text-gray-200' />
-                                        <span className='text-md'>Select an image</span>
-                                    </div>
+                                `Edit Image id: ${modalSession ? modalSession.id : ''}`
 
                             }
+
+                        </div>
+                        <div className='border border-gray-300 mb-4 rounded h-96 p-4'>
+                            <div className=' w-full h-full flex justify-center items-center'>
+                                {
+                                    modalSession.image_path ?
+                                        <img src={modalSession.image_path} alt="" className='h-full object-cover' />
+                                        :
+                                        <div className='flex flex-col items-center'>
+                                            <IoMdImage className='size-24 text-gray-200' />
+                                            <span className='text-md'>Select an image</span>
+                                        </div>
+
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <TextInput
+                                id="berita_thumbnail_image"
+                                type="file"
+                                name="image"
+                                className="mt-1 block w-full"
+                                onChange={e => {
+                                    setData((prev) => ({
+                                        ...prev,
+                                        '_method': modalSession.action == "create" ? "POST" : 'PUT',
+                                        'used_as': modalSession.used_as,
+                                        "file": e.target.files[0]
+                                    }))
+                                    setModalSession((prev) => ({
+                                        ...prev,
+                                        'image_path': URL.createObjectURL(e.target.files[0])
+                                    })
+
+                                    )
+                                }}
+                            />
+                            <InputError message={errors.thumbnail_image} className='mt-2' />
+                            <InputError message={errors.file} className='mt-2' />
+                        </div>
+                        <div className='mt-4 text-right'>
+                            <button onClick={() => {
+                                setIsModalOpen(false)
+                                setIsSubmitClicked(false)
+                                Object.keys(errors).forEach(key => {
+                                    delete errors[key];
+                                });
+                                setTimeout(() => {
+                                    resetAllState();
+                                }, 200);
+                            }}
+                                className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
+                                        transition-all hover:bg-gray-200 mr-2 text-sm
+                                        '>
+                                Cancel
+                            </button>
+                            <button onClick={() => {
+                                post(modalSession.action == 'create' ? route('home-db.store') : route('home-db.update', modalSession.id))
+                                setIsSubmitClicked(true)
+                            }}
+                                className={`bg-emerald-500 py-2 px-4 text-white
+                                        rounded shadow transition-all hover:bg-emerald-600 text-sm
+                                        ${data.file ? '' : 'pointer-events-none bg-emerald-300'}`}>
+                                Submit
+                            </button>
                         </div>
                     </div>
-                    <div>
-                        <TextInput
-                            id="berita_thumbnail_image"
-                            type="file"
-                            name="image"
-                            className="mt-1 block w-full"
-                            onChange={e => {
-                                setData((prev) => ({
-                                    ...prev,
-                                    '_method': modalSession.action == "create" ? "POST" : 'PUT',
-                                    'used_as': modalSession.used_as,
-                                    "file": e.target.files[0]
-                                }))
-                                setModalSession((prev) => ({
-                                    ...prev,
-                                    'image_path': URL.createObjectURL(e.target.files[0])
-                                })
-
-                                )
-                            }}
-                        />
-                        <InputError message={errors.thumbnail_image} className='mt-2' />
-                    </div>
-                    <div className='mt-4 text-right'>
-                        <button onClick={() => {
-                            setIsModalOpen((prev) => !prev)
-                            resetAllState()
-                        }}
-                            className='bg-gray-100 py-2 px-4 text-gray-800 rounded 
-                                    transition-all hover:bg-gray-200 mr-2 text-sm
-                                    '>
-                            Cancel
-                        </button>
-                        <button onClick={() => {
-                            setIsModalOpen((prev) => !prev)
-                            post(modalSession.action == 'create' ? route('home-db.store') : route('home-db.update', modalSession.id))
-                            resetAllState()
-                        }}
-                            className={`bg-emerald-500 py-2 px-4 text-white
-                                    rounded shadow transition-all hover:bg-emerald-600 text-sm
-                                    ${data.file ? '' : 'pointer-events-none bg-emerald-300'}`}>
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            </Modal>
+                </Modal>
+            }
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`the image with id: ${selectedData.id}`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }

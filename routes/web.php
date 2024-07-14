@@ -138,12 +138,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('home-db/edit-doc-home-analytics', [AdminHomeController::class, 'editDocHomeAnalytics'])->name('home-db.editDocHomeAnalytics');
     Route::post('home-db/edit-doc-headmaster', [AdminHomeController::class, 'editDocHeadmaster'])->name('home-db.editDocHeadmaster');
     Route::post('home-db/edit-doc-url-video-profile', [AdminHomeController::class, 'editDocURLVideoProfile'])->name('home-db.editDocURLVideoProfile');
+    
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('/preview-email', function () {
+        $data = [
+            'name' => 'FASYA RAIHAN MAM',
+            'email' => 'johndoe@example.com',
+            'message' => 'This is a sample message.'
+        ];
+    
+        return view('emails.contact', compact('data'));
+    });
+    
 });
 
 require __DIR__ . '/auth.php';
