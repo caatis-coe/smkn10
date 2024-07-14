@@ -1,0 +1,9 @@
+import{j as e}from"./app-B7e2hPpL.js";import{C as a}from"./ContentTitle-COGOreku.js";import{D as o}from"./DefaultLayout-s_bhuoXv.js";import{S as l,a as n}from"./swiper-CXTyhIYU.js";import{P as c,S as p}from"./pagination-Dr9xCz0S.js";import{A as u}from"./autoplay-DVDz-20x.js";import"./iconBase-iGppI-Rt.js";import"./index-BGM2thcy.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function v({datas:t}){return e.jsxs(o,{children:[e.jsx(a,{title:"Lulusan",subTitle:"INDUSTRI MITRA"}),e.jsx(l,{modules:[c,p,u],slidesPerView:1,spaceBetween:10,pagination:{clickable:!0},autoplay:{delay:2e3,disableOnInteraction:!1},breakpoints:{640:{slidesPerView:2,spaceBetween:20},768:{slidesPerView:3,spaceBetween:40},1024:{slidesPerView:4,spaceBetween:50}},className:"w-full",children:t&&Array(Math.ceil(t.length/2)).fill(0).map((m,r)=>e.jsx(n,{className:"pb-12 ",children:e.jsx("div",{className:"flex flex-col w-full items-center gap-9",children:t.slice(r*2,r*2+2).map((i,s)=>e.jsxs("div",{className:` border-2 p-12
+                                    w-full h-56 flex flex-col justify-center items-center
+                                    rounded-lg group  cursor-pointer hover:bg-lighttertiary
+                                    duration-500 transition ease-out
+                                    `,children:[e.jsx("img",{className:`w-32 group-hover:scale-75 
+                                        transition ease-out group-hover:translate-y-0
+                                        duration-500`,src:`storage/${i.image_path}`,alt:i.description}),e.jsx("div",{className:`font-medium text-white translate-y-0 hidden opacity-0
+                                        group-hover:opacity-100 group-hover:block 
+                                        transition ease-out duration-100 text-center`,children:i.description})]},s))})},r))})]})}export{v as default};
