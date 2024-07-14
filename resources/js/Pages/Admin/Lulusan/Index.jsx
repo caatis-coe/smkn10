@@ -108,12 +108,12 @@ function Index({ auth, datas, success, session }) {
                                 </div>
                             </nav>
                             <div className='overflow-auto'>
-                                <DataPreview data={{
+                                {/* <DataPreview data={{
                                     'File Data' : data.file,
                                     'isSubmitClicked' : isSubmitClicked,
                                     'isModalOpen' : isModalOpen,
                                     'errors' :  errors
-                                }}/>
+                                }}/> */}
                                 <table className='w-full text-sm text-left rtl:text-right
                                     text-gray-500 '>
 
