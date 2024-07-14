@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -7,14 +7,53 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
 import { Pagination, Scrollbar, EffectFade } from 'swiper/modules';
 import ContentTitle from '@/Components/ContentTitle'
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SubTitle from '@/Components/SubTitle'
 import TeachingFactoryProductCard from '@/Components/TeachingFactoryProductCard'
 import DefaultLayout from '@/Layouts/DefaultLayout'
 
 function TeachingFactory({ data }) {
+    const [buyerStatus, setBuyerStatus] = useState({})
+
+    
+    React.useEffect(() => {
+
+        if (!buyerStatus) {
+            return
+        }
+
+        if (buyerStatus.isSent) {
+            toast.success(buyerStatus.success, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Slide,
+            });
+        } else {
+            console.error(buyerStatus.errorDetail)
+            toast.error(buyerStatus.error, { 
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Slide,
+            });
+        }
+    }, [buyerStatus]);
 
     return (
         <DefaultLayout>
+            <ToastContainer />
             <ContentTitle subTitle='TEACHING FACTORY' />
             <div className="relative pt-[56.25%] overflow-hidden max-w-full bg-black mt-5 w-[95%] self-center">
                 <iframe
@@ -23,7 +62,7 @@ function TeachingFactory({ data }) {
                     allowFullScreen
                 ></iframe>
             </div>
-            <div className='border-[1px] w-full mt-14'/>
+            <div className='border-[1px] w-full mt-14' />
             {
                 data.map((konsentrasiKeahlian, index) => {
                     if (konsentrasiKeahlian.teaching_factory_products.length == 0) return null;
@@ -47,7 +86,7 @@ function TeachingFactory({ data }) {
                                 {
                                     konsentrasiKeahlian.teaching_factory_products.map((product, index) => (
                                         <SwiperSlide key={index} className='pb-12 '>
-                                            <TeachingFactoryProductCard productData={product} />
+                                            <TeachingFactoryProductCard productData={product} setBuyerStatus = {setBuyerStatus}/>
                                         </SwiperSlide>
 
                                     ))

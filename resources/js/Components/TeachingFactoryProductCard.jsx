@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { IoBagRemoveOutline } from "react-icons/io5";
 import { IoSend } from "react-icons/io5";
 import Modal from 'react-modal';
-import { toast } from 'react-toastify';
+
 import { Inertia } from '@inertiajs/inertia';
+import { usePage } from '@inertiajs/react';
 
 const customStyles = {
   content: {
@@ -38,7 +39,7 @@ function FormText({ title, callbackText, isNumber = false, errorMessage }) {
   )
 }
 
-function TeachingFactoryProductCard({ productData }) {
+function TeachingFactoryProductCard({ productData, setBuyerStatus }) {
   const backgroundImage = `url('storage/${productData.image_path}')`;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [namaPembeli, setNamaPembeli] = useState("")
@@ -47,6 +48,32 @@ function TeachingFactoryProductCard({ productData }) {
   const [noKontak, setNoKontak] = useState("")
   const [errors, setErrors] = useState({});
   const errorMessage = "Fill out this field"
+  const { props } = usePage();
+  const { success, errors: pageErrors , errorDetail} = props;
+
+  React.useEffect(() => {
+    if (success) {
+      setBuyerStatus(
+        {
+          isSent : true,
+          success : success,
+          errorDetail : '',
+          error: '',
+        }
+      )
+    }
+
+    if (pageErrors?.error) {
+      setBuyerStatus(
+        {
+          isSent : false,
+          success : '',
+          errorDetail : errorDetail,
+          error: pageErrors.error,
+        }
+      )
+    }
+  }, [success, pageErrors]);
 
   function openModal() {
     setIsOpen(true);
@@ -79,37 +106,7 @@ function TeachingFactoryProductCard({ productData }) {
         namaPerusahaan,
         alamatPerusahaan,
         noKontak
-      },
-        {
-          onFinish: () => {
-            Inertia.visit('/teaching-factory');
-            toast.success(success, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Slide,
-            });
-          },
-          onError: (error) => {
-            console.error("Failed to send data:", error);
-            toast.error("Failed to send data. Please try again later.", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Slide,
-            });
-          }
-        });
+      },);
     }
   }
 
@@ -117,6 +114,7 @@ function TeachingFactoryProductCard({ productData }) {
 
   return (
     <>
+      
       <div className='flex flex-col text-black hover:shadow rounded-xl p-2 border border-gray-200 transition-all'>
         <div className={`w-full aspect-square bg-cover bg-center rounded-md `} style={{ backgroundImage }}>
         </div>
@@ -173,12 +171,13 @@ function TeachingFactoryProductCard({ productData }) {
         <FormText title="Nama Perusahaan/Organisasi/Lembaga :" callbackText={(event) => { setNamaPerusahaan(event.target.value) }} errorMessage={errors.namaPerusahaan} />
         <FormText title="Alamat Perusahaan/Organisasi/Lembaga :" callbackText={(event) => { setAlamatPerusahaan(event.target.value) }} errorMessage={errors.alamatPerusahaan} />
         <FormText title="No Kontak :" callbackText={(event) => { setNoKontak(event.target.value) }} isNumber={true} errorMessage={errors.noKontak} />
-        <button className='ms-1 flex items-center gap-2 bg-lightgreenprimary hover:text-white text-black font-medium py-2 px-5 rounded-md'
+        <button className='ms-1 flex items-center gap-2 bg-lightgreenprimary hover:bg-greenprimary transition-all text-gray-50 font-medium py-2 px-5 rounded-md'
           onClick={sendDataBuyer}>
           <IoSend />
           Kirim
         </button>
       </Modal>
+      
     </>
 
   )
