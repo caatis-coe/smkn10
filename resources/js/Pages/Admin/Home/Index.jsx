@@ -103,7 +103,7 @@ function Index({ auth, datas, success, session }) {
                     {session == 0 &&
                         (
                             <button onClick={() => {
-                                setIsModalOpen((prev) => !prev)
+                                setIsModalOpen(true)
                                 setModalSession((prev) =>
                                 ({
                                     ...prev,
@@ -111,6 +111,7 @@ function Index({ auth, datas, success, session }) {
                                     'action': 'create',
                                 })
                                 )
+                                setIsSubmitClicked(false)
                             }}
                                 className='bg-emerald-500 py-2 px-3 text-white rounded
                 shadow transition-all hover:bg-emerald-600'

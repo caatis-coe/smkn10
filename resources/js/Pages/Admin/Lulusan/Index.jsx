@@ -65,7 +65,7 @@ function Index({ auth, datas, success, session }) {
                         {session == 0 ? 'Keterserapan Lulusan' : 'Industri Mitra'}
                     </h2>
                     <button onClick={() => {
-                        setIsModalOpen((prev) => !prev)
+                        setIsModalOpen(true)
                         setModalSession((prev) =>
                         ({
                             ...prev,
@@ -73,6 +73,7 @@ function Index({ auth, datas, success, session }) {
                             'action': "create",
                         })
                         )
+                        setIsSubmitClicked(false)
                     }}
                         className='bg-emerald-500 py-2 px-3 text-white rounded
                         shadow transition-all hover:bg-emerald-600 text-left'
@@ -107,12 +108,12 @@ function Index({ auth, datas, success, session }) {
                                 </div>
                             </nav>
                             <div className='overflow-auto'>
-                                {/* <DataPreview data={{
+                                <DataPreview data={{
                                     'File Data' : data.file,
                                     'isSubmitClicked' : isSubmitClicked,
                                     'isModalOpen' : isModalOpen,
                                     'errors' :  errors
-                                }}/> */}
+                                }}/>
                                 <table className='w-full text-sm text-left rtl:text-right
                                     text-gray-500 '>
 
