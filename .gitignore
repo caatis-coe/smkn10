@@ -1,7 +1,9 @@
 /.phpunit.cache
 /node_modules
 /public/hot
-/public/storage
+/public/storage/*
+!/public/storage/images/ppdb
+!/public/storage/images/ppdb/**
 /public/build
 /storage/*.key
 /vendor
