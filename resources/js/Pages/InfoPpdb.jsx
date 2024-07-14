@@ -166,6 +166,8 @@ function InfoPpdb({ konsentrasiData, contentTable =
             "image": "images/ppdb/image8.jpg",
         },
     ];
+    
+    console.log(konsentrasiData);
 
     return (
         <DefaultLayout>
@@ -176,7 +178,7 @@ function InfoPpdb({ konsentrasiData, contentTable =
                         <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
                         <img
 
-                            src={"storage/" + data.image}
+                            src={data.image}
                             alt={`PPDB Image ${index + 1}`}
                             className='content shadow-md lg:h-[600px] sm:h-[184px] slide-in-up sm:mb-5 md:mb-20'
                             style={{ objectFit: 'cover' }}
