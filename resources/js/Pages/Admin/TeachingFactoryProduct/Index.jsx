@@ -1,11 +1,14 @@
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, router } from '@inertiajs/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, session, success, teachingFactoryProducts }) {
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
 
     const changeNavStatus = (url) => {
         Inertia.get(`teaching-factory-product-db?type=${url}`)
@@ -13,12 +16,15 @@ function Index({ auth, datas, session, success, teachingFactoryProducts }) {
 
 
     const deleteTeachingFactoryProduct = (teachingFactoryProduct) => {
-        if (!window.confirm(`Are you sure you want to delete "${teachingFactoryProduct.title}"`)) {
-            return;
-        }
-        router.delete(route("teaching-factory-product-db.destroy", teachingFactoryProduct.id), {
+        setSelectedData(teachingFactoryProduct);
+        setIsConfirmOpen(true);
+    }
+
+    const handleConfirmDelete= () => {
+        router.delete(route("teaching-factory-product-db.destroy", selectedData.id), {
             data: { type: session }
         });
+        setIsConfirmOpen(false);
     }
 
     return (
@@ -51,18 +57,20 @@ function Index({ auth, datas, session, success, teachingFactoryProducts }) {
                     }
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <nav className='border-b text-gray-400 border-gray-200 w-full mb-6 flex gap-x-6 pt-2 h-12 px-4 text-sm'>
-                                {
-                                    datas.map((data) => (
-                                        <div key={data.id} className={`${session == data.id ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
-                                            "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
-                                transition-all border-b-2`} onClick={() => changeNavStatus(data.id)}>
-                                            {data.title}
-                                        </div>
-                                    ))
-                                }
+                            <div className='w-full nav mb-6'>
+                                <nav className='border-b text-gray-400 border-gray-200 w-full flex gap-x-6 pt-2 min-h-12 px-4 text-sm '>
+                                    {
+                                        datas.map((data) => (
+                                            <div key={data.id} className={`${session == data.id ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
+                                                "cursor-pointer pointer-events-auto border-transparent  text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
+                                transition-all border-b-2  text-nowrap text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => changeNavStatus(data.id)}>
+                                                {data.title}
+                                            </div>
+                                        ))
+                                    }
 
-                            </nav>
+                                </nav>
+                            </div>
                             <div className='overflow-auto'>
                                 <table className='w-full text-sm text-left rtl:text-right
                                     text-gray-500 '>
@@ -132,6 +140,14 @@ function Index({ auth, datas, session, success, teachingFactoryProducts }) {
                     </div>
                 </div>
             </div>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`"${selectedData.title}"`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }

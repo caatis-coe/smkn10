@@ -1,16 +1,22 @@
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link, router } from '@inertiajs/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { MdDelete } from 'react-icons/md'
 
 function Index({ auth, datas, success }) {
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
 
     const deleteBerita = (buyer) => {
-        if (!window.confirm(`Are you sure you want to delete buyer data from "${buyer.name}"`)){
-            return;
-        }
-        router.delete(route("buyer-db.destroy", buyer.id))
+        setSelectedData(buyer);
+        setIsConfirmOpen(true);
+    }
+
+    const handleConfirmDelete= () => {
+        router.delete(route("buyer-db.destroy", selectedData.id));
+        setIsConfirmOpen(false);
     }
     
     return (
@@ -92,6 +98,14 @@ function Index({ auth, datas, success }) {
                     </div>
                 </div>
             </div>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`buyer data from "${selectedData.name}"`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }

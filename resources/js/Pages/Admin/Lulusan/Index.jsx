@@ -1,18 +1,20 @@
 import InputError from '@/Components/InputError'
 import InputLabel from '@/Components/InputLabel'
 import Modal from '@/Components/Modal'
+import ModalConfirmation from '@/Components/ModalConfirmation'
 import Pagination from '@/Components/Pagination'
 
 import TextInput from '@/Components/TextInput'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
-import { Head, Link, router, useForm } from '@inertiajs/react'
-import React, { useEffect, useState } from 'react'
+import { Head, router, useForm } from '@inertiajs/react'
+import React, { useState } from 'react'
 import { IoMdImage } from 'react-icons/io'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
 function Index({ auth, datas, success, session }) {
-    const [isSuccess, setIsSuccess] = useState(false);
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState(null);
     const { data, setData, post, errors, reset } = useForm({
         file: null,
         description: session == 0 ? '-' : '',
@@ -33,10 +35,13 @@ function Index({ auth, datas, success, session }) {
 
     // Home swiper image Functions
     const deleteImage = (data) => {
-        if (!window.confirm(`Are you sure you want to delete image id: ${data.id}`)) {
-            return;
-        }
-        router.delete(route("lulusan-db.destroy", data.id))
+        setSelectedData(data);
+        setIsConfirmOpen(true);
+    }
+
+    const handleConfirmDelete= () => {
+        router.delete(route("lulusan-db.destroy", selectedData.id));
+        setIsConfirmOpen(false);
     }
 
     const changeNavStatus = (type) => {
@@ -70,7 +75,7 @@ function Index({ auth, datas, success, session }) {
                         )
                     }}
                         className='bg-emerald-500 py-2 px-3 text-white rounded
-                        shadow transition-all hover:bg-emerald-600'
+                        shadow transition-all hover:bg-emerald-600 text-left'
                     >
                         Add new {session == 0 ? 'keterserapan lulusan' : 'industri mitra'}
                     </button>
@@ -148,7 +153,7 @@ function Index({ auth, datas, success, session }) {
                                                     </button>
                                                     <button
                                                         onClick={() => deleteImage(data)}
-                                                        className='text-red-500 hover:text-blue-400 transition-all text-lg'
+                                                        className='text-red-500 hover:text-red-400 transition-all text-lg'
                                                     >
                                                         <MdDelete />
                                                     </button>
@@ -249,13 +254,12 @@ function Index({ auth, datas, success, session }) {
                         </button>
                         <button onClick={() => {
                             post(modalSession.action == 'create' ? route('lulusan-db.store') : route('lulusan-db.update', modalSession.id))
-                            if (success) {
-                                setIsModalOpen((prev) => !prev)
-                                setTimeout(() => {
+                            setIsModalOpen((prev) => !prev)
+                            setTimeout(() => {
                                     resetAllState();
-                                }, 200);
+                            }, 200);
                             }
-                        }}
+                        }
                             className={`bg-emerald-500 py-2 px-4 text-white
                                     rounded shadow transition-all hover:bg-emerald-600 text-sm
                                     ${data.description ? '' : 'pointer-events-none bg-emerald-300'}`}>
@@ -264,6 +268,14 @@ function Index({ auth, datas, success, session }) {
                     </div>
                 </div>
             </Modal>
+            {selectedData && (
+                <ModalConfirmation
+                    isOpen={isConfirmOpen}
+                    onRequestClose={() => setIsConfirmOpen(false)}
+                    onConfirm={handleConfirmDelete}
+                    headerMessage={`the image with id: ${selectedData.id}`}
+                />
+            )}
         </AuthenticatedLayout>
     )
 }
