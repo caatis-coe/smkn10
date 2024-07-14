@@ -166,8 +166,6 @@ function InfoPpdb({ konsentrasiData, contentTable =
             "image": "images/ppdb/image8.jpg",
         },
     ];
-    
-    console.log(konsentrasiData);
 
     return (
         <DefaultLayout>
@@ -197,8 +195,8 @@ function InfoPpdb({ konsentrasiData, contentTable =
                                 {konsentrasiData.map((data, index) => (
                                     <div key={index} className="m-2">
                                         <img
-                                            src={'/storage/'+data.images[0].image_path}
-                                            alt={`PPDB Image ${index + 1}`}
+                                            src={data.images.length > 0 ? ('/storage/'+data.images[0].image_path) : ''}
+                                            alt={`PPDB Image "${data.title}"`}
                                             className='content shadow-md lg:h-[300px] sm:h-[184px] slide-in-up'
                                             style={{ objectFit: 'cover' }}
                                         />
