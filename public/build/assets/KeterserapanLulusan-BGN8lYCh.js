@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/KeterserapanLulusan-BGN8lYCh.js
-import{j as t}from"./app-Bc4OL81f.js";import{C as s}from"./ContentTitle-DRzH6dSL.js";import{D as a}from"./DefaultLayout-yEWQKzdY.js";import"./iconBase-DHvQOOyE.js";import"./index-DrhL4DPj.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function u({datas:e}){return t.jsxs(a,{children:[t.jsx(s,{title:"Lulusan",subTitle:"KETERSERAPAN LULUSAN"}),t.jsx("div",{className:"flex flex-col justify-center gap-y-9 mt-4",children:e&&e.map(r=>t.jsx("img",{src:`storage/${r.image_path}`,alt:""}))})]})}export{u as default};
-========
-import{j as t}from"./app-CZ7CBbmU.js";import{C as s}from"./ContentTitle-CvdGij1I.js";import{D as a}from"./DefaultLayout-DaxWpb8m.js";import"./iconBase-Fv0ds0hb.js";import"./index-CcKQQhXl.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function u({datas:e}){return t.jsxs(a,{children:[t.jsx(s,{title:"Lulusan",subTitle:"KETERSERAPAN LULUSAN"}),t.jsx("div",{className:"flex flex-col justify-center gap-y-9 mt-4",children:e&&e.map(r=>t.jsx("img",{src:`storage/${r.image_path}`,alt:""}))})]})}export{u as default};
->>>>>>>> development:public/build/assets/KeterserapanLulusan-B2tUZDUf.js

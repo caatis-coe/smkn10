@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/ContentTitle-DRzH6dSL.js
-import{j as t}from"./app-Bc4OL81f.js";function r({title:e,subTitle:s="None"}){return t.jsxs("div",{className:"w-full text-center mb-7 font-semibold",children:[e&&t.jsx("div",{className:"text-[18px] text-grey",children:e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()}),t.jsx("div",{className:"text-[48px] font-bold",children:s})]})}export{r as C};
-========
-import{j as t}from"./app-CZ7CBbmU.js";function r({title:e,subTitle:s="None"}){return t.jsxs("div",{className:"w-full text-center mb-7 font-semibold",children:[e&&t.jsx("div",{className:"text-[18px] text-grey",children:e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()}),t.jsx("div",{className:"text-[48px] font-bold",children:s})]})}export{r as C};
->>>>>>>> development:public/build/assets/ContentTitle-CvdGij1I.js

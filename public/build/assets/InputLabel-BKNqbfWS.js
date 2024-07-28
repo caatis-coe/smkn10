@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/InputLabel-BKNqbfWS.js
-import{j as m}from"./app-Bc4OL81f.js";function o({value:t,className:e="",children:r,...s}){return m.jsx("label",{...s,className:"block font-medium text-sm text-gray-700 "+e,children:t||r})}export{o as I};
-========
-import{j as m}from"./app-CZ7CBbmU.js";function o({value:t,className:e="",children:r,...s}){return m.jsx("label",{...s,className:"block font-medium text-sm text-gray-700 "+e,children:t||r})}export{o as I};
->>>>>>>> development:public/build/assets/InputLabel-B8hzeKRH.js
