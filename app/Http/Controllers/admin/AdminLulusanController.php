@@ -25,9 +25,9 @@ class AdminLulusanController extends Controller
         $datas = [];
 
         if($type == 0) {
-            $datas = Image::where('used_as', 'keterserapan_lulusan')->paginate(10);
+            $datas = Image::where('used_as', 'keterserapan_lulusan')->paginate(5);
         } else if ($type == 1) {
-            $datas = Image::where('used_as', 'industri_mitra')->paginate(10);
+            $datas = Image::where('used_as', 'industri_mitra')->paginate(5);
         }
 
         return Inertia::render('Admin/Lulusan/Index', [

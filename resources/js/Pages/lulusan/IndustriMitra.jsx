@@ -55,7 +55,7 @@ function IndustriMitra({datas}) {
                                     rounded-lg group  cursor-pointer hover:bg-gray-50
                                     duration-500 transition-all ease-out
                                     '>
-                                        <img className='max-h-40 max-w-48 group-hover:scale-90 
+                                        <img className='max-h-36 max-w-48 group-hover:scale-90 
                                         transition ease-out group-hover:blur-sm
                                         duration-500' 
                                         src={`storage/${item.image_path}`} alt={item.description} />
@@ -63,7 +63,7 @@ function IndustriMitra({datas}) {
                                         group-hover:opacity-100 overflow-hidden
                                         transition ease-out duration-100 text-center absolute'>
                                             <div className='bg-lighttertiary py-1 px-4 w-48 translate-y-full 
-                                            group-hover:translate-y-0 transition duration-700'>
+                                            group-hover:translate-y-0 transition duration-500 ease-out'>
                                                 {item.description}
                                             </div>
                                         </div>
