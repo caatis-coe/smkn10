@@ -27,9 +27,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
 
-                <pre className="mt-1 text-sm text-gray-600 whitespace-pre-wrap">
-                    {message ?? "This will permanently delete the data"}
-                </pre>
+            
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
