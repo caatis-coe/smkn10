@@ -65,14 +65,20 @@ function Index({ auth, datas, success, session }) {
                         {session == 0 ? 'Keterserapan Lulusan' : 'Industri Mitra'}
                     </h2>
                     <button onClick={() => {
+                        resetAllState();
                         setIsModalOpen(true)
                         setModalSession((prev) =>
                         ({
                             ...prev,
                             'used_as': session == 0 ? 'keterserapan_lulusan' : 'industri_mitra',
                             'action': "create",
-                        })
-                        )
+                        }))
+                        setData((prev) => ({
+                            ...prev,
+                            '_method': 'POST',
+                            'used_as': session == 0 ? 'keterserapan_lulusan' : 'industri_mitra',
+                        }))
+                
                         setIsSubmitClicked(false)
                     }}
                         className='bg-emerald-500 py-2 px-3 text-white rounded
@@ -112,7 +118,10 @@ function Index({ auth, datas, success, session }) {
                                     'File Data' : data.file,
                                     'isSubmitClicked' : isSubmitClicked,
                                     'isModalOpen' : isModalOpen,
-                                    'errors' :  errors
+                                    'errors' :  errors,
+                                    'modalSession' : {...modalSession},
+                                    'data' : {...data},
+                                    'state' : data.description && (modalSession.used_as != 'industri_mitra' || modalSession.description != data.description) && data.file ? true : false
                                 }}/> */}
                                 <table className='w-full text-sm text-left rtl:text-right
                                     text-gray-500 '>
@@ -132,7 +141,7 @@ function Index({ auth, datas, success, session }) {
                                             <tr key={index} className='bg-white border-b 
                                                 border-gray-300'>
                                                 <td className='px-3 py-2'>{data.id}</td>
-                                                <td className='px-3 py-2 overflow-hidden w-72'>
+                                                <td className='px-3 py-2 overflow-hidden w-48'>
                                                     <img
                                                         src={`${data.image_path}`}
                                                         alt={`${data.image_path}`}
@@ -142,6 +151,7 @@ function Index({ auth, datas, success, session }) {
                                                 <td className='px-3 py-2 text-right space-x-2'>
                                                     <button onClick={() => {
                                                         setIsSubmitClicked(false)
+                                                        resetAllState();
                                                         setModalSession(
                                                             {
                                                                 ...data,
@@ -171,7 +181,7 @@ function Index({ auth, datas, success, session }) {
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={datas.meta.links} />
+                            <Pagination links={datas.meta.links} additionalUrlParams={session} />
                         </div>
                     </div>
 
@@ -231,7 +241,7 @@ function Index({ auth, datas, success, session }) {
                         <TextInput
                             id="lulusan_description"
                             type="text"
-                            value={modalSession.description}
+                            value={data.description}
                             name="image"
                             className="mt-1 block w-full"
                             onChange={e => {
@@ -239,12 +249,7 @@ function Index({ auth, datas, success, session }) {
                                     ...prev,
                                     "description": e.target.value,
                                 }))
-                                setModalSession((prev) => ({
-                                    ...prev,
-                                    "description": e.target.value,
-                                })
 
-                                )
                             }}
                         />
                         <InputError message={errors.description} className='mt-2' />
@@ -269,9 +274,12 @@ function Index({ auth, datas, success, session }) {
                             post(modalSession.action == 'create' ? route('lulusan-db.store') : route('lulusan-db.update', modalSession.id))
                             setIsSubmitClicked(true)
                         }}
-                            className={`bg-emerald-500 py-2 px-4 text-white
-                                    rounded shadow transition-all hover:bg-emerald-600 text-sm
-                                    ${data.description ? '' : 'pointer-events-none bg-emerald-200'}`}>
+                            className={` py-2 px-4 text-white
+                                    rounded  transition-all hover:bg-emerald-600 text-sm
+                                    ${(data.description && data['_method'] == "PUT" ?
+                                    (modalSession.used_as == 'industri_mitra' ? (modalSession.description != data.description || data.file) : data.file)
+                                    : modalSession.description != data.description && data.file)
+                                    ? 'bg-emerald-500 shadow' : 'pointer-events-none bg-emerald-200 text-black'}`}>
                             Submit
                         </button>
                     </div>

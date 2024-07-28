@@ -13,7 +13,7 @@ function PembelajaranCard({ data }) {
                 <div className={`flex-shrink-0 h-[313px] bg-cover bg-center
                 border-grey rounded-t-md`} style={{ backgroundImage }}>
                 </div>
-                <div className={`border-2 border-lightgrey border-t-0 flex flex-col  min-h-[128px] 
+                <div className={`border-2 border-lightgrey border-t-0 flex flex-col h-[128px] overflow-hidden group-hover:h-[calc(100%-30rem)] transition
                 px-5 pt-4 pb-7 rounded-b-md ${data.description == "" || data.description == null ? "items-center justify-center" : "justify-between"}`}>
                     <div>
                         <div className={`${data.description == "" || data.description == null  ? "text-[24px] font-semibold line-clamp-2 text-center" : "text-[18px] font-medium line-clamp-1 mb-2 " }  group-hover:line-clamp-none`}>
@@ -23,10 +23,12 @@ function PembelajaranCard({ data }) {
                             {data.description}
                         </div>}
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     )
 }
 
 export default PembelajaranCard
+
+

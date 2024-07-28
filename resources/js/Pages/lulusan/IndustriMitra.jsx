@@ -52,17 +52,20 @@ function IndustriMitra({datas}) {
                                 (
                                     <div key={index} className=' border-2 p-12
                                     w-full h-56 flex flex-col justify-center items-center
-                                    rounded-lg group  cursor-pointer hover:bg-lighttertiary
-                                    duration-500 transition ease-out
+                                    rounded-lg group  cursor-pointer hover:bg-gray-50
+                                    duration-500 transition-all ease-out
                                     '>
-                                        <img className='w-32 group-hover:scale-75 
-                                        transition ease-out group-hover:translate-y-0
+                                        <img className='max-h-36 max-w-48 group-hover:scale-90 
+                                        transition ease-out group-hover:blur-sm
                                         duration-500' 
                                         src={`storage/${item.image_path}`} alt={item.description} />
-                                        <div className='font-medium text-white translate-y-0 hidden opacity-0
-                                        group-hover:opacity-100 group-hover:block 
-                                        transition ease-out duration-100 text-center'>
-                                            {item.description}
+                                        <div className=' text-white translate-y-0 opacity-0
+                                        group-hover:opacity-100 overflow-hidden
+                                        transition ease-out duration-100 text-center absolute'>
+                                            <div className='bg-lighttertiary py-1 px-4 w-48 translate-y-full 
+                                            group-hover:translate-y-0 transition duration-500 ease-out'>
+                                                {item.description}
+                                            </div>
                                         </div>
                                     </div>
                                 )
