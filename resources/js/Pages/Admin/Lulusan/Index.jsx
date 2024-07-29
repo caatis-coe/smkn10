@@ -9,7 +9,7 @@ import TextInput from '@/Components/TextInput'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, router, useForm } from '@inertiajs/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdImage } from 'react-icons/io'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
@@ -22,6 +22,12 @@ function Index({ auth, datas, success, session }) {
         description: session == 0 ? '-' : '',
         _method: 'PUT',
     });
+
+    useEffect(() => {
+        if (success) {
+            setData('file', {});
+        }
+    }, [success])
 
     const resetAllState = () => {
         setModalSession({
@@ -54,7 +60,7 @@ function Index({ auth, datas, success, session }) {
         'description': '',
         'image_path': '',
         'action': ''
-    });
+    });     
 
     return (
         <AuthenticatedLayout
@@ -114,15 +120,14 @@ function Index({ auth, datas, success, session }) {
                                 </div>
                             </nav>
                             <div className='overflow-auto'>
-                                {/* <DataPreview data={{
+                                <DataPreview data={{
                                     'File Data' : data.file,
                                     'isSubmitClicked' : isSubmitClicked,
                                     'isModalOpen' : isModalOpen,
                                     'errors' :  errors,
                                     'modalSession' : {...modalSession},
                                     'data' : {...data},
-                                    'state' : data.description && (modalSession.used_as != 'industri_mitra' || modalSession.description != data.description) && data.file ? true : false
-                                }}/> */}
+                                }}/>
                                 <table className='w-full text-sm text-left rtl:text-right
                                     text-gray-500 '>
 
