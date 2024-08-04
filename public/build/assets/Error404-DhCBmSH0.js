@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/Error404-DhCBmSH0.js
-import{j as e}from"./app-BnlRdHH4.js";function t(){return e.jsx("div",{className:"flex justify-center items-center min-h-[100vh] text-3xl text-grey",children:"Error 404 file not found"})}export{t as default};
-========
-import{j as e}from"./app-DeGZHwHx.js";function t(){return e.jsx("div",{className:"flex justify-center items-center min-h-[100vh] text-3xl text-grey",children:"Error 404 file not found"})}export{t as default};
->>>>>>>> development:public/build/assets/Error404-CBWygtnq.js

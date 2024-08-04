@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/PrestasiSiswa-BtcH7PVG.js
-import{j as t}from"./app-BnlRdHH4.js";import{C as a}from"./ContentTitle-CsT0az-T.js";import{A as r}from"./AppTable-D_gg05hx.js";import{D as s}from"./DefaultLayout-C6lLUXsD.js";import"./iconBase-CwwB6SUL.js";import"./index-BZSemZcn.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function u(){return t.jsx(s,{children:t.jsxs("div",{className:"w-full",children:[t.jsx(a,{title:"PRESTASI",subTitle:"SISWA"}),t.jsx(r,{contents:[["Nama","Prestasi","Juara","Penyelenggara","Tahun","Tingkat"]]})]})})}export{u as default};
-========
-import{j as t}from"./app-DeGZHwHx.js";import{C as a}from"./ContentTitle-BOXqy6O_.js";import{A as r}from"./AppTable-gfW0imDS.js";import{D as s}from"./DefaultLayout-CvOpyKA8.js";import"./iconBase-CIqQnvj_.js";import"./index-D-ZdLArf.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function u(){return t.jsx(s,{children:t.jsxs("div",{className:"w-full",children:[t.jsx(a,{title:"PRESTASI",subTitle:"SISWA"}),t.jsx(r,{contents:[["Nama","Prestasi","Juara","Penyelenggara","Tahun","Tingkat"]]})]})})}export{u as default};
->>>>>>>> development:public/build/assets/PrestasiSiswa-CJcq0SJG.js

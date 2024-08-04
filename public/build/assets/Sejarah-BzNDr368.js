@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/Sejarah-CyzCZrl_.js
-import{j as t}from"./app-BnlRdHH4.js";import{C as r}from"./ContentTitle-CsT0az-T.js";import{D as s}from"./DefaultLayout-C6lLUXsD.js";import"./iconBase-CwwB6SUL.js";import"./index-BZSemZcn.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function p({data:e}){return t.jsxs(s,{children:[t.jsx(r,{title:"PROFIL",subTitle:"SEJARAH"}),t.jsx("div",{className:"prose max-w-none ",children:t.jsx("div",{className:"space-y-2 ",dangerouslySetInnerHTML:{__html:e}})})]})}export{p as default};
-========
-import{j as t}from"./app-DeGZHwHx.js";import{C as r}from"./ContentTitle-BOXqy6O_.js";import{D as s}from"./DefaultLayout-CvOpyKA8.js";import"./iconBase-CIqQnvj_.js";import"./index-D-ZdLArf.js";import"./Logo-SMK-10-Bandung-DkIcBiNv.js";function p({data:e}){return t.jsxs(s,{children:[t.jsx(r,{title:"PROFIL",subTitle:"SEJARAH"}),t.jsx("div",{className:"prose max-w-none ",children:t.jsx("div",{className:"space-y-2 ",dangerouslySetInnerHTML:{__html:e}})})]})}export{p as default};
->>>>>>>> development:public/build/assets/Sejarah-BzNDr368.js
