@@ -159,6 +159,13 @@ function Berita({ beritaDatas = [] }) {
             </a>
           </div>
         </blockquote>
+        <style jsx="true">{`
+          .instagram-media {
+            border-radius: 16px !important;
+            box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.1) !important;
+          }
+        `}
+        </style>
       </div>
     </DefaultLayout>
   );
