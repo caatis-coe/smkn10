@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:public/build/assets/TextInput-ryY_OEyN.js
-import{j as r,r as s}from"./app-DeRYDI6P.js";function f({message:t,className:e="",...n}){return t?r.jsx("p",{...n,className:"text-sm text-red-600 "+e,children:t}):null}const d=s.forwardRef(function({type:e="text",className:n="",isFocused:c=!1,...i},o){const u=o||s.useRef();return s.useEffect(()=>{c&&u.current.focus()},[]),r.jsx(r.Fragment,{children:r.jsx("input",{...i,type:e,className:"border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "+n,ref:u})})});export{f as I,d as T};
-========
-import{j as r,r as s}from"./app-CdjcM6ZY.js";function f({message:t,className:e="",...n}){return t?r.jsx("p",{...n,className:"text-sm text-red-600 "+e,children:t}):null}const d=s.forwardRef(function({type:e="text",className:n="",isFocused:c=!1,...i},o){const u=o||s.useRef();return s.useEffect(()=>{c&&u.current.focus()},[]),r.jsx(r.Fragment,{children:r.jsx("input",{...i,type:e,className:"border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "+n,ref:u})})});export{f as I,d as T};
->>>>>>>> development:public/build/assets/TextInput-CLwh0BFE.js
