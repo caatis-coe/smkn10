@@ -3,15 +3,17 @@ import ContentTitle from '@/Components/ContentTitle';
 import DefaultLayout from '@/Layouts/DefaultLayout';
 import ReactPaginate from 'react-paginate';
 import React, { useEffect, useState } from 'react';
+import SubTitle from '@/Components/SubTitle';
 
 function Berita({ beritaDatas = [] }) {
   return (
     <DefaultLayout>
       <ContentTitle subTitle='BERITA' />
-      {<PaginatedItems itemsPerPage={6} items={beritaDatas} />}
+      <PaginatedItems itemsPerPage={6} items={beritaDatas} />
     </DefaultLayout>
   );
 }
+
 
 function PaginatedItems({ itemsPerPage, items }) {
 
