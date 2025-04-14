@@ -1,20 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminBeritaController;
-use App\Http\Controllers\Admin\AdminBuyerController;
-use App\Http\Controllers\Admin\AdminDaftarTenagaPendidikanController;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\AdminKonsentrasiKeahlianController;
-use App\Http\Controllers\Admin\AdminPembelajaranController;
-use App\Http\Controllers\Admin\AdminPrestasiGuruController;
-use App\Http\Controllers\Admin\AdminPrestasiSekolahController;
-use App\Http\Controllers\Admin\AdminPrestasiSiswaController;
-use App\Http\Controllers\Admin\AdminProfilController;
-use App\Http\Controllers\Admin\AdminTeachingFactoryProductController;
-use App\Http\Controllers\Admin\AdminDaftarGuruController;
-use App\Http\Controllers\Admin\AdminLulusanController;
-use App\Http\Controllers\Admin\AdminSejarahController;
-use App\Http\Controllers\Admin\AdminStrukturOrganisasiController;
+use App\Http\Controllers\admin\AdminBeritaController;
+use App\Http\Controllers\admin\AdminBuyerController;
+use App\Http\Controllers\admin\AdminDaftarTenagaPendidikanController;
+use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\admin\AdminKonsentrasiKeahlianController;
+use App\Http\Controllers\admin\AdminPembelajaranController;
+use App\Http\Controllers\admin\AdminPrestasiGuruController;
+use App\Http\Controllers\admin\AdminPrestasiSekolahController;
+use App\Http\Controllers\admin\AdminPrestasiSiswaController;
+use App\Http\Controllers\admin\AdminProfilController;
+use App\Http\Controllers\admin\AdminTeachingFactoryProductController;
+use App\Http\Controllers\admin\AdminDaftarGuruController;
+use App\Http\Controllers\admin\AdminLulusanController;
+use App\Http\Controllers\admin\AdminSejarahController;
+use App\Http\Controllers\admin\AdminStrukturOrganisasiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
