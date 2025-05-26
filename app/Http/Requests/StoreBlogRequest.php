@@ -22,9 +22,9 @@ class StoreBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => ['required', 'max:121'],
+            "title" => ['required', 'max:512'],
             "thumbnail_image" => ['image'],
-            "description" => ['required', 'max:512'],
+            "description" => ['required', 'max:2000'],
         ];
     }
 }
