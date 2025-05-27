@@ -97,7 +97,7 @@ function Nav() {
         <SmallScreenNavLink title="Prestasi" handleClick={handleClickLink} subMenu={prestasiData} />
         <SmallScreenNavLink title="Berita" endpoint="/berita" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Lulusan" endpoint="/" handleClick={handleClickLink} subMenu={lulusanData}/>
-        <SmallScreenNavLink title="Info PPDB" endpoint="/info-ppdb" handleClick={handleClickLink} />
+        <SmallScreenNavLink title="SPMB" endpoint="/info-ppdb" handleClick={handleClickLink} />
         <SmallScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
         <SmallScreenNavLink title="Hubungi Kami" endpoint="/contact-us" handleClick={handleClickLink} />
       </ul>
@@ -139,7 +139,7 @@ function Nav() {
                 <DropdownNavLink title="Prestasi" subMenu={prestasiData} />
                 <WideScreenNavLink title="Berita" endpoint="/berita" />
                 <DropdownNavLink title="Lulusan" endpoint="/" subMenu={lulusanData}/>
-                <WideScreenNavLink title="Info PPDB" endpoint="/info-ppdb" />
+                <WideScreenNavLink title="SPMB" endpoint="/info-ppdb" />
                 <WideScreenNavLink title="Teaching Factory" endpoint="/teaching-factory" />
                 <WideScreenNavLink title="Hubungi Kami" endpoint="/contact-us" />
               </ul>

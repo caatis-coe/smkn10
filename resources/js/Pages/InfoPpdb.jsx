@@ -131,7 +131,27 @@ function InfoPpdb({ konsentrasiData, contentTable =
         }
     ]
 }) {
-    const imageData = [
+
+    const spmbMediaData = [
+        {
+            "title": "",
+            "image": "images/spmb/image1.jpg",
+        },
+        {
+            "title": "",
+            "image": "images/spmb/image2.jpg",
+        },
+        {
+            "title": "",
+            "image": "images/spmb/image3.jpg",
+        },
+        {
+            "title": "",
+            "video": "videos/SPMB.mp4"
+        }
+    ]
+
+    const ppdbImageData = [
         {
             "title": "Panduan PPDB",
             "image": "images/ppdb/image1.jpeg",
@@ -169,9 +189,37 @@ function InfoPpdb({ konsentrasiData, contentTable =
 
     return (
         <DefaultLayout>
-            <ContentTitle subTitle='INFO PPDB' />
+            <ContentTitle subTitle='SPMB' />
             <div className="flex flex-col items-center">
-                {imageData.map((data, index) => (
+                {spmbMediaData.map((data, index) => (
+                    <div key={index}>
+                        <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
+                        {data.image && (
+                            <img
+                                src={data.image}
+                                alt={data.title || `SPMB Media ${index + 1}`} // Use title for alt if available
+                                className='content shadow-md lg:h-[600px]  w-full slide-in-up sm:mb-5 md:mb-20'
+                                style={{ objectFit: 'cover' }}
+                            />
+                        )}
+                    </div>
+                ))}
+                <div>
+                    <video
+                        src={spmbMediaData[3].video}
+                        controls
+                        className='content shadow-md lg:h-[800px] w-full slide-in-up sm:mb-5 md:mb-20'
+                        style={{ objectFit: 'contain' }} 
+                    >
+                        Your browser does not support the video tag. {/* Fallback message */}
+                    </video>
+                </div>
+            </div>
+
+            <ContentTitle subTitle='PPDB 2024' />
+
+            <div className="flex flex-col items-center">
+                {ppdbImageData.map((data, index) => (
                     <div key={index}>
                         <div className={`my-6 font-semibold text-[25px] sm:text-[30px] text-secondary text-center sm:text-left`}>{data.title}</div>
                         <img
@@ -184,7 +232,7 @@ function InfoPpdb({ konsentrasiData, contentTable =
                     </div>
                 ))}
             </div>
-            
+
             <section>
                 {
                     konsentrasiData && (
@@ -195,7 +243,7 @@ function InfoPpdb({ konsentrasiData, contentTable =
                                 {konsentrasiData.map((data, index) => (
                                     <div key={index} className="m-2">
                                         <img
-                                            src={data.images.length > 0 ? ('/storage/'+data.images[0].image_path) : ''}
+                                            src={data.images.length > 0 ? ('/storage/' + data.images[0].image_path) : ''}
                                             alt={`PPDB Image "${data.title}"`}
                                             className='content shadow-md lg:h-[300px] sm:h-[184px] slide-in-up'
                                             style={{ objectFit: 'cover' }}
