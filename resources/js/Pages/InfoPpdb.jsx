@@ -205,14 +205,7 @@ function InfoPpdb({ konsentrasiData, contentTable =
                     </div>
                 ))}
                 <div className='mb-7'>
-                    <video
-                        src={spmbMediaData[3].video}
-                        controls
-                        className='content shadow-md lg:h-[800px] w-full slide-in-up sm:mb-5 md:mb-20'
-                        style={{ objectFit: 'contain' }} 
-                    >
-                        <iframe className='' width="344" height="612" src="https://www.youtube.com/embed/p6sNhBPKS_8" title="Profil Konsentrasi Keahlian SMKN 10 Bandung" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                    </video>
+                    <iframe className='content shadow-md scale-110 w-full slide-in-up sm:mb-5 md:mb-20' width="344" height="612" src="https://www.youtube.com/embed/p6sNhBPKS_8" title="Profil Konsentrasi Keahlian SMKN 10 Bandung" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 </div>
             </div>
 
