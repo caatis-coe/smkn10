@@ -345,7 +345,7 @@ function Home({ blogDatas, headmaster, swiperImage, homeAnalytics, urlVideoProfi
                     py-2 text-sm md:text-base lg:text-md
                     cursor-pointer  hover:bg-secondary border-secondary
                     group transition duration-1000'>
-                    <div className='text-secondary font-medium group-hover:scale-105 group-hover:text-white transition duration-500'>Info PPDB</div>
+                    <div className='text-secondary font-medium group-hover:scale-105 group-hover:text-white transition duration-500'>SPMB</div>
                 </Link>
             </div>
         </DefaultLayout>
