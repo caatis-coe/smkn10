@@ -250,17 +250,17 @@ function InfoPpdb({ konsentrasiData, contentTable =
 
             </section>
 
-            <div className="mx-auto my-20 p-9 border-[1px] rounded-xl group hover:scale-[1.01] transition ease-in-out
-            hover:bg-lighttertiary">
-                <div className=" -mx-4">
+            <div className="mx-auto my-20 p-9 border-[1px] rounded-xl group  transition ease-in-out
+            hover:shadow-md">
+                <div className="-mx-4">
                     {/* First Column */}
                     <div className=" px-4 mb-8 lg:mb-0">
                         <div className="text-center">
-                            <h2 className="text-4xl font-semibold mb-9 group-hover:text-white text-black">Dokumen Prosedur Operasional Standar</h2>
+                            <h2 className="text-4xl font-semibold mb-9  text-black">Dokumen Prosedur Operasional Standar</h2>
                             <a href="/doc/pos-smkn10bdg.pdf" download>
-                                <button className="bg-primary group-hover:bg-white group-hover:text-lighttertiary 
+                                <button className="bg-primary  
                                 font-semibold text-white py-2 px-4 rounded 
-                                hover:shadow-lg group-hover:hover:scale-[1.01] transition ease-in duration-75   
+                                 hover:bg-lighttertiary transition ease-in duration-75   
                                 ">
                                     Download
                                 </button>

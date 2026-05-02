@@ -15,7 +15,7 @@ function Index({ auth, datas, success, session }) {
         setIsConfirmOpen(true);
     }
 
-    const handleConfirmDelete= () => {
+    const handleConfirmDelete = () => {
         router.delete(route("daftar-tenaga-pendidikan-db.destroy", selectedData.id));
         setIsConfirmOpen(false);
     }
@@ -69,6 +69,11 @@ function Index({ auth, datas, success, session }) {
                                     "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
                                         transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => Inertia.get(`struktur-organisasi-db`)}>
                                     Struktur Organisasi
+                                </div>
+                                <div className={`${session == 4 ? "font-medium cursor-default pointer-events-none px-2  border-indigo-400 text-gray-900 focus:border-indigo-700" :
+                                    "cursor-pointer pointer-events-auto border-transparent text-gray-500 hover:text-gray-700 hover:px-2 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300"} 
+                                                                        transition-all border-b-2 text-xs sm:text-sm sm:text-left sm:block  flex items-center`} onClick={() => Inertia.get(`visi-misi-db`)}>
+                                    Visi & Misi
                                 </div>
                             </nav>
                             <div className='overflow-auto'>

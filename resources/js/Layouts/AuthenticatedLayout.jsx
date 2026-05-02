@@ -33,7 +33,8 @@ export default function AuthenticatedLayout({ user, header, children }) {
                                     route().current('daftar-guru-db.*') ||
                                     route().current('daftar-tenaga-pendidikan-db.*') ||
                                     route().current('sejarah-db.*') ||
-                                    route().current('struktur-organisasi-db.*')
+                                    route().current('struktur-organisasi-db.*') ||
+                                    route().current('visi-misi-db.*')
                                 }>
                                     Profil
                                 </NavLink>

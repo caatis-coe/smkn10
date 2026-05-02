@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\AdminDaftarGuruController;
 use App\Http\Controllers\admin\AdminLulusanController;
 use App\Http\Controllers\admin\AdminSejarahController;
 use App\Http\Controllers\admin\AdminStrukturOrganisasiController;
+use App\Http\Controllers\Admin\AdminVisiMisiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\KonsentrasiKeahlianController;
 use App\Http\Controllers\PrestasiSekolahController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\TeachingFactoryController;
+use App\Http\Controllers\VisiMisiController;
 use App\Http\Middleware\ShareKeahlianData;
 use App\Models\Image;
 use Illuminate\Support\Facades\Redirect;
@@ -59,9 +61,7 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
         ]);
     });
 
-    Route::get('/visi-misi', function () {
-        return Inertia::render('profil/VisiMisi');
-    });
+    Route::get('/visi-misi', [VisiMisiController::class, 'show']);
 
     Route::get('/nilai-budaya', function () {
         return Inertia::render('profil/NilaiBudaya');
@@ -122,6 +122,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('lulusan-db', AdminLulusanController::class);
     Route::resource('sejarah-db', AdminSejarahController::class);
     Route::resource('struktur-organisasi-db',  AdminStrukturOrganisasiController::class);
+    Route::resource('visi-misi-db', AdminVisiMisiController::class);
     Route::resource('daftar-guru-db',  AdminDaftarGuruController::class);
     Route::resource('daftar-tenaga-pendidikan-db', AdminDaftarTenagaPendidikanController::class);
     Route::resource('profil-db', AdminProfilController::class);
