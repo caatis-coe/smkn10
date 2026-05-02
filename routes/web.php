@@ -15,7 +15,7 @@ use App\Http\Controllers\admin\AdminDaftarGuruController;
 use App\Http\Controllers\admin\AdminLulusanController;
 use App\Http\Controllers\admin\AdminSejarahController;
 use App\Http\Controllers\admin\AdminStrukturOrganisasiController;
-use App\Http\Controllers\Admin\AdminVisiMisiController;
+use App\Http\Controllers\admin\AdminVisiMisiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
