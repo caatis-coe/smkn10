@@ -59,12 +59,12 @@ function InformasiKelulusan({ datetime = "" , link = ""}) {
                 </div>
 
                 {isFinished && (
-                    <div className="mt-12 text-center">
+                    <div className="mt-24 text-center">
                         <a
                             href={link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition"
+                            className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition text-2xl"
                         >
                             Lihat Informasi Kelulusan
                         </a>
