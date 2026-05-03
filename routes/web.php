@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\AdminStrukturOrganisasiController;
 use App\Http\Controllers\admin\AdminVisiMisiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InformasiKelulusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DaftarGuruController;
 use App\Http\Controllers\DaftarTenagaPendidikanController;
@@ -112,6 +113,8 @@ Route::middleware([ShareKeahlianData::class])->group(function () {
     Route::get('/teaching-factory', [TeachingFactoryController::class, 'show']);
 
     Route::post('/send-data-buyer', [TeachingFactoryController::class, 'sendDataBuyer']);
+
+    Route::get('/informasi-kelulusan', [InformasiKelulusanController::class, 'show']);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

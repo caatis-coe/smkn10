@@ -49,6 +49,10 @@ function Nav() {
       "title": "Kurikulum",
       "endpoint": "/kurikulum"
     },
+    {
+      "title": "Informasi Kelulusan",
+      "endpoint": "/informasi-kelulusan"
+    }
   ])
 
   const { keahlianData } = usePage().props;

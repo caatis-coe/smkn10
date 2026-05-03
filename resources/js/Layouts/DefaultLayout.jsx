@@ -22,7 +22,7 @@ function DefaultLayout({ children, headerChildren }) {
                 <div>
                     {headerChildren}
                 </div>
-                <div className='flex flex-col flex-1 w-full h-auto px-10 md:px-20 py-7' >
+                <div className='flex flex-col flex-1 w-full h-full px-10 md:px-20 py-7' >
                     {children}
                 </div>
                 <div className=''>
