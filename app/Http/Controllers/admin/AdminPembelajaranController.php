@@ -10,6 +10,7 @@ use App\Http\Requests\UpdatePembelajaranRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -26,13 +27,15 @@ class AdminPembelajaranController extends Controller
         // Use the $type value to filter your data accordingly
         if ($type === 'kegiatanMahasiswa') {
             $datas = Pembelajaran::where('type', 'kegiatan mahasiswa')->paginate(10);
-        } else {
+        } else if($type === 'fasilitas') {
             $datas = Pembelajaran::where('type', 'fasilitas')->paginate(10);
+        } else if ($type === 'informasiKelulusan') {
+            $datas = json_decode(File::get(public_path('storage/doc/informasi_kelulusan.json')), true);
         }
 
         return Inertia::render('Admin/Pembelajaran/Index', [
-            'datas' => PembelajaranResource::collection($datas),
-            'session' => $type === 'fasilitas' || $type == '',
+            'datas' => $type === "informasiKelulusan" ? $datas : PembelajaranResource::collection($datas),
+            'session' => $type,
             'success' => session('success')
         ]);
     }

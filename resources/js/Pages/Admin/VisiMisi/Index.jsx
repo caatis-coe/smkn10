@@ -6,15 +6,17 @@ import React, { useState } from 'react'
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 
-function Index({ auth, visi, misi, success, session }) {
+function Index({ auth, visi, misi, success, session, tujuan }) {
     const [visiValue, setVisiValue] = useState(visi);
     const [misiValue, setMisiValue] = useState(misi);
+    const [tujuanValue, setTujuanValue] = useState(tujuan);
 
     const onSubmit = (e) => {
         e.preventDefault()
         Inertia.post(route('visi-misi-db.store'), {
             visi: visiValue,
-            misi: misiValue
+            misi: misiValue,
+            tujuan: tujuanValue,
         });
     }
     
@@ -72,6 +74,8 @@ function Index({ auth, visi, misi, success, session }) {
                                 <ReactQuill theme="snow" value={visiValue} onChange={setVisiValue} />
                                 <div className='text-lg font-bold my-4'>MISI</div>
                                 <ReactQuill theme="snow" value={misiValue} onChange={setMisiValue} />
+                                <div className='text-lg font-bold my-4'>TUJUAN</div>
+                                <ReactQuill theme="snow" value={tujuanValue} onChange={setTujuanValue} />
                                 <div className='mt-4 flex items-end justify-between col-span-2'>
                                     <div className='mt-4 flex-nowrap flex-shrink-0'>
                                         <Link href={route("sejarah-db.index")}

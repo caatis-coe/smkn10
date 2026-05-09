@@ -18,6 +18,7 @@ class AdminVisiMisiController extends Controller
         return Inertia::render('Admin/VisiMisi/Index', [
             'visi' => Storage::disk('public')->get('doc/visi.html'),
             'misi' => Storage::disk('public')->get('doc/misi.html'),
+            'tujuan' => Storage::disk('public')->get('doc/tujuan.html'),
             'success' => session('success'),
             'session' => 4,
         ]);
@@ -39,11 +40,13 @@ class AdminVisiMisiController extends Controller
         $request->validate([
             'visi' => 'required|string',
             'misi' => 'required|string',
+            'tujuan' => 'required|string'
         ]);
 
         // Store the content to the file
         Storage::disk('public')->put('doc/visi.html', $request->input('visi'));
         Storage::disk('public')->put('doc/misi.html', $request->input('misi'));
+        Storage::disk('public')->put('doc/tujuan.html', $request->input('tujuan'));
         
         // Redirect back with success message
         return Redirect::route('visi-misi-db.index')->with('success', 'Visi & Misi updated successfully.');

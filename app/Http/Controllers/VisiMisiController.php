@@ -13,7 +13,8 @@ class VisiMisiController extends Controller
     {
         return Inertia::Render('profil/VisiMisi', [
             'visi' => Storage::disk('public')->get('doc/visi.html'),
-            'misi' => Storage::disk('public')->get('doc/misi.html')
+            'misi' => Storage::disk('public')->get('doc/misi.html'),
+            'tujuan' => Storage::disk('public')->get('doc/tujuan.html')
         ] );
     }
 }
